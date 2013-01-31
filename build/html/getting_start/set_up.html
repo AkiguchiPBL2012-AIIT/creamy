@@ -1,0 +1,199 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>JavaFX開発環境をセットアップする &mdash; Creamy 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../static/jquery.js"></script>
+    <script type="text/javascript" src="../static/underscore.js"></script>
+    <script type="text/javascript" src="../static/doctools.js"></script>
+    <link rel="top" title="Creamy 0.1 documentation" href="../index.html" />
+    <link rel="up" title="Creamyによる開発" href="../development_by_creamy.html" />
+    <link rel="next" title="Creamyプロジェクトの作成" href="create_creamy_project.html" />
+    <link rel="prev" title="Creamyによる開発" href="../development_by_creamy.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="create_creamy_project.html" title="Creamyプロジェクトの作成"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../development_by_creamy.html" title="Creamyによる開発"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Creamy 0.1 documentation</a> &raquo;</li>
+          <li><a href="../development_by_creamy.html" accesskey="U">Creamyによる開発</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">JavaFX開発環境をセットアップする</a><ul>
+<li><a class="reference internal" href="#javafx-sdk">JavaFX SDK をインストールする</a></li>
+<li><a class="reference internal" href="#netbeans">NetBeansをインストールする</a></li>
+<li><a class="reference internal" href="#javafx-scene-builder">JavaFX Scene Builderをインストールする</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../development_by_creamy.html"
+                        title="previous chapter">Creamyによる開発</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="create_creamy_project.html"
+                        title="next chapter">Creamyプロジェクトの作成</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../sources/getting_start/set_up.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="javafx">
+<h1>JavaFX開発環境をセットアップする<a class="headerlink" href="#javafx" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="javafx-sdk">
+<h2>JavaFX SDK をインストールする<a class="headerlink" href="#javafx-sdk" title="Permalink to this headline">¶</a></h2>
+<p>JavaFX SDKは、JavaFXを利用するためのライブラリ・ツール群です。</p>
+<p>WindowsとMac OS X向けのJavaFX SDKは、JDK 7にバンドルされています。JDKをインストールすると、JDK本体、JRE、JavaFX SDKのインストールが行われます。
+Creamyを使う場合は、JDK1.7以上のバージョンをインストールしてください。</p>
+<p>開発用のPCに、OracleのサイトからJavaFXをダウンロードしてインストールします。</p>
+<p>ダウンロードは <a class="reference external" href="http://www.oracle.com/technetwork/java/javafx/downloads/index.html">こちら</a> のページからできます。</p>
+<ul class="simple">
+<li>Oracleのダウンロードサイト</li>
+</ul>
+<p>JavaFX for Java7 SEをインストールします。</p>
+<img alt="../images/JavaFXSDK01.PNG" src="../images/JavaFXSDK01.PNG" />
+<p>ダウンロードの前に、OTN Early Adopter License Agreementに同意する必要があります。また、インストールする際にはOracleのアカウントが必要になります。ない場合は、取得をしてからインストールします。</p>
+<ul class="simple">
+<li>JavaFXのダウンロードサイト</li>
+</ul>
+<p>JavaFXのリンクをクリックします。この画面では、JavaFX2.2.4の例となっています。</p>
+<img alt="../images/JavaFXSDK02.PNG" src="../images/JavaFXSDK02.PNG" />
+<p>Accept License Agreement をチェックします。
+Windows、Mac、64bit環境など、自分の環境に合ったインストーラを選んでダウンロードします。</p>
+<img alt="../images/JavaFXSDK03.PNG" src="../images/JavaFXSDK03.PNG" />
+<ul class="simple">
+<li>インストーラの実行</li>
+</ul>
+<p>ダウンロードしたインストーラを実行します。インストール先の変更などをしない限り、デフォルトの設定で進めて問題ありません。</p>
+<img alt="../images/JavaFXSDK04.PNG" src="../images/JavaFXSDK04.PNG" />
+</div>
+<div class="section" id="netbeans">
+<h2>NetBeansをインストールする<a class="headerlink" href="#netbeans" title="Permalink to this headline">¶</a></h2>
+<p>]Creamyを利用して、アプリケーションを作成するには、NetBeans7.1以上が必要となります。</p>
+<p>NetBeansは、いわゆるIDE（統合開発環境）です。</p>
+<p>Javaの開発においては、IDEとしてはEclipseが利用されることが多いですが、JavaFXの標準の開発環境としては、デフォルトでJavaFXのプラグインがインストールされているNetBeansが推奨されています。</p>
+<p>また、JavaFX Scene Builderとのシームレスな連携も実現されているので、JavaFXの開発をする際には、NetBeansを用いるのがお勧めです。</p>
+<p>NetBeansを使ったことがない方も、JavaFX、そしてCreamyの利用を機に、NetBeansを使ってみましょう。</p>
+<p>使い勝手はEclipseとそれほど大きな差はなく、UIも軽快に動作します。</p>
+<p>また、Creamyのプロジェクト新規作成やScaffoldのツールは、NetBeans上のプロジェクトを対象として動作します。</p>
+<p>ダウンロードは <a class="reference external" href="http://ja.netbeans.org/">こちら</a> のページからできます。</p>
+<p>Creamyを使う場合は、7.1以上のバージョンをインストールしてください。</p>
+<ul class="simple">
+<li>NetBeansのダウンロードサイト</li>
+</ul>
+<p>自分の環境にあったプラットフォームを選択し、Java SE など、サポートテクノロジーにJavaFXが含まれるものをダウンロードします。</p>
+<img alt="../images/NetBeans01.PNG" src="../images/NetBeans01.PNG" />
+<ul class="simple">
+<li>NetBeansのインストーラの実行</li>
+</ul>
+<p>ダウンロードしたインストーラを実行します。</p>
+<img alt="../images/NetBeans02.PNG" src="../images/NetBeans02.PNG" />
+<ul class="simple">
+<li>JUnitのインストール</li>
+</ul>
+<p>途中、JUnitのインストールの選択ダイアログが表示されます。単体テスト実行に便利なので、インストールしておきましょう。その他はデフォルトの設定でインストールして問題ありません。</p>
+<img alt="../images/NetBeans03.PNG" src="../images/NetBeans03.PNG" />
+</div>
+<div class="section" id="javafx-scene-builder">
+<h2>JavaFX Scene Builderをインストールする<a class="headerlink" href="#javafx-scene-builder" title="Permalink to this headline">¶</a></h2>
+<p>JavaFX Scene Builderは、JavaFXを用いたプログラム開発をする際に、GUIデザインを支援するツールです。</p>
+<p>NetBeansから起動することができ、シームレスに連携します。</p>
+<p>Creamyを利用する上での必須要件ではありませんが、JavaFXを用いた開発での定番ツールなので、インストールしておきましょう。</p>
+<p>JavaFX SDKと同様に、OracleのサイトからJavaFX Scene Builderをダウンロードします。</p>
+<p>ダウンロードは <a class="reference external" href="http://www.oracle.com/technetwork/java/javafx/tools/index.html">こちら</a> のページからできます。</p>
+<ul class="simple">
+<li>JavaFX Scene Builderのダウンロードサイト</li>
+</ul>
+<p>Windows、Macなど、自分の環境に合ったインストーラを選んでダウンロードします。</p>
+<p>この画面では、Developer PreviewのJavaFX Scene Builder1.1の例となっています。</p>
+<img alt="../images/SceneBuilder01.PNG" src="../images/SceneBuilder01.PNG" />
+<ul class="simple">
+<li>インストーラの実行</li>
+</ul>
+<p>ダウンロードしたインストーラを実行します。インストール先の変更などをしない限り、デフォルトの設定で進めて問題ありません。</p>
+<img alt="../images/SceneBuilder02.PNG" src="../images/SceneBuilder02.PNG" />
+<p>以上で、JavaFX開発環境の準備は完了です。</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="create_creamy_project.html" title="Creamyプロジェクトの作成"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../development_by_creamy.html" title="Creamyによる開発"
+             >previous</a> |</li>
+        <li><a href="../index.html">Creamy 0.1 documentation</a> &raquo;</li>
+          <li><a href="../development_by_creamy.html" >Creamyによる開発</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, 2012 AIIT Akiguchi PBL.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
