@@ -1,0 +1,114 @@
+/* 
+    Document   : hBox
+    Created on : 2012/07/17, 16:56:54
+    Author     : miyabetaiji
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+#header {
+    -fx-background-color: black;
+}
+
+#home {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    /*-fx-font-family: "Arial Black";*/
+}
+
+.search-button{
+    -fx-font: 14px;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+    -fx-background-color: #1e90ff;
+    -fx-text-fill: #ffffff;
+    -fx-padding: 5;
+
+}
+
+.create-button{
+    -fx-font: 14px;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+    -fx-background-color: #6b8e23;
+    -fx-text-fill: #ffffff;
+    -fx-padding: 5;
+}
+
+#search-field{
+    -fx-padding: 5;
+}
+
+.tbl{
+
+}
+
+.subtitle{
+    -fx-font: normal bold 30px "Arial";
+}
+
+.btn {
+    -fx-text-alignment: center;
+    -fx-background-color: white;
+    -fx-padding: 5 10 5 10;
+    -fx-border-color: gray;
+    -fx-border-radius: 8;
+    /*-fx-effect: dropshadow( one-pass-box , black , 8 , 0.0 , 2 , 0 );*/
+}
+
+.btn-primary {
+    -fx-font-weight: bold;
+    -fx-text-alignment: center;
+    -fx-background-color: royalblue;
+    -fx-padding: 5 10 5 10;
+    -fx-text-fill: white;
+    -fx-border-color: gray;
+    -fx-border-radius: 8;
+}
+
+.btn-success {
+    -fx-font-weight: bold;
+    -fx-text-alignment: center;
+    -fx-background-color: green;
+    -fx-padding: 5 10 5 10;
+    -fx-text-fill: white;
+    -fx-border-color: gray;
+    -fx-border-radius: 8;
+}
+
+.btn-danger {
+    -fx-font-weight: bold;
+    -fx-text-alignment: center;
+    -fx-background-color: red;
+    -fx-padding: 5 10 5 10;
+    -fx-text-fill: white;
+    -fx-border-color: gray;
+    -fx-border-radius: 8;
+}
+
+.link-regurar {
+    -fx-text-fill: blue;
+}
+
+.grid-form {
+    -fx-hgap: 10;
+    -fx-vgap: 20;
+    -fx-padding: 10;
+}
+
+.actions {
+    -fx-background-color: lavender;
+}
+
+.guide-text {
+    -fx-text-fill: darkgray;
+}
+
+.err-text {
+    -fx-text-fill: red;
+}

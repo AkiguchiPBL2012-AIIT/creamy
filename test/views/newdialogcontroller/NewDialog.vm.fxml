@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import creamy.scene.control.*?>
+<?import creamy.scene.layout.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="268.0" prefWidth="650.0" styleClass="base-pane" xmlns:fx="http://javafx.com/fxml" fx:controller="views.newdialogcontroller.NewDialog">
+  <fx:define>
+    <String fx:value="Create Computer" fx:id="title" />
+  </fx:define>
+  <children>
+    <VBox prefHeight="268.0" prefWidth="629.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+        <HBox prefHeight="222.0" prefWidth="629.0">
+          <children>
+            <VBox disable="false" prefHeight="222.0" prefWidth="158.0" spacing="0.0" styleClass="step-pane">
+              <children>
+                <Label text="ステップ">
+                  <font>
+                    <Font size="16.0" />
+                  </font>
+                </Label>
+                <GridPane prefHeight="177.0" prefWidth="100.0">
+                  <children>
+                    <Label fx:id="step1Label" styleClass="label-current" text="1. コンピュータ" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                      <stylesheets>
+                        <URL value="@NewDialog.css" />
+                      </stylesheets>
+                    </Label>
+                    <Label fx:id="step2Label" styleClass="label-past" text="2. メーカー" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                      <stylesheets>
+                        <URL value="@NewDialog.css" />
+                      </stylesheets>
+                    </Label>
+                  </children>
+                  <columnConstraints>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  </columnConstraints>
+                  <rowConstraints>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  </rowConstraints>
+                  <VBox.margin>
+                    <Insets />
+                  </VBox.margin>
+                </GridPane>
+              </children>
+              <padding>
+                <Insets left="15.0" top="15.0" />
+              </padding>
+              <stylesheets>
+                <URL value="@NewDialog.css" />
+              </stylesheets>
+            </VBox>
+            <ChildPane fx:id="inputArea" prefHeight="196.0" prefWidth="463.0">
+              <children>
+                <!--% #render("NewComputer") -->
+              </children>
+            </ChildPane>
+          </children>
+        </HBox>
+        <HBox alignment="CENTER_RIGHT" prefHeight="44.0" prefWidth="561.0">
+          <children>
+            <Button fx:id="prevButton" mnemonicParsing="false" onAction="#handlePrevAction" text="＜前へ">
+              <font>
+                <Font size="13.0" />
+              </font>
+              <HBox.margin>
+                <Insets right="10.0" />
+              </HBox.margin>
+            </Button>
+            <Button fx:id="nextButton" mnemonicParsing="false" onAction="#handleNextAction" text="次へ＞">
+              <HBox.margin>
+                <Insets left="10.0" right="10.0" fx:id="x1" />
+              </HBox.margin>
+            </Button>
+            <Button fx:id="finishButton" mnemonicParsing="false" onAction="#handleCreateAction" text="完 了" HBox.margin="$x1" />
+            <Button mnemonicParsing="false" onAction="#handleCancelAction" text="取消し" HBox.margin="$x1" />
+          </children>
+          <VBox.margin>
+            <Insets />
+          </VBox.margin>
+        </HBox>
+      </children>
+    </VBox>
+  </children>
+  <stylesheets>
+    <URL value="@NewDialog.css" />
+  </stylesheets>
+</AnchorPane>

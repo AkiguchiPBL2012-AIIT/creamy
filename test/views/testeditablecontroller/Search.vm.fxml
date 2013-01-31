@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import creamy.scene.layout.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="183.0" prefWidth="500.0" xmlns:fx="http://javafx.com/fxml" fx:controller="views.testeditablecontroller.Search">
+  <fx:define>
+    <String fx:value="Search Computer" fx:id="title" />
+  </fx:define>
+  <children>
+    <HBox fx:id="searchForm" alignment="CENTER" prefHeight="183.0" prefWidth="490.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+        <VBox prefHeight="183.0" prefWidth="498.0" spacing="10.0">
+          <children>
+            <GridPane alignment="CENTER" hgap="10.0" maxWidth="-1.0" prefHeight="122.0" prefWidth="486.0" snapToPixel="true">
+              <children>
+                <Label text="Computer Name" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                  <font>
+                    <Font size="14.0" fx:id="x1" />
+                  </font>
+                </Label>
+                <Label font="$x1" text="Company Name" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                <Label font="$x1" text="Introdced Date" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                <TextField fx:id="companyName" prefWidth="311.0" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="1" />
+                <TextField fx:id="introducedFrom" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <TextField fx:id="introducedTo" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                <Label text="~" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                <TextField fx:id="computerName" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="0" />
+              </children>
+              <columnConstraints>
+                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="130.0" minWidth="10.0" prefWidth="130.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="160.0" minWidth="10.0" prefWidth="160.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="105.0" minWidth="0.0" prefWidth="22.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="160.0" minWidth="10.0" prefWidth="190.0" />
+              </columnConstraints>
+              <padding>
+                <Insets />
+              </padding>
+              <rowConstraints>
+                <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+              <stylesheets>
+                <URL value="@../newdialogcontroller/NewDialog.css" />
+              </stylesheets>
+            </GridPane>
+            <HBox alignment="CENTER" prefHeight="36.0" prefWidth="459.0" spacing="50.0">
+              <children>
+                <Button cancelButton="true" mnemonicParsing="false" onAction="#handleCancelAction" text="Cancel">
+                  <font>
+                    <Font size="16.0" fx:id="x2" />
+                  </font>
+                </Button>
+                <Button defaultButton="true" font="$x2" mnemonicParsing="false" onAction="#handleSearchAction" text="Search" />
+              </children>
+            </HBox>
+          </children>
+          <padding>
+            <Insets right="15.0" />
+          </padding>
+        </VBox>
+      </children>
+      <padding>
+        <Insets top="10.0" fx:id="x3" />
+      </padding>
+    </HBox>
+  </children>
+</AnchorPane>

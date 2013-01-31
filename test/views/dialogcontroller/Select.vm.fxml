@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import creamy.scene.control.*?>
+
+<AnchorPane id="SelectCompanyPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="216.0" prefWidth="488.0" xmlns:fx="http://javafx.com/fxml" fx:controller="views.dialogcontroller.Select">
+  <children>
+    <VBox layoutX="14.0" layoutY="14.0" prefHeight="188.0" prefWidth="400.0">
+      <children>
+        <Label alignment="TOP_LEFT" contentDisplay="LEFT" graphicTextGap="4.0" prefWidth="395.0" text="メーカー選択">
+          <font>
+            <Font size="16.0" fx:id="x1" />
+          </font>
+        </Label>
+        <GridPane alignment="TOP_LEFT" hgap="5.0" prefHeight="169.0" prefWidth="400.0" vgap="10.0">
+          <children>
+            <CFListView fx:id="companyList" name="companyList" prefHeight="149.0" prefWidth="250.0" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+          </children>
+          <columnConstraints>
+            <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="406.0" minWidth="10.0" prefWidth="406.0" />
+          </columnConstraints>
+          <padding>
+            <Insets left="40.0" right="10.0" top="10.0" />
+          </padding>
+          <rowConstraints>
+            <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="-1.0" vgrow="SOMETIMES" />
+          </rowConstraints>
+        </GridPane>
+      </children>
+    </VBox>
+  </children>
+</AnchorPane>

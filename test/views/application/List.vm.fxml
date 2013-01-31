@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import creamy.scene.control.*?>
+<?import creamy.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns:fx="http://javafx.com/fxml" fx:controller="views.application.List">
+  <fx:define>
+    <String fx:id="title" fx:value="Computer-Database" />
+  </fx:define>
+  <children>
+    <GridPane id="gridPane1" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+        <AnchorPane id="anchorPane1" prefHeight="60.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.halignment="LEFT" GridPane.rowIndex="0" GridPane.valignment="CENTER">
+          <children>
+            <HBox id="hBox2" alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="970.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <children>
+                <Label id="label1" text="$listComputer.getTotalRowCount()" styleClass="subtitle" />
+                <Label id="label2" text="computers found" styleClass="subtitle" />
+              </children>
+            </HBox>
+          </children>
+          <GridPane.margin>
+            <Insets left="30.0" top="20" />
+          </GridPane.margin>
+        </AnchorPane>
+        <AnchorPane id="anchorPane2" prefHeight="60.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="1">
+          <children>
+            <GridPane id="gridPane2" prefHeight="60.0" prefWidth="960.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <children>
+                <HBox id="hBox3" prefHeight="60.0" prefWidth="500.0" spacing="10.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                  <children>
+                    <CFHForm fx:id="searchForm" method="GET" spacing="10.0" alignment="CENTER_LEFT" >
+                      <children>
+                        <CFTextField fx:id="filter" name="filter" promptText="Filter by computer name..." prefWidth="200.0"/>
+                        <CFSubmitButton fx:id="filterButton" styleClass="btn-primary" text="Filter by name" />
+                      </children>
+                    </CFHForm>
+                  </children>
+                  <GridPane.margin>
+                    <Insets bottom="30.0" top="30.0" />
+                  </GridPane.margin>
+                </HBox>
+                <CFLinkButton fx:id="createButton" styleClass="btn-success" path="/Application/create" alignment="CENTER_RIGHT" text="Add a new computer" GridPane.columnIndex="1" GridPane.rowIndex="0" >
+                </CFLinkButton>
+              </children>
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="805.0" minWidth="10.0" prefWidth="767.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="478.0" minWidth="10.0" prefWidth="193.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+            </GridPane>
+          </children>
+          <GridPane.margin>
+            <Insets left="40.0" />
+          </GridPane.margin>
+        </AnchorPane>
+        <AnchorPane id="anchorPane3" prefHeight="300.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="2">
+          <children>
+            <TableView fx:id="computerTable" styleClass="tbl" prefHeight="300.0" prefWidth="960.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="0.0">
+              <columns>
+                <TableColumn fx:id="computerName" text="Computer name" prefWidth="338.0" />
+                <TableColumn fx:id="introduced"   text="Introduced"    prefWidth="180.0" />
+                <TableColumn fx:id="discontinued" text="Discontinued"  prefWidth="180.0" />
+                <TableColumn fx:id="company"      text="Company"       prefWidth="220.0" />
+              </columns>
+            </TableView>
+          </children>
+          <GridPane.margin>
+            <Insets left="40.0" />
+          </GridPane.margin>
+        </AnchorPane>
+        <AnchorPane id="anchorPane4" prefHeight="60.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="3">
+          <children>
+            <GridPane id="gridPane3" prefHeight="60.0" prefWidth="353.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="0.0">
+              <children>
+                <CFHyperlink fx:id="prevLink" text="←Previous" styleClass="link-regurar" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                <CFHyperlink fx:id="nextLink" text="Next→" styleClass="link-regurar" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                <HBox id="hBox1" alignment="CENTER" prefHeight="50.0" prefWidth="187.0" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                  <children>
+                    <Label text="Displaying" />
+                    <CFLabel fx:id="fromRow" />
+                    <Label text="to" />
+                    <CFLabel fx:id="toRow" />
+                    <Label text="of" />
+                    <Label text="$listComputer.getTotalRowCount()" />
+                  </children>
+                </HBox>
+              </children>
+              <columnConstraints>
+                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="130.0" minWidth="10.0" prefWidth="79.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="248.0" minWidth="10.0" prefWidth="219.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="50.0" minWidth="10.0" prefWidth="50.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+            </GridPane>
+          </children>
+        </AnchorPane>
+      </children>
+      <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+      </columnConstraints>
+      <rowConstraints>
+        <RowConstraints maxHeight="60.0"  minHeight="10.0" prefHeight="60.0"  vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="60.0"  minHeight="10.0" prefHeight="60.0"  valignment="TOP" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="345.0" minHeight="10.0" prefHeight="345.0" valignment="TOP" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="60.0"  minHeight="10.0" prefHeight="60.0"  valignment="TOP" vgrow="SOMETIMES" />
+      </rowConstraints>
+    </GridPane>
+  </children>
+</AnchorPane>

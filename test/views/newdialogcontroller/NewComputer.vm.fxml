@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="216.0" prefWidth="488.0" xmlns:fx="http://javafx.com/fxml" fx:controller="views.newdialogcontroller.NewComputer">
+  <children>
+    <VBox layoutX="14.0" layoutY="14.0" prefHeight="188.0" prefWidth="460.0">
+      <children>
+        <Label alignment="TOP_LEFT" contentDisplay="LEFT" graphicTextGap="4.0" prefWidth="395.0" text="コンピュータ情報入力">
+          <font>
+            <Font size="16.0" fx:id="x1" />
+          </font>
+        </Label>
+        <GridPane alignment="TOP_RIGHT" hgap="5.0" prefHeight="177.0" prefWidth="461.0" vgap="10.0">
+          <children>
+            <Label text="Computer Name" GridPane.columnIndex="0" GridPane.rowIndex="0">
+              <font>
+                <Font size="13.0" fx:id="x2" />
+              </font>
+            </Label>
+            <Label font="$x2" text="Introduced Date" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+            <Label text="Required" GridPane.columnIndex="2" GridPane.rowIndex="0">
+              <textFill>
+                <Color blue="0.750" green="0.750" red="0.750" fx:id="x3" />
+              </textFill>
+            </Label>
+            <Label text="Date (yyyy-MM-dd)" textFill="$x3" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Label font="$x2" text="Discontinued Date" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+            <TextField fx:id="name" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+            <TextField fx:id="intoroduced" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="discontinued" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label text="Date (yyyy-MM-dd)" textFill="$x3" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+          </children>
+          <columnConstraints>
+            <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="137.0" minWidth="10.0" prefWidth="126.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="214.0" minWidth="10.0" prefWidth="191.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="141.0" minWidth="10.0" prefWidth="134.0" />
+          </columnConstraints>
+          <padding>
+            <Insets bottom="20.0" top="20.0" />
+          </padding>
+          <rowConstraints>
+            <RowConstraints maxHeight="38.0" minHeight="10.0" prefHeight="38.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="38.0" minHeight="10.0" prefHeight="38.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="38.0" minHeight="10.0" prefHeight="38.0" vgrow="SOMETIMES" />
+          </rowConstraints>
+        </GridPane>
+      </children>
+    </VBox>
+  </children>
+</AnchorPane>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="scene" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml" fx:controller="views.testcontroller.TestTran">
+  <children>
+    <Label id="label1" layoutX="96.0" layoutY="167.0" text="Transition Test">
+      <font>
+        <Font size="56.0" />
+      </font>
+    </Label>
+    <HBox id="hBox1" layoutX="118.0" layoutY="286.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" />
+  </children>
+</AnchorPane>
