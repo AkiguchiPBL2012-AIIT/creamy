@@ -1,0 +1,350 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Views &mdash; Creamy 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../static/jquery.js"></script>
+    <script type="text/javascript" src="../static/underscore.js"></script>
+    <script type="text/javascript" src="../static/doctools.js"></script>
+    <link rel="top" title="Creamy 0.1 documentation" href="../index.html" />
+    <link rel="up" title="Creamyによる開発" href="../development_by_creamy.html" />
+    <link rel="next" title="Formコントロール" href="form_control.html" />
+    <link rel="prev" title="Models" href="models.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="form_control.html" title="Formコントロール"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="models.html" title="Models"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Creamy 0.1 documentation</a> &raquo;</li>
+          <li><a href="../development_by_creamy.html" accesskey="U">Creamyによる開発</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Views</a><ul>
+<li><a class="reference internal" href="#id1">viewsパッケージに置くべきファイル</a></li>
+<li><a class="reference internal" href="#id2">継承すべきクラス</a></li>
+<li><a class="reference internal" href="#id3">継承すべきクラスが提供する機能</a><ul>
+<li><a class="reference internal" href="#id4">Activity記述例</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#fxml">FXMLの書き方</a></li>
+<li><a class="reference internal" href="#creamy">Creamy独自の記述方法の説明</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="models.html"
+                        title="previous chapter">Models</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="form_control.html"
+                        title="next chapter">Formコントロール</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../sources/development/views.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="views">
+<h1>Views<a class="headerlink" href="#views" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>viewsパッケージに置くべきファイル<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>viewsパッケージは、MVCアーキテクチャのViewにあたるもので、画面表示に関わる次のファイルを配置します。</p>
+<ul class="simple">
+<li>javaファイル</li>
+<li>fxmlファイル</li>
+<li>cssファイル</li>
+<li>イメージファイル</li>
+</ul>
+<p>fxmlファイルのcontrollerクラスとしてjavaファイルを作成します。スタイルシートを適用する場合は、同じファイル名でcssファイルを配置します。
+同じ名前でcssファイルを配置しておくと、スタイルシートの適用処理を記述しなくても自動的に適用されます。</p>
+<p>これらのファイルは、viewsパッケージ配下に、Creamyコントローラクラス名をすべて小文字に変換した名前でパッケージを作成し、さらにその配下に配置します。</p>
+<p>次の例は、新しいコンピュータデータを登録するCreamyアプリケーションのパッケージ構成です。</p>
+<p>起動プログラムはcomputerdatabase.ComputerDatabaseクラスで、Creamyコントローラクラスがcontrollers.Applicationです。</p>
+<p>Activityクラスがviews.applicationパッケージに配置されています。</p>
+<p><strong>パッケージ構成例</strong></p>
+<img alt="../images/views.application.png" src="../images/views.application.png" />
+<p>Create.javaとCreate.vm.fxmlでコンピュータデータの登録画面を構成しています。</p>
+<p>Edit.javaとEdit.vm.fmlで、コンピュータデータの編集画面を構成しています。</p>
+<p>List.javaとList.vm.fmlで、コンピュータデータ一覧画面を構成しています。</p>
+<p><strong>画面例</strong></p>
+<p>初期画面では、Main.javaとMain.vm.fxmlで構成するベースの画面に、List画面を貼付けた形で表示されます。</p>
+<img alt="../images/views.ComputerDatabase.png" src="../images/views.ComputerDatabase.png" style="width: 800px;" />
+<p>１つのCreamyアプリケーションには、１つ以上のコントローラクラスを作成することができます。その場合は、それぞれのコントローラクラスに対応するviews.&lt;Creamyコントローラクラス名&gt;パッケージを作成します。</p>
+</div>
+<div class="section" id="id2">
+<h2>継承すべきクラス<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>ここでは、viewsパッケージ以下に配置するjavaクラスを総称して、Activityクラスと呼びます。
+Activityクラスは、AvailableActivityクラスを継承して作成します。</p>
+<p><strong>AvailableActivityクラス</strong></p>
+<div class="highlight-java"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">AvailableActivity</span> <span class="kd">extends</span> <span class="n">Activity</span> <span class="kd">implements</span> <span class="n">Available</span> <span class="o">{</span>
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">initialize</span><span class="o">()</span> <span class="o">{}</span>
+      <span class="o">:</span>
+<span class="o">}</span>
+</pre></div>
+</td></tr></table></div>
+<p><strong>記述例</strong></p>
+<p>以下のコードは、AvailableActivityを継承してListクラスを定義した例です。
+コンピュータデータ一覧を表示する画面に対応するクラスです。</p>
+<div class="highlight-java"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span class="nd">@Template</span><span class="o">(</span><span class="n">Main</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">List</span> <span class="kd">extends</span> <span class="n">AvailableActivity</span> <span class="o">{</span>
+
+  <span class="c1">// Set page title</span>
+  <span class="kd">public</span> <span class="n">String</span> <span class="nf">title</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="s">&quot;Computer-Database&quot;</span><span class="o">;</span> <span class="o">}</span>
+      <span class="o">:</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="id3">
+<h2>継承すべきクラスが提供する機能<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>Activityクラスは、画面表示に必要なFormコントロールの描画メソッドを提供します。</p>
+<p>各Formコントロールについては、<a class="reference external" href="form_control.html">Formコントロール</a> を参照して下さい。</p>
+<p>描画メソッドについては、<a class="reference external" href="form_control.html#activity">Activityクラスが提供するメソッド</a> を参照して下さい。</p>
+<div class="section" id="id4">
+<h3>Activity記述例<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>次の例は、コンピュータデータ登録画面をAvailableActivityが提供するメソッドを使って作成しています。
+画面描画内容は、Activityクラスのinitialize()メソッドで実装します。</p>
+<p><strong>記述例 - Create.java</strong></p>
+<div class="highlight-java"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23</pre></div></td><td class="code"><div class="highlight"><pre><span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">initialize</span><span class="o">()</span> <span class="o">{</span>
+ <span class="n">createForm</span><span class="o">.</span><span class="na">getChildren</span><span class="o">().</span><span class="na">add</span><span class="o">(</span>
+   <span class="n">gridForm</span><span class="o">(</span><span class="s">&quot;/Application/save&quot;</span><span class="o">).</span><span class="na">method</span><span class="o">(</span><span class="n">Request</span><span class="o">.</span><span class="na">POST</span><span class="o">).</span><span class="na">styleClass</span><span class="o">(</span><span class="s">&quot;grid-form&quot;</span><span class="o">)</span>
+     <span class="o">.</span><span class="na">row</span><span class="o">(</span><span class="n">label</span><span class="o">(</span><span class="s">&quot;Computer Name:&quot;</span><span class="o">),</span>
+          <span class="n">text</span><span class="o">(</span><span class="s">&quot;name&quot;</span><span class="o">),</span>
+          <span class="n">label</span><span class="o">(</span><span class="s">&quot;Required&quot;</span><span class="o">).</span><span class="na">styleClass</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">validationResult</span><span class="o">.</span><span class="na">hasError</span><span class="o">()</span> <span class="o">?</span> <span class="s">&quot;err-text&quot;</span> <span class="o">:</span> <span class="s">&quot;guide-text&quot;</span><span class="o">))</span>
+     <span class="o">.</span><span class="na">row</span><span class="o">(</span><span class="n">label</span><span class="o">(</span><span class="s">&quot;Introduced Date :&quot;</span><span class="o">),</span>
+          <span class="n">text</span><span class="o">(</span><span class="s">&quot;introduced&quot;</span><span class="o">).</span><span class="na">format</span><span class="o">(</span><span class="n">format</span><span class="o">),</span>
+          <span class="n">label</span><span class="o">(</span><span class="s">&quot;Date (&quot;</span> <span class="o">+</span> <span class="n">DATE_FORMAT</span> <span class="o">+</span> <span class="s">&quot;)&quot;</span><span class="o">).</span><span class="na">styleClass</span><span class="o">(</span><span class="s">&quot;guide-text&quot;</span><span class="o">))</span>
+     <span class="o">.</span><span class="na">row</span><span class="o">(</span><span class="n">label</span><span class="o">(</span><span class="s">&quot;Discontinued Date :&quot;</span><span class="o">),</span>
+          <span class="n">text</span><span class="o">(</span><span class="s">&quot;discontinued&quot;</span><span class="o">).</span><span class="na">format</span><span class="o">(</span><span class="n">format</span><span class="o">),</span>
+          <span class="n">label</span><span class="o">(</span><span class="s">&quot;Date (&quot;</span> <span class="o">+</span> <span class="n">DATE_FORMAT</span> <span class="o">+</span> <span class="s">&quot;)&quot;</span><span class="o">).</span><span class="na">styleClass</span><span class="o">(</span><span class="s">&quot;guide-text&quot;</span><span class="o">)</span>    <span class="o">)</span>
+     <span class="o">.</span><span class="na">row</span><span class="o">(</span><span class="n">label</span><span class="o">(</span><span class="s">&quot;Company :&quot;</span><span class="o">),</span>
+          <span class="n">choice</span><span class="o">(</span><span class="s">&quot;company.id&quot;</span><span class="o">).</span><span class="na">items</span><span class="o">(</span><span class="n">Company</span><span class="o">.</span><span class="na">options</span><span class="o">()).</span><span class="na">prefWidth</span><span class="o">(</span><span class="mi">275</span><span class="o">))</span>
+     <span class="o">.</span><span class="na">row</span><span class="o">(</span><span class="n">hbox</span><span class="o">(</span><span class="n">submit</span><span class="o">(</span><span class="s">&quot;Create this computer&quot;</span><span class="o">).</span><span class="na">styleClass</span><span class="o">(</span><span class="s">&quot;btn-primary&quot;</span><span class="o">),</span>
+               <span class="n">label</span><span class="o">(</span><span class="s">&quot; or &quot;</span><span class="o">),</span>
+               <span class="n">linkbutton</span><span class="o">(</span><span class="s">&quot;/Application/index&quot;</span><span class="o">).</span><span class="na">text</span><span class="o">(</span><span class="s">&quot;Cancel&quot;</span><span class="o">).</span><span class="na">styleClass</span><span class="o">(</span><span class="s">&quot;btn&quot;</span><span class="o">))</span>
+         <span class="o">.</span><span class="na">padding</span><span class="o">(</span><span class="k">new</span> <span class="n">Insets</span><span class="o">(</span><span class="mi">15</span><span class="o">,</span><span class="mi">0</span><span class="o">,</span><span class="mi">15</span><span class="o">,</span><span class="mi">140</span><span class="o">)).</span><span class="na">spacing</span><span class="o">(</span><span class="mi">5</span><span class="o">)</span>
+         <span class="o">.</span><span class="na">styleClass</span><span class="o">(</span><span class="s">&quot;actions&quot;</span><span class="o">)</span>
+         <span class="o">,</span><span class="mi">3</span><span class="o">)</span>
+ <span class="o">);</span>
+<span class="o">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>3行目のcreateFormは、 <a class="reference internal" href="#fxml">FXMLの書き方</a> の例にあるように、Create.vm.fxmlファイルで指定したAnchorPaneのIDです。</p>
+<p>4行目でCFGridFormを生成しています。Applicationコントローラクラスのsaveメソッドを実行するpathを指定し、データ送信メソッドはPOST、スタイルクラスとしてgird-formを適用しています。</p>
+<p>5行目でCFLabelを生成しています。labelメソッドの引数が、そのまま表示される文字です。</p>
+<p>6行目はCFTextFieldを生成しています。textメソッドの引数は、Creamy UIコントロールのname属性にあたります。
+name属性値をキーとして、CFTextFieldの入力値であるvalue値を取得することができます。16行目で生成しているCFSubmitButtonがクリックされたとき、CFGridFormに配置されたCreamy UIコントロールの入力値を次の画面に自動的にバインドします。</p>
+<p>7行目もCFLabelの生成ですが、ここではスタイルクラスの設定をしています。styleClassメソッドの引数に記述している this.validationResult.hasError()で入力値チェックを行い、その結果によってスタイルクラスを使い分けています。</p>
+<p>5〜7行がCFGridFormの1行にあたります。rowメソッドで1行分のCreamy UIコントロールを記述しますが、可変長引数を取りますので、数に規定はありません。ここでは3つのCreamy UIコントロールを配置しています。</p>
+<p>この記述例では5つのrowメソッドを記述していますので、5行3列の配置になることがわかります。</p>
+<p>9、12行目で生成しているCFTextFieldは、formatメソッドでデータ形式を指定しています。引数で指定しているデータ形式は、次の形式のSimpleDateFormatです。</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">DATE_FORMAT</span> <span class="o">=</span> <span class="s">&quot;yyyy-MM-dd&quot;</span><span class="o">;</span>
+<span class="kd">private</span> <span class="n">SimpleDateFormat</span> <span class="n">format</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SimpleDateFormat</span><span class="o">(</span><span class="n">DATE_FORMAT</span><span class="o">);</span>
+</pre></div>
+</div>
+<p>15行目でCFChoiceBoxを生成しています。itemsメソッドでMap形式で選択アイテムを指定します。Company.options() は、Companyテーブルのデータを、キー：Company ID、値：Company nameのMap形式で返すよう実装しています。</p>
+<p>16行目でCFSubmitButtonを生成しています。</p>
+<p>18行目でCFLinkButtonを生成しています。linkbuttonメソッドの引数には、遷移先のパスを指定します。このリンクボタンがクリックされると、Applicationコントロールクラスのindexメソッドが実行されます。indexメソッドは次のようになっていますので、List画面（初期画面）に遷移します。</p>
+<div class="highlight-java"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span class="kd">private</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">HOME</span> <span class="o">=</span> <span class="s">&quot;/Application/list/0/name/asc&quot;</span><span class="o">;</span>
+<span class="kd">public</span> <span class="n">Result</span> <span class="nf">index</span><span class="o">()</span> <span class="o">{</span>
+   <span class="k">return</span> <span class="nf">redirect</span><span class="o">(</span><span class="n">HOME</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="section" id="fxml">
+<h2>FXMLの書き方<a class="headerlink" href="#fxml" title="Permalink to this headline">¶</a></h2>
+<p>上記のCreate.javaに実装した内容を表示するには、Create.vm.fxmlファイルが必要です。
+ここでは、Creamyアプリケーションを作成するために必要なFXMLの記述方法を説明します。</p>
+<p>FXMLのより詳細な記述方法は、以下を参照してください。</p>
+<p><a class="reference external" href="http://docs.oracle.com/javafx/2/api/javafx/fxml/doc-files/introduction_to_fxml.html#overview">http://docs.oracle.com/javafx/2/api/javafx/fxml/doc-files/introduction_to_fxml.html</a></p>
+<p>まず、&lt;AnchorPane&gt;要素のfx:controller属性にコントローラクラス名を指定して、FXMLファイルとクラスファイルを関連づけます。以下の例では、5行目の fx:controller=&#8221;views.application.Create&#8221; の部分がそれにあたります。</p>
+<p><strong>記述例 - Create.vm.fxml</strong></p>
+<div class="highlight-html"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span class="nt">&lt;AnchorPane</span> <span class="na">id=</span><span class="s">&quot;AnchorPane&quot;</span> <span class="na">maxHeight=</span><span class="s">&quot;-Infinity&quot;</span> <span class="na">maxWidth=</span><span class="s">&quot;-Infinity&quot;</span>
+   <span class="na">minHeight=</span><span class="s">&quot;-Infinity&quot;</span> <span class="na">minWidth=</span><span class="s">&quot;-Infinity&quot;</span>
+   <span class="na">prefHeight=</span><span class="s">&quot;600.0&quot;</span> <span class="na">prefWidth=</span><span class="s">&quot;1000.0&quot;</span>
+   <span class="na">xmlns:fx=</span><span class="s">&quot;http://javafx.com/fxml&quot;</span>
+   <span class="na">fx:controller=</span><span class="s">&quot;views.application.Create&quot;</span><span class="nt">&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<p>次に、views.application.Createクラスのinitialize()メソッドで実装した内容を、FXMLファイルのどこに配置するかを決めます。</p>
+<p>ここでは、&lt;StackPane&gt;の&lt;children&gt;要素として加えることにしますので、views.application.Createクラスからその位置がわかるように、fx:id属性として名前を指定します。</p>
+<p>次の例では、1行目で fx:id=&#8221;createForm&#8221; として、&lt;StackPane&gt;のidを設定しています。</p>
+<p><strong>記述例 - Create.vm.fxml</strong></p>
+<div class="highlight-html"><pre>&lt;StackPane id="stackPane1" fx:id="createForm" alignment="TOP_LEFT"
+         prefHeight="484.0" prefWidth="760.0"
+         AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+         AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"&gt;
+   &lt;children&gt;
+       :
+   &lt;/children&gt;
+&lt;/StackPane&gt;</pre>
+</div>
+<p>views.application.Createクラスでは、fx:idの属性値として指定した&#8221;createForm&#8221;をインスタンス変数名として宣言します。その際、&#64;FXMLアノテーションを付けおくことで&lt;StackPane&gt;と関連づけられます。</p>
+<p><strong>記述例 - Create.java</strong></p>
+<div class="highlight-java"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Create</span> <span class="kd">extends</span> <span class="n">AvailableActivity</span> <span class="o">{</span>
+   <span class="nd">@FXML</span> <span class="kd">private</span> <span class="n">StackPane</span> <span class="n">createForm</span><span class="o">;</span>
+       <span class="o">:</span>
+</pre></div>
+</td></tr></table></div>
+<p>&lt;StackPane&gt;のchild要素として <a class="reference internal" href="#id4">Activity記述例</a> の3行目からの実装部分が描画されます。</p>
+<p>以下は、コンピュータデータ登録画面の実行例です。</p>
+<p><strong>実行例</strong></p>
+<img alt="../images/views.AddComputer.png" src="../images/views.AddComputer.png" />
+<p>起動プログラムはcomputerdatabase.ComputerDatabaseクラスで、Creamyコントローラクラスがcontrollers.Applicationです。</p>
+<p>Activityクラスがviews.applicationパッケージに配置されています。</p>
+</div>
+<div class="section" id="creamy">
+<h2>Creamy独自の記述方法の説明<a class="headerlink" href="#creamy" title="Permalink to this headline">¶</a></h2>
+<p>Creamyで使用するFXMLファイルには、Velocity構文を記述することが出来ます。FXMLファイルの拡張子が .vm.fxml となっているのは、Velocityのテンプレートとしての役割も持たせているためです。</p>
+<p>次は、Velocity構文の <strong>#renderマクロ</strong> を使った例です。
+<strong>#renderマクロ</strong> は、画面描画を部分的に置き換えるときに使います。</p>
+<p><strong>記述例 - CommonPart.vm.fxml</strong></p>
+<div class="highlight-html"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span class="nt">&lt;ChildPane</span> <span class="na">fx:id=</span><span class="s">&quot;inputArea&quot;</span> <span class="na">prefHeight=</span><span class="s">&quot;196.0&quot;</span> <span class="na">prefWidth=</span><span class="s">&quot;463.0&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;children&gt;</span>
+    <span class="c">&lt;!--% #render(&quot;NewComputer&quot;) --&gt;</span>
+  <span class="nt">&lt;/children&gt;</span>
+<span class="nt">&lt;/ChildPane&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<p>1行目の&lt;ChildPane&gt;要素はCreamy独自のもので、この部分がActivityに置き換わります。</p>
+<p>3行目にVelocity構文を記述しています。<strong>&#8216; &lt;!&#8211;% &#8216;</strong> と <strong>&#8216; &#8211;&gt; &#8216;</strong> で囲むことで、FXMLとしてはコメントとして認識されます。<strong>#renderマクロ</strong> は１つの引数を取り、Activityクラス名を指定します。この例では &#8220;NewComputer&#8221; を指定していますので、NewComputer.java、NewComputer.vm.fxml の実装が必要です。</p>
+<p><strong>#renderマクロ</strong> は、次のように定義しています。</p>
+<p><strong>記述例 - render.vm</strong></p>
+<div class="highlight-text"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre>#macro(render $child)
+   &lt;ChildPane child=&quot;$child&quot; /&gt;
+#end
+</pre></div>
+</td></tr></table></div>
+<p>上の例の render.vm ファイルは、helpersパッケージに配置します。</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="form_control.html" title="Formコントロール"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="models.html" title="Models"
+             >previous</a> |</li>
+        <li><a href="../index.html">Creamy 0.1 documentation</a> &raquo;</li>
+          <li><a href="../development_by_creamy.html" >Creamyによる開発</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, 2012 AIIT Akiguchi PBL.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
