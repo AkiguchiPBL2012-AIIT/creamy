@@ -1,0 +1,204 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Creamyのデプロイ方法 &mdash; Creamy 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../static/jquery.js"></script>
+    <script type="text/javascript" src="../static/underscore.js"></script>
+    <script type="text/javascript" src="../static/doctools.js"></script>
+    <link rel="top" title="Creamy 0.1 documentation" href="../index.html" />
+    <link rel="up" title="Creamyによる開発" href="../development_by_creamy.html" />
+    <link rel="next" title="Creamy開発者ガイド" href="developer_guide.html" />
+    <link rel="prev" title="アニメーション" href="animation.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="developer_guide.html" title="Creamy開発者ガイド"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="animation.html" title="アニメーション"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Creamy 0.1 documentation</a> &raquo;</li>
+          <li><a href="../development_by_creamy.html" accesskey="U">Creamyによる開発</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Creamyのデプロイ方法</a><ul>
+<li><a class="reference internal" href="#id1">リンク</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="animation.html"
+                        title="previous chapter">アニメーション</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="developer_guide.html"
+                        title="next chapter">Creamy開発者ガイド</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../sources/development/deploy.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="creamy">
+<h1>Creamyのデプロイ方法<a class="headerlink" href="#creamy" title="Permalink to this headline">¶</a></h1>
+<p>JavaFX のツール群</p>
+<p>JavaFX SDK で提供されている主なツールは以下のようになっています。javafx は JDK でいうと java, javafxc は javac, javafxdoc は javadoc というように JDK とだいたい同じです。</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="86%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>javafx</td>
+<td>JavaFX アプリケーションの実行</td>
+</tr>
+<tr class="row-even"><td>javafxc</td>
+<td>JavaFXファイルのコンパイル</td>
+</tr>
+<tr class="row-odd"><td>javafxdoc</td>
+<td>JavaFXのソースからHTML形式でドキュメントを生成</td>
+</tr>
+<tr class="row-even"><td>javafxpackager</td>
+<td>JavaFX アプリケーションを配備用にパッケージングアプレット用HTML,Web Start用jnlpの生成</td>
+</tr>
+</tbody>
+</table>
+<p>JavaFX SDK のインストール場所</p>
+<p>コマンドは JavaFX SDK をインストールしている場所の bin/ ディレクトリ以下にあります。NetBeans のプラグイン経由でインストールした場合はユーザーディレクトリ以下か、NetBeans のインストールディレクトリの javafx2 クラスタ以下にありますので探してみてください。</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>プラットフォーム</td>
+<td>SDK の場所(デフォルトのインストールオプションの場合)</td>
+</tr>
+<tr class="row-even"><td>Mac OS X</td>
+<td><div class="first last line-block">
+<div class="line">SDK をインストールした場合:</div>
+<div class="line">/Library/Frameworks/JavaFX.framework/Versions/Current</div>
+<div class="line">(/usr/bin にリンクされます)</div>
+<div class="line">NetBeans からプラグインをインストールした場合:</div>
+<div class="line">&lt;ユーザーディレクトリ&gt;/javafx-sdk</div>
+<div class="line">&lt;NetBeans インストールディレクトリ&gt;/javafx2/javafx-sdk</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>Windows</td>
+<td><div class="first last line-block">
+<div class="line">SDK をインストールした場合:</div>
+<div class="line">C:\Program Files\JavaFX\javafx-sdk</div>
+<div class="line">NetBeans からプラグインをインストールした場合:</div>
+<div class="line">C:\Users\&lt;ユーザー&gt;\.netbeans\7.1\javafx-sdk</div>
+<div class="line">C:\Program Files\NetBeans 7.1\javafx2/javafx-sdk</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p>ドキュメントは docs/ 以下にあります。ここでは簡単に説明するだけですので詳細は SDK に付いている各ツールのドキュメントを参照してください。</p>
+<div class="highlight-c"><pre>javafxc - JavaFX ソースをコンパイル</pre>
+</div>
+<p>まずコンパイルしてみましょう。javafxc コマンドにソースファイルを指定します。javac コマンドと同じですね。</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="o">%</span> <span class="n">javafxc</span> <span class="n">javafxapplication</span><span class="o">/</span>
+<span class="n">Main</span><span class="p">.</span><span class="n">fx</span>
+</pre></div>
+</div>
+<p>例えば、パッケージ javafxapplication に Main.fx があるとします。</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="o">%</span> <span class="n">ls</span> <span class="n">javafxapplication</span><span class="o">/</span><span class="n">Main</span><span class="p">.</span><span class="n">fx</span>
+</pre></div>
+</div>
+<p>以下のようにファイルを指定します。</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="o">%</span> <span class="n">javafxc</span> <span class="n">javafxapplication</span><span class="o">/</span><span class="n">Main</span><span class="p">.</span><span class="n">fx</span>
+</pre></div>
+</div>
+<p>クラスファイルは何も指定しないとソースファイルと同じ場所に作成されます。</p>
+<div class="highlight-c"><pre>% ls javafxapplication/
+Main$Intf.class
+Main.fx
+Main.class</pre>
+</div>
+<div class="section" id="id1">
+<h2>リンク<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="developer_guide.html" title="Creamy開発者ガイド"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="animation.html" title="アニメーション"
+             >previous</a> |</li>
+        <li><a href="../index.html">Creamy 0.1 documentation</a> &raquo;</li>
+          <li><a href="../development_by_creamy.html" >Creamyによる開発</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, 2012 AIIT Akiguchi PBL.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
