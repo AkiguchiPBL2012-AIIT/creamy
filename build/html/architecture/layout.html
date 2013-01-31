@@ -54,6 +54,8 @@
 <li><a class="reference internal" href="#">アプリケーションのレイアウトと編成</a><ul>
 <li><a class="reference internal" href="#id2">ディレクトリ・ファイル構成</a></li>
 <li><a class="reference internal" href="#lib">lib ディレクトリ</a></li>
+<li><a class="reference internal" href="#conf">confディレクトリ</a></li>
+<li><a class="reference internal" href="#src">srcディレクトリ</a></li>
 <li><a class="reference internal" href="#src-userapp">src/userapp ディレクトリ</a></li>
 <li><a class="reference internal" href="#src-models">src/models ディレクトリ</a></li>
 <li><a class="reference internal" href="#src-controllers">src/controllers ディレクトリ</a></li>
@@ -99,13 +101,75 @@
 <h1>アプリケーションのレイアウトと編成<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id2">
 <h2>ディレクトリ・ファイル構成<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>Creamyのディレクトリ構成は以下のようになっています。</p>
-<dl class="docutils">
-<dt>Creamyのディレクトリ構成::</dt>
-<dd><ul class="first last">
-<li><dl class="first docutils">
-<dt>lib <span class="classifier-delimiter">:</span> <span class="classifier">依存Jarを配置</span></dt>
-<dd><ul class="first last simple">
+<p>Creamyでは、開発環境としてNetBeansの利用を想定しています。
+そのため、Creamyのディレクトリ構成はNetBeansプロジェクトを
+基本として構成されています。</p>
+<p>実際のディレクトリ構成は以下のようになっています。</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><blockquote class="first last">
+<div>ディレクトリ</div></blockquote>
+</td>
+<td>概要</td>
+</tr>
+<tr class="row-even"><td><blockquote class="first last">
+<div>lib</div></blockquote>
+</td>
+<td>依存Jarを配置</td>
+</tr>
+<tr class="row-odd"><td><blockquote class="first last">
+<div>nbproject</div></blockquote>
+</td>
+<td>NetBeansのプロジェクトファイルを配置</td>
+</tr>
+<tr class="row-even"><td><blockquote class="first last">
+<div>conf</div></blockquote>
+</td>
+<td>設定ファイルを配置</td>
+</tr>
+<tr class="row-odd"><td><blockquote class="first last">
+<div>src</div></blockquote>
+</td>
+<td>ソースコードを配置</td>
+</tr>
+<tr class="row-even"><td><blockquote class="first last">
+<div>src/userapp</div></blockquote>
+</td>
+<td>エントリポイントを配置。任意の名前で作成</td>
+</tr>
+<tr class="row-odd"><td><blockquote class="first last">
+<div>src/models</div></blockquote>
+</td>
+<td>モデルクラスを配置</td>
+</tr>
+<tr class="row-even"><td><blockquote class="first last">
+<div>src/controllers</div></blockquote>
+</td>
+<td>コントローラクラスを配置</td>
+</tr>
+<tr class="row-odd"><td><blockquote class="first last">
+<div>src/views</div></blockquote>
+</td>
+<td>コントローラクラス毎のディレクトリを配置</td>
+</tr>
+<tr class="row-even"><td><blockquote class="first last">
+<div>src/helpers</div></blockquote>
+</td>
+<td>全てのビューで利用可能なVelocityマクロを配置</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="lib">
+<h2>lib ディレクトリ<a class="headerlink" href="#lib" title="Permalink to this headline">¶</a></h2>
+<p>ライブラリを配置するディレクトリです。
+アプリケーションで利用するJarファイルはこのディレクトリに配置してください。
+デフォルトでは、Creamyが依存する以下のファイルがされています。</p>
+<ul class="simple">
 <li>creamy-1.0.jar</li>
 <li>ebean-2.7.3.jar</li>
 <li>hibernate-validator-4.3.0.Final.jar</li>
@@ -115,82 +179,71 @@
 <li>velocity-1.7.jar</li>
 <li>velocity-1.7-dep.jar</li>
 </ul>
-</dd>
-</dl>
-</li>
-<li><p class="first">nbproject                    : NetBeansのプロジェクトファイルを配置</p>
-</li>
-<li><dl class="first docutils">
-<dt>conf <span class="classifier-delimiter">:</span> <span class="classifier">設定ファイルを配置</span></dt>
-<dd><ul class="first last simple">
-<li>creamy.properties       : Creamyの設定ファイル</li>
-<li>ebean.properties         : EBeanの設定ファイル</li>
-<li>velocity.properties      : Velocityの設定ファイル</li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>src <span class="classifier-delimiter">:</span> <span class="classifier">ソースコードを配置</span></dt>
-<dd><ul class="first last">
-<li><dl class="first docutils">
-<dt>userapp <span class="classifier-delimiter">:</span> <span class="classifier">エントリポイントを配置。任意の名前で作成。</span></dt>
-<dd><ul class="first last simple">
-<li>userapp.java           : エントリポイント</li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><p class="first">controllers              : コントローラクラスを配置</p>
-</li>
-<li><dl class="first docutils">
-<dt>helpers <span class="classifier-delimiter">:</span> <span class="classifier">全てのビューで利用可能なVelocityマクロを配置</span></dt>
-<dd><ul class="first last simple">
-<li>body.vm                 : デフォルトで利用可能なVelocityマクロ</li>
-<li>render.vm               : デフォルトで利用可能なVelocityマクロ</li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><p class="first">models                    : モデルクラスを配置</p>
-</li>
-<li><dl class="first docutils">
-<dt>views <span class="classifier-delimiter">:</span> <span class="classifier">コントローラクラス毎のディレクトリを配置</span></dt>
-<dd><ul class="first last simple">
-<li>(Controllerクラス毎のディレクトリ)  :</li>
-</ul>
-</dd>
-</dl>
-</li>
-</ul>
-</dd>
-</dl>
-</li>
-</ul>
-</dd>
-</dl>
+<p>開発時に特に利用することになるものについては、
+<a class="reference external" href="./libraries.html">使用するライブラリ</a> を参照してください</p>
 </div>
-<div class="section" id="lib">
-<h2>lib ディレクトリ<a class="headerlink" href="#lib" title="Permalink to this headline">¶</a></h2>
-<p>ライブラリを配置するディレクトリです。
-デフォルトでは、Creamyが依存しているJarファイルが配置されていますが、
-アプリケーションで利用するJarもここに配置してください。</p>
+<div class="section" id="conf">
+<h2>confディレクトリ<a class="headerlink" href="#conf" title="Permalink to this headline">¶</a></h2>
+<p>Creamyの設定ファイルを配置するディレクトリです。
+デフォルトでは、以下のファイルが配置されています。</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><blockquote class="first last">
+<div>ファイル名</div></blockquote>
+</td>
+<td>概要</td>
+</tr>
+<tr class="row-even"><td><blockquote class="first last">
+<div>creamy.properties</div></blockquote>
+</td>
+<td>Creamyの設定ファイル</td>
+</tr>
+<tr class="row-odd"><td><blockquote class="first last">
+<div>ebean.properties</div></blockquote>
+</td>
+<td>EBeanの設定ファイル</td>
+</tr>
+<tr class="row-even"><td><blockquote class="first last">
+<div>velocity.properties</div></blockquote>
+</td>
+<td>Velocityの設定ファイル</td>
+</tr>
+</tbody>
+</table>
+<p>各設定ファイルの詳細については <a class="reference external" href="../development/properties.html">プロパティファイル</a> を参照してください。</p>
+</div>
+<div class="section" id="src">
+<h2>srcディレクトリ<a class="headerlink" href="#src" title="Permalink to this headline">¶</a></h2>
+<p>アプリケーションのソースコードを配置するディレクトリです。
+srcディレクトリの配下には以下のディレクトリが配置されています。</p>
+<p>それぞれのディレクトリの詳細については後述します。</p>
+<ul class="simple">
+<li>userapp</li>
+<li>models</li>
+<li>controllers</li>
+<li>views</li>
+<li>helpers</li>
+</ul>
 </div>
 <div class="section" id="src-userapp">
 <h2>src/userapp ディレクトリ<a class="headerlink" href="#src-userapp" title="Permalink to this headline">¶</a></h2>
 <p>アプリケーションのエントリポイントとなるクラスを配置するディレクトリ（パッケージ）です。
-デフォルトでは存在しないので、任意の名前のディレクトリを作成して、
-エントリポイントを作成してください。</p>
+デフォルトでは存在しないので、任意の名前(アプリケーション名など)のディレクトリを作成してください。
+また、その配下にエントリポイントとなるクラスを作成してください。</p>
 </div>
 <div class="section" id="src-models">
 <h2>src/models ディレクトリ<a class="headerlink" href="#src-models" title="Permalink to this headline">¶</a></h2>
 <p>モデルクラスを配置するディレクトリです。
-詳細はモデルクラスの項を参照してください。TODO:リンク</p>
+詳細は <a class="reference external" href="../development/models.html">モデルクラス</a> の項を参照してください。</p>
 </div>
 <div class="section" id="src-controllers">
 <h2>src/controllers ディレクトリ<a class="headerlink" href="#src-controllers" title="Permalink to this headline">¶</a></h2>
 <p>コントローラクラスを配置するディレクトリです。
-詳細はコントローラクラスの項を参照してください。TODO:リンク</p>
+詳細は <a class="reference external" href="../development/controllers.html">コントローラクラス</a> の項を参照してください。</p>
 </div>
 <div class="section" id="src-views">
 <h2>src/views ディレクトリ<a class="headerlink" href="#src-views" title="Permalink to this headline">¶</a></h2>
@@ -203,14 +256,18 @@
 <li>&#8216;メソッド名&#8217;.java</li>
 <li>&#8216;メソッド名&#8217;.css</li>
 </ul>
-<p>詳細はビューの項を参照してください。TODO:リンク</p>
+<p>詳細は <a class="reference external" href="../development/views.html">ビュー</a> の項を参照してください。</p>
 </div>
 <div class="section" id="src-helpers">
 <h2>src/helpers ディレクトリ<a class="headerlink" href="#src-helpers" title="Permalink to this headline">¶</a></h2>
 <p>全てのビューで利用可能なVelocityマクロを配置するディレクトリです。
-デフォルトではbody.vmとRender.vmが配置されています。
-TODO:body.vmとRender.vmの説明追加、要確認
-必要に応じて追加、配置してください。</p>
+デフォルトではbody.vmとRender.vmが配置されています。</p>
+<ul class="simple">
+<li>body.vm</li>
+<li>render.vm</li>
+</ul>
+<p>これらのマクロはビューを作成するする際に利用可能です。
+開発時には必要に応じて任意のvmファイルを追加、配置してください。</p>
 </div>
 </div>
 

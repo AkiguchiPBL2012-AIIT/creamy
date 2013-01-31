@@ -53,9 +53,10 @@
   <ul>
 <li><a class="reference internal" href="#">Controllers</a><ul>
 <li><a class="reference internal" href="#id1">はじめに</a></li>
-<li><a class="reference internal" href="#id2">準備</a></li>
-<li><a class="reference internal" href="#id3">実装</a></li>
-<li><a class="reference internal" href="#id4">その他、機能</a></li>
+<li><a class="reference internal" href="#id2">controllersのディレクトリ内に置くべきファイル</a></li>
+<li><a class="reference internal" href="#id3">継承すべきクラス</a></li>
+<li><a class="reference internal" href="#id4">継承すべきクラスが提供する機能</a></li>
+<li><a class="reference internal" href="#id7">その他、機能</a></li>
 </ul>
 </li>
 </ul>
@@ -96,88 +97,160 @@
 <h1>Controllers<a class="headerlink" href="#controllers" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
 <h2>はじめに<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<p>CreamyのControllerは他のWebアプリケーションフレームワークで使われるControllerと同様の意味を持っています。
-具体的には、モデルへのアクセス、Viewとのパラメータのやりとりとその遷移の制御などです。
-また、Creamyではビュー等からPathに対するリクエストという形でコントローラにアクセスするため、よりWebアプリケーションフレームワークを連想させる使用感となっています。
-過去に何らかのフレームワークを利用したことがある開発者であれば、その習得は容易でしょう。</p>
+<p>Creamyのコントローラは他のWebアプリケーションフレームワークで使われるコントローラと同様の意味を持っています。
+また、Creamyではビュー等からPathに対するリクエストという形でコントローラにアクセスするため、
+よりWebアプリケーションフレームワークを連想させる使用感となっています。</p>
 </div>
 <div class="section" id="id2">
-<h2>準備<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>Creamyがクラスをコントローラとして認識するには、いくつか条件があります。
-まず、クラスの配置場所ですが、controllersパッケージ配下に配置してください。
-そして、creamy.mvc.Controllerを継承してください。
-これでコントローラの実装準備は整いました。
-ここでの例ではApplicationクラスとします。:</p>
-<div class="highlight-python"><pre>public class Application extends Controller {
-}</pre>
-</div>
+<h2>controllersのディレクトリ内に置くべきファイル<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>コントローラはcontrollersパッケージの配下にクラスを配置してください。
+コントローラクラスのクラス名はメソッド呼び出し時のパスに利用されるので、
+それを踏まえてクラスを命名してください。</p>
 </div>
 <div class="section" id="id3">
-<h2>実装<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<p>Creamyでコントローラのメソッドを実装する上で、いくつか特徴があります。</p>
-<ul>
-<li><dl class="first docutils">
-<dt>戻り値をcreamy.mvc.Resultにします</dt>
-<dd><p class="first last">正常終了時はokメソッド、異常なリクエストの場合はbadRequestメソッド、
-画面遷移が必要な場合はredirectメソッドの戻り値を返してください。</p>
-</dd>
-</dl>
-</li>
-<li><p class="first">パスで実行されるメソッドが決定します</p>
-</li>
-<li><dl class="first docutils">
-<dt>パスで引数を渡します</dt>
-<dd><p class="first last">リクエスト時のパスがそのままメソッドの引数として渡されます。</p>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>パス以外でもパラメータを渡せます</dt>
-<dd><p class="first last">フィールド変数paramsを参照することで、Form等からポストされたパラメータを取得できます。</p>
-</dd>
-</dl>
-</li>
-</ul>
-<p>以下、簡単な実装例です。:</p>
-<div class="highlight-python"><pre>public class Application extends Controller {
-
-    private Computer computer;
-
-    //リクエスト先パスは  /Application/edit/:id になります
-    public Result edit(Integer id) {
-        if (id == null) {
-            //不正なリクエストとして結果を返します
-                return badRequest(this);
-        }
-        computer = Computer.find.byId(id);
-        if (computer == null) {
-                //createにリダイレクトします。
-            return redirect("/Application/create");
-        }
-        //正常終了。editに対応するビューが表示されます
-        return ok(this);
-    }
-
-    //リクエスト先パスは /Application/create になります
-    public Result create() {
-        //ポストされたパラメータをparam(key)で取得します。
-        if (param("id") != null) {
-                computer = new Computer(param("Id"));
-        } else {
-                computer = new Computer();
-        }
-        //正常終了。createに対応するビューが表示されます。
-        return ok(this);
-    }
-}</pre>
-</div>
+<h2>継承すべきクラス<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>CreamyにおけるコントローラクラスはControllerクラスを継承する必要があります。
+以下、に例を示します。ここでの例ではApplicationクラスとします。</p>
+<div class="highlight-java"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Application</span> <span class="kd">extends</span> <span class="n">Controller</span> <span class="o">{</span>
+<span class="o">}</span>
+</pre></div>
+</td></tr></table></div>
 </div>
 <div class="section" id="id4">
-<h2>その他、機能<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<h2>継承すべきクラスが提供する機能<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>Creamyにおけるコントローラの役割はビューとモデルを仲介、制御することです。
+具体的には、モデルへのアクセス、ビューとのパラメータのやりとりとその遷移の制御などです。
+コントローラを実装する上でそれらを行うためのルールとControllerクラスが提供する便利な機能を紹介します。</p>
+<p>まずは実際のコントローラの例を示します。</p>
+<div class="highlight-java"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27</pre></div></td><td class="code"><div class="highlight"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Application</span> <span class="kd">extends</span> <span class="n">Controller</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="n">Computer</span> <span class="n">computer</span><span class="o">;</span>
+
+    <span class="c1">//リクエスト先パスは  /Application/show/{ id } になります  --- (1)</span>
+    <span class="kd">public</span> <span class="n">Result</span> <span class="nf">show</span><span class="o">(</span><span class="n">Integer</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">id</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">return</span> <span class="nf">badRequest</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>   <span class="c1">//不正なリクエストとして結果を返す。 ---- (2)</span>
+        <span class="o">}</span>
+        <span class="n">computer</span> <span class="o">=</span> <span class="n">Computer</span><span class="o">.</span><span class="na">find</span><span class="o">.</span><span class="na">byId</span><span class="o">(</span><span class="n">id</span><span class="o">);</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">computer</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                <span class="c1">//redirectTestにリダイレクトします。  ---- (3)</span>
+            <span class="k">return</span> <span class="nf">redirect</span><span class="o">(</span><span class="s">&quot;/Application/redirectTest&quot;</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="c1">// 正常終了 editに対応するビューが表示される。 ---(4)</span>
+        <span class="c1">// この場合は、/views/application/show.vm.fxmlと</span>
+        <span class="c1">//                    /views/application/show.java</span>
+        <span class="k">return</span> <span class="nf">ok</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
+    <span class="o">}</span>
+
+        <span class="c1">//( 3)でリダイレクトされた場合呼び出される。</span>
+        <span class="kd">public</span> <span class="n">Result</span> <span class="nf">redirectTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="c1">// 正常終了 redirectTestに対応するビューが表示される。</span>
+        <span class="c1">// この場合は、/views/application/rediretTest.vm.fxmlと</span>
+        <span class="c1">//                    /views/application/rediretTest.java</span>
+                <span class="k">return</span> <span class="nf">ok</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
+        <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</td></tr></table></div>
+<ul>
+<li><p class="first">パスで実行されるメソッドが決定します (1)</p>
+<blockquote>
+<div><p>コントローラのメソッド呼び出しは、ビューからのリクエストされたパスで決定されます。
+パスはWebのURLをイメージして貰えれば問題ありません。</p>
+</div></blockquote>
+</li>
+<li><p class="first">パスで引数を渡します　(1)</p>
+<blockquote>
+<div><p>リクエスト時のパスにメソッドの引数を渡すことが可能です。
+また、大量のパラメータを渡す場合など、パスを利用しにくい場合は、
+ポストすることで別途パラメータを取得出来ます。
+パスを利用しないパラメータの取得方法は後述します。</p>
+</div></blockquote>
+</li>
+<li><p class="first">戻り値をcreamy.mvc.Resultにします  (2) (3) (4)</p>
+<blockquote>
+<div><p>正常終了時はokメソッド、異常なリクエストの場合はbadRequestメソッド、
+画面遷移が必要な場合はredirectメソッドの戻り値を返してください。</p>
+</div></blockquote>
+</li>
+<li><p class="first">規約により表示されるビューを決定します (4)</p>
+<blockquote>
+<div><p>正常終了時はコントローラ、メソッドに対応したビューが自動的に決定され表示されます。
+基本的には、&#8217;views.コントローラ名.メソッド名.vm.fxml&#8217;と&#8217;views.コントローラ名.メソッド名.java&#8217;が
+対応するビューとなります。
+規約の詳細については <a class="reference external" href="../architecture/agreement.html">こちら</a> を参照してください。</p>
+</div></blockquote>
+</li>
+<li><p class="first">パス以外でもパラメータを渡せます</p>
+<blockquote>
+<div><p>フィールド変数paramsを参照することで、Formコントロールからポストされたパラメータを取得できます。
+Formコントロールについての解説は <a class="reference external" href="./development/form_control.html">こちら</a> を参照してください。</p>
+</div></blockquote>
+</li>
+</ul>
+<p>以下、簡単な実装例です。</p>
+<div class="highlight-java"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></div></td><td class="code"><div class="highlight"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">PostTest</span> <span class="kd">extends</span> <span class="n">Controller</span> <span class="o">{</span>
+
+    <span class="c1">//リクエスト先パスは /PostTest/post になります</span>
+    <span class="kd">public</span> <span class="n">Result</span> <span class="nf">post</span><span class="o">()</span> <span class="o">{</span>
+        <span class="c1">//ポストされたパラメータをparam(key)で取得します。</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">param</span><span class="o">(</span><span class="s">&quot;id&quot;</span><span class="o">)</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">computer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Computer</span><span class="o">(</span><span class="n">param</span><span class="o">(</span><span class="s">&quot;Id&quot;</span><span class="o">));</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                <span class="n">computer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Computer</span><span class="o">();</span>
+        <span class="o">}</span>
+        <span class="c1">//正常終了。createに対応するビューが表示されます。</span>
+        <span class="k">return</span> <span class="nf">ok</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="id7">
+<h2>その他、機能<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 <p>Creamyでは以下のようなコントローラの実装に利用出来る便利な機能が用意されています。</p>
 <ul class="simple">
-<li>パラーメータバインディング TODO:リンクを貼る</li>
-<li>データのバリデーション TODO:リンクを貼る</li>
+<li><a class="reference external" href="./development/parameter_binding.html">パラーメータバインディング</a></li>
+<li><a class="reference external" href="./development/validation.html">データのバリデーション</a></li>
 </ul>
 </div>
 </div>

@@ -4,60 +4,94 @@
 
 ディレクトリ・ファイル構成
 =============================================
-Creamyのディレクトリ構成は以下のようになっています。
+Creamyでは、開発環境としてNetBeansの利用を想定しています。
+そのため、Creamyのディレクトリ構成はNetBeansプロジェクトを
+基本として構成されています。
 
-Creamyのディレクトリ構成::
-	- lib                               : 依存Jarを配置
-		- creamy-1.0.jar
-		- ebean-2.7.3.jar
-		- hibernate-validator-4.3.0.Final.jar
-		- javax.validation-1.0.0.GA.jar
-		- jsonic-1.2.11.jar
-		- persistence-api-1.0.jar
-		- velocity-1.7.jar
-		- velocity-1.7-dep.jar
-	- nbproject                    : NetBeansのプロジェクトファイルを配置
-	- conf                            : 設定ファイルを配置
-		- creamy.properties       : Creamyの設定ファイル
-		- ebean.properties         : EBeanの設定ファイル 
-		- velocity.properties      : Velocityの設定ファイル
-	- src                              : ソースコードを配置
-		- userapp                      : エントリポイントを配置。任意の名前で作成。
-			- userapp.java           : エントリポイント
-		- controllers              : コントローラクラスを配置
-		- helpers                   : 全てのビューで利用可能なVelocityマクロを配置
-			- body.vm                 : デフォルトで利用可能なVelocityマクロ
-			- render.vm               : デフォルトで利用可能なVelocityマクロ
-		- models                    : モデルクラスを配置
-		- views                      : コントローラクラス毎のディレクトリを配置
-			- (Controllerクラス毎のディレクトリ)  : 
+実際のディレクトリ構成は以下のようになっています。
 
 
+.. csv-table:: 
+　
+	" ディレクトリ","概要"
+	" lib", "依存Jarを配置"
+	" nbproject", "NetBeansのプロジェクトファイルを配置"
+	" conf", "設定ファイルを配置"
+	" src", "ソースコードを配置"
+	"  src/userapp", "エントリポイントを配置。任意の名前で作成"
+	"  src/models", "モデルクラスを配置"
+	"  src/controllers", "コントローラクラスを配置"
+	"  src/views", "コントローラクラス毎のディレクトリを配置"
+	"  src/helpers", "全てのビューで利用可能なVelocityマクロを配置"
 
 lib ディレクトリ
 =============================================
 ライブラリを配置するディレクトリです。
-デフォルトでは、Creamyが依存しているJarファイルが配置されていますが、
-アプリケーションで利用するJarもここに配置してください。
+アプリケーションで利用するJarファイルはこのディレクトリに配置してください。
+デフォルトでは、Creamyが依存する以下のファイルがされています。
+
+- creamy-1.0.jar
+- ebean-2.7.3.jar
+- hibernate-validator-4.3.0.Final.jar
+- javax.validation-1.0.0.GA.jar
+- jsonic-1.2.11.jar
+- persistence-api-1.0.jar
+- velocity-1.7.jar
+- velocity-1.7-dep.jar
+
+
+開発時に特に利用することになるものについては、
+`使用するライブラリ <./libraries.html>`_ を参照してください
+
+confディレクトリ
+=============================================
+Creamyの設定ファイルを配置するディレクトリです。
+デフォルトでは、以下のファイルが配置されています。
+
+.. csv-table:: 
+
+	" ファイル名","概要"
+	" creamy.properties", "Creamyの設定ファイル"
+	" ebean.properties", "EBeanの設定ファイル" 
+	" velocity.properties", "Velocityの設定ファイル"
+
+
+
+各設定ファイルの詳細については `プロパティファイル <../development/properties.html>`_ を参照してください。
+
+
+srcディレクトリ
+===================
+アプリケーションのソースコードを配置するディレクトリです。
+srcディレクトリの配下には以下のディレクトリが配置されています。
+
+それぞれのディレクトリの詳細については後述します。
+
+- userapp
+- models
+- controllers
+- views
+- helpers
 
 
 src/userapp ディレクトリ
 =============================================
 アプリケーションのエントリポイントとなるクラスを配置するディレクトリ（パッケージ）です。
-デフォルトでは存在しないので、任意の名前のディレクトリを作成して、
-エントリポイントを作成してください。
+デフォルトでは存在しないので、任意の名前(アプリケーション名など)のディレクトリを作成してください。
+また、その配下にエントリポイントとなるクラスを作成してください。
+
 
 
 src/models ディレクトリ
 =============================================
 モデルクラスを配置するディレクトリです。
-詳細はモデルクラスの項を参照してください。TODO:リンク
+詳細は `モデルクラス <../development/models.html>`_ の項を参照してください。
 
 
 src/controllers ディレクトリ
 =============================================
 コントローラクラスを配置するディレクトリです。
-詳細はコントローラクラスの項を参照してください。TODO:リンク
+詳細は `コントローラクラス <../development/controllers.html>`_ の項を参照してください。
 
 
 src/views ディレクトリ
@@ -71,12 +105,16 @@ src/views ディレクトリ
 - 'メソッド名'.java       
 - 'メソッド名'.css
 
-詳細はビューの項を参照してください。TODO:リンク
+詳細は `ビュー <../development/views.html>`_ の項を参照してください。
 
 src/helpers ディレクトリ
 =============================================
 全てのビューで利用可能なVelocityマクロを配置するディレクトリです。
 デフォルトではbody.vmとRender.vmが配置されています。
-TODO:body.vmとRender.vmの説明追加、要確認
-必要に応じて追加、配置してください。
 
+- body.vm
+- render.vm
+
+
+これらのマクロはビューを作成するする際に利用可能です。
+開発時には必要に応じて任意のvmファイルを追加、配置してください。
