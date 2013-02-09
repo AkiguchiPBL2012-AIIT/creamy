@@ -1,7 +1,7 @@
 package creamy.mvc;
 
 /**
- *
+ * レスポンスの結果を表すステータス
  * @author miyabetaiji
  */
 public enum Status {

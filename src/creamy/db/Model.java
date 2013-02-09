@@ -35,7 +35,7 @@ public class Model {
 
     /**
      * EntityのPrimary Keyを設定。
-     * @param Primary Key
+     * @param id Primary Key
      */
     private void _setId(Object id) {
         try {
@@ -63,7 +63,7 @@ public class Model {
     /**
      * Entityをsava。 (inserts)
      *
-     * @param 接続するサーバー名
+     * @param server 接続するサーバー名
      */
     public void save(String server) {
         Ebean.getServer(server).save(this);
@@ -71,6 +71,8 @@ public class Model {
 
     /**
      * many-to-many維持して、save。
+     * 
+     * @param path 
      */
     public void saveManyToManyAssociations(String path) {
         Ebean.saveManyToManyAssociations(this, path);
@@ -79,7 +81,8 @@ public class Model {
     /**
      * many-to-manyを維持して、save。
      *
-     * @param 接続するサーバー名
+     * @param server 接続するサーバー名
+     * @param path 
      */
     public void saveManyToManyAssociations(String server, String path) {
         Ebean.getServer(server).saveManyToManyAssociations(this, path);
@@ -95,7 +98,7 @@ public class Model {
     /**
      * 指定したサーバーのEntityを更新。
      *
-     * @param 接続するサーバー名
+     * @param server 接続するサーバー名
      */
     public void update(String server) {
         Ebean.getServer(server).update(this);
@@ -103,7 +106,7 @@ public class Model {
 
     /**
      * 指定したIDのEntityを更新。
-     * @param Primary Key
+     * @param id Primary Key
      */
     public void update(Object id) {
         _setId(id);
@@ -113,8 +116,8 @@ public class Model {
     /**
      * 指定したIDと、指定したサーバーのEntityを更新。
      *
-     * @param Primary Key
-     * @param 接続するサーバー名
+     * @param id Primary Key
+     * @param server 接続するサーバー名
      */
     public void update(Object id, String server) {
         _setId(id);
@@ -131,7 +134,7 @@ public class Model {
     /**
      * 指定したサーバーのEntityを削除。
      *
-     * @param 接続するサーバー名
+     * @param server 接続するサーバー名
      */
     public void delete(String server) {
         Ebean.getServer(server).delete(this);
@@ -147,7 +150,7 @@ public class Model {
     /**
      * 指定したサーバーのデータベースからこの実体をリフレッシュ。
      *
-     * @param 接続するサーバー名
+     * @param server 接続するサーバー名
      */
     public void refresh(String server) {
         Ebean.getServer(server).refresh(this);
@@ -193,8 +196,8 @@ public class Model {
 
         /**
          * Finderを作成。
-         * @param Primary Key
-         * @param Entity Class
+         * @param idType Primary Key
+         * @param type Entity Class
          */
         public Finder(Class<I> idType, Class<T> type) {
             this("default", idType, type);
@@ -203,9 +206,9 @@ public class Model {
         /**
          * Finderを作成。
          * 
-         * @param 接続するサーバー名
-         * @param Primary Key
-         * @param Entity Class
+         * @param serverName 接続するサーバー名
+         * @param idType Primary Key
+         * @param type Entity Class
          */
         @SuppressWarnings("unchecked")
         public Finder(String serverName, Class<I> idType, Class<T> type) {
@@ -221,7 +224,7 @@ public class Model {
         /**
          * 接続するサーバーを変更
          * 
-         * @param 接続するサーバー名
+         * @param server 接続するサーバー名
          * 
          * @return Finder<I, T>
          */
@@ -242,6 +245,7 @@ public class Model {
         /**
          * Primary Keyを元に、Entityを返す。
          * 
+         * @param id Primary Key
          * @return Entity
          */
         public T byId(I id) {
@@ -250,7 +254,7 @@ public class Model {
 
         /**
          * Primary Keyで参照を検索。
-         * @param Primary Key
+         * @param id Primary Key
          * 
          * @return 参照Type
          */
@@ -306,7 +310,7 @@ public class Model {
 
         /**
          * propertyをロードするためにパスを指定。
-         * @param propertyの記載されたファイルへのパス
+         * @param path propertyの記載されたファイルへのパス
          * 
          * @return Query<T>
          */
@@ -318,8 +322,8 @@ public class Model {
         /**
          * propertyをロードするためにパスを指定とjoinConfigを指定。
          * 
-         * @param propertyの記載されたファイルへのパス
-         * @param joinConfig
+         * @param path propertyの記載されたファイルへのパス
+         * @param joinConfig FetchConfig
          * 
          * @return Query<T>
          */
@@ -331,8 +335,8 @@ public class Model {
         /**
          * propertyをロードするためのパスを指定とfetchPropertiesを指定。
          * 
-         * @param propertyの記載されたファイルへのパス
-         * @param fetchProperties
+         * @param path propertyの記載されたファイルへのパス
+         * @param fetchProperties fetchProperties
          * 
          * @return Query<T>
          */
@@ -344,9 +348,9 @@ public class Model {
         /**
          * 関連するプロパティ、fetchPropertiesを使用するためにFetchConfigを指定。
          * 
-         * @param 関連するプロパティ
-         * @param fetchプロパティ
-         * @param FetchConfig
+         * @param assocProperty 関連するプロパティ
+         * @param fetchProperties fetchプロパティ
+         * @param fetchConfig FetchConfig
          * 
          * @return Query<T>
          */
@@ -358,7 +362,7 @@ public class Model {
         /**
          * 多数listのフィルタを適用します。
          * 
-         * @param プロパティ名
+         * @param propertyName プロパティ名
          * 
          * @return ExpressionList<T>
          */
@@ -430,8 +434,8 @@ public class Model {
         /**
          * queryを実行し、オブジェクトのマップとして結果を返却。
          * 
-         * @param マップのkey
-         * @param 返却してほしいオブジェクトのクラス
+         * @param a マップのkey
+         * @param b 返却してほしいオブジェクトのクラス
          * 
          * @return オブジェクトのマップ
          */
@@ -443,7 +447,7 @@ public class Model {
         /**
          * queryのためのPagingListを返却
          * 
-         * @param ページサイズ
+         * @param pageSize ページサイズ
          * 
          * @return PagingList<T>
          */
@@ -494,7 +498,7 @@ public class Model {
         /**
          * queryに使われたExpressionFactoryを返却。
          * 
-         * @retun ExpressionFactory
+         * @return ExpressionFactory
          */
         @Override
         public ExpressionFactory getExpressionFactory() {
@@ -504,7 +508,7 @@ public class Model {
         /**
          * 最初のカラムのidを返却。
          * 
-         * @retun ID
+         * @return int ID
          */
         @Override
         public int getFirstRow() {
@@ -514,7 +518,7 @@ public class Model {
         /**
          * queryの実行のために生成されたSQLを返却。
          * 
-         * @retun SQL文
+         * @return String SQL文
          */
         @Override
         public String getGeneratedSql() {
@@ -569,7 +573,7 @@ public class Model {
         /**
          * having節をExpressionに追加して、Queryを返却。
          * 
-         * @param having節を追加したExpression
+         * @param addExpressionToHaving having節を追加したExpression
          * 
          * @return Query<T>
          */
@@ -581,7 +585,7 @@ public class Model {
         /**
          * having節を追加して、Queryを返却。
          * 
-         * @param having節
+         * @param addToHavingClause having節
          * 
          * @return Query<T>
          */
@@ -648,7 +652,7 @@ public class Model {
          * order by節をセットし、新しくorder by節を反映したQueryを返却。
          * <p>{@link #orderBy(String)} と同じ。
          * 
-         * @param order by 節
+         * @param orderByClause order by 節
          * 
          * @return Query<T>
          */
@@ -670,7 +674,7 @@ public class Model {
          * order by節をセットし、新しくorder by節を反映したQueryを返却。
          * <p>{@link #order(String)} と同じ。
          * 
-         * @param order by 節
+         * @param orderByClause order by 節
          * 
          * @return Query<T>
          */
@@ -695,7 +699,7 @@ public class Model {
         /**
          * Autofetchを利用するかセットし、セットされたQueryを返却。
          * 
-         * @param boolean
+         * @param autofetch boolean
          * 
          * @return Query<T>
          */
@@ -707,7 +711,7 @@ public class Model {
         /**
          * バックグラウンドのスレッドで継続させるべき列の数をセットし、セットされたQueryを返却。
          * 
-         * @param 列の数
+         * @param backgroundFetchAfter 列の数
          * 
          * @return Query<T>
          */
@@ -719,7 +723,7 @@ public class Model {
         /**
          * JDBCにStatement.fetchSizeを変換させるためのサイズをセットし、そのQueryを返却。
          * 
-         * @param fetchサイズ
+         * @param fetchSize fetchサイズ
          * 
          * @return Query<T>
          */
@@ -731,9 +735,9 @@ public class Model {
         /**
          * QueryにDistinctにするかセットし、そのqueryを返却
          * 
-         * @param boolean
-         * 
-         * @retun Query<T>
+         * @param isDistinct boolean
+         *  
+         * @return Query<T>
          */
         @Override
         public Query<T> setDistinct(boolean isDistinct) {
@@ -743,7 +747,7 @@ public class Model {
         /**
          * 最初の行番号をセットし、セットしたqueryを返却。
          * 
-         * @param 最初の行番号
+         * @param firstRow 最初の行番号
          * 
          * @return Query<T>
          */
@@ -755,7 +759,7 @@ public class Model {
         /**
          * queryにIDをセット。
          * 
-         * @param ID オブジェクト
+         * @param id ID オブジェクト
          * 
          * @return Query<T>
          */
@@ -767,7 +771,7 @@ public class Model {
         /**
          * 一列づつの処理させるqueryのリスナーをセットし、そのQueryを返却。
          * 
-         * @param 処理させるqueryのリスナー
+         * @param queryListener 処理させるqueryのリスナー
          * 
          * @return Query<T>
          */
@@ -779,7 +783,7 @@ public class Model {
         /**
          * loadBeanCacheを利用するかどうかをセットし、そのQueryを返却。
          * 
-         * @param boolean
+         * @param loadBeanCache boolean
          * 
          * @return Query<T>
          */
@@ -791,7 +795,7 @@ public class Model {
         /**
          * mapのkeyを使ってpropertyをセットし、そのQueryを返却。
          * 
-         * @param mapのkey
+         * @param mapKey mapのkey
          * 
          * @return Query<T>
          */
@@ -803,7 +807,7 @@ public class Model {
         /**
          * queryで返却する最大数をセットし、そのQueryを返却。
          * 
-         * @param 返却する最大数
+         * @param maxRows 返却する最大数
          * 
          * @return Query<T>
          */
@@ -816,7 +820,7 @@ public class Model {
          * OrderByオブジェクトを使って、order by節を置換します。
          * <p>{@link #setOrderBy(com.avaje.ebean.OrderBy)} と同じ
          * 
-         * @param OrderBy<T>
+         * @param orderBy OrderBy<T>
          * 
          * @return Query<T>
          */
@@ -829,7 +833,7 @@ public class Model {
          * OrderByオブジェクトを使って、order by節を置換します。
          * <p>{@link #setOrder(com.avaje.ebean.OrderBy)} と同じ
          * 
-         * @param OrderBy<T>
+         * @param orderBy OrderBy<T>
          * 
          * @return Query<T>
          */
@@ -841,8 +845,8 @@ public class Model {
         /**
          * そのポジションに指定されたパラメータにバインドをセットし、そのQueryを返却。
          * 
-         * @param ポジション
-         * @param ポジションを指定するオブジェクト
+         * @param position ポジション
+         * @param value ポジションを指定するオブジェクト
          * 
          * @return Query<T>
          */
@@ -854,8 +858,8 @@ public class Model {
         /**
          * 一つの指定されたパラメータをバインドをセットし、そのQueryを返却。
          * 
-         * @param パラメータ
-         * @param パラメータを指定するオブジェクト
+         * @param name パラメータ
+         * @param value パラメータを指定するオブジェクト
          * 
          * @return Query<T>
          */
@@ -877,7 +881,7 @@ public class Model {
          * 
          * RawSqlをセットし、そのQueryを返却。
          * 
-         * @param RawSql
+         * @param rawSql
          * 
          * @return Query<T>
          */
@@ -889,7 +893,7 @@ public class Model {
         /**
          * read-onlyにするかどうかセットし、そのQueryを返却。
          * 
-         * @param boolean
+         * @param readOnly boolean
          * 
          * @return Query<T>
          */
@@ -901,7 +905,7 @@ public class Model {
         /**
          * timeoutをセットし、そのQueryを返却
          * 
-         * @param timeout値(seconds)
+         * @param secs timeout値(seconds)
          * 
          * @return Query<T>
          */
@@ -913,7 +917,7 @@ public class Model {
         /**
          * Cacheを利用するかどうかをセットし、そのQueryを返却。
          * 
-         * @param boolean
+         * @param useBeanCache boolean
          * 
          * @return Query<T>
          */
@@ -925,7 +929,7 @@ public class Model {
         /**
          * Cacheを利用するかどうかをセットし、そのQueryを返却。
          * 
-         * @param boolean
+         * @param useQueryCache boolean
          * 
          * @return Query<T>
          */
@@ -941,7 +945,7 @@ public class Model {
         /**
          * 'vanilla mode'を使用するかをセットし、そのQueryを返却。
          * 
-         * @param boolean
+         * @param vanillaMode boolean
          * 
          * @return Query<T>
          */
@@ -963,7 +967,7 @@ public class Model {
         /**
          * where節に一つのExpressionを追加し、そのQueryを返却。
          * 
-         * @param where節に追加するExpression
+         * @param expression where節に追加するExpression
          * 
          * @return Query<T>
          */
@@ -975,7 +979,7 @@ public class Model {
         /**
          * where節を追加し、そのQueryを返却。
          * 
-         * @param where節
+         * @param addToWhereClause where節
          * 
          * @return Query<T>
          */

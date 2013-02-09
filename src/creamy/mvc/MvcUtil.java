@@ -11,8 +11,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
- * @author ATakahashi
+ * mvcパッケージで利用するユーティリティクラス
  */
 public class MvcUtil {
     
@@ -20,10 +19,10 @@ public class MvcUtil {
     /**
      * MapのKeyとClassインスタンスのSetterの名前を突き合わせて値をセットし、
      * 値をセット済みのclsのインスタンスを返す
-     * @param <T>
-     * @param map
-     * @param cls
-     * @return 
+     * @param <T> objの型
+     * @param map バインド元のパラメータが格納されたMap
+     * @param obj バインド先のオブジェクト
+     * @return バインド結果オブジェクト
      */
     static public <T> BindingResult bindMapModel(Map<String, Object> map, T obj) {
         try{ 
@@ -72,7 +71,7 @@ public class MvcUtil {
         }
     }
     
-        private static Object getWrapper(String className, Object value) {
+    private static Object getWrapper(String className, Object value) {
         // return class of wrapper class type if primitive
         if (isTypeEquals(className, "int", Integer.class)) {
             return Integer.valueOf((String)value);

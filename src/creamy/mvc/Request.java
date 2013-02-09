@@ -5,11 +5,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Requestオブジェクト
+ * Viewから利用されるRequestオブジェクト
  * 
  * @author Taiji Miyabe (Professor Akiguchi's PBL 2012, AIIT)
  */
 public class Request {
+    /**
+     * 
+     */
     public static final String GET = "GET";
     public static final String POST = "POST";
     

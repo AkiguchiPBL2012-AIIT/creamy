@@ -30,9 +30,8 @@ public class Result {
     private String redirectPath;
 
     /**
-     * Resultsから生成される
+     * ステータスを含むResultを生成する
      * @param status 
-     * @see Result
      */
     Result(Status status) { this.status = status; }
 
@@ -56,40 +55,56 @@ public class Result {
         this.activity = activty;
     } 
     /**
-     * controllerを取得する
-     * @return controller
+     * リクエスト先のコントローラを取得する
+     * @return リクエスト先のコントローラ
      */
     Controller getController() { return controller; }
 
     /**
-     * dataを取得する
-     * @return data
+     * データリクエストに返却するデータを取得する
+     * @return データリクエストに返却するデータ
      */
     Object getData() { return data; }
 
     /**
-     * Activityクラスを取得する
-     * @return data
+     * レスポンスに対応するアクティビティを取得する
+     * @return レスポンスに対応するアクティビティ
      */
     Class<? extends Activity> getActivity() { return activity; }
 
     /**
-     * statusを取得する
-     * @return status
+     * レスポンスのステータスを取得する
+     * @return レスポンスのステータス
      */
     Status getStatus() { return status; }
 
     /**
-     * redirectPathを取得する
-     * @return redirectPath
+     * リダイレクト先のパスを取得する
+     * @return リダイレクト先のパス
      */
     String getRedirectPath() { return redirectPath; }
 
+    /**
+     * レスポンスかどうかを判定する
+     * @return レスポンスかどうか
+     */
     boolean isNoResponse() { return controller == null && data == null && redirectPath == null; }
 
+    /**
+     * リダイレクトを行うレスポンスであるかどうかを判定する
+     * @return リダイレクトを行うレスポンスであるかどうか
+     */
     boolean isRedirectResponse() { return redirectPath != null; }
 
+    /**
+     * アクティビティを含むレスポンスであるかどうかを判定する
+     * @return アクティビティを含むレスポンスであるかどうか 
+     */
     boolean isActivityResponse() { return controller != null || activity != null; }
 
+    /**
+     * データリクエストに対するレスポンスかどうかを判定する
+     * @return データリクエストに対するレスポンス
+     */
     boolean isDataResponse() { return data != null; }
 }

@@ -454,8 +454,7 @@ public class CFAnimation {
 
     /**
      * showScaleを実行する
-     * @param time 時間(msec)
-     * @param callback Animation終了後に呼び返されるCallbackオブジェクト 
+     * @param time 時間(msec) 
      */
     public void showScale(double time) {
         createShowScale(time).play();

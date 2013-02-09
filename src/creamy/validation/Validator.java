@@ -1,15 +1,11 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package creamy.validation;
 
 import javax.validation.Validation;
 import javax.validation.ValidatorFactory;
 
 /**
- *
- * @author ATakahashi
+ * 検証実行用クラス
  */ 
 public class Validator {
     static private javax.validation.Validator validator;
@@ -20,7 +16,7 @@ public class Validator {
    
     /**
      * 検証を実行し、検証結果オブジェクト返す。
-     * @param model
+     * @param model 検証対象オブジェクト
      * @return 検証結果オブジェクト
      */
     static public ValidationResult valid(Object model) {

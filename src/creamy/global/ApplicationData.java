@@ -5,7 +5,7 @@ import java.util.Map;
 
 /**
  * Application全体をスコープとするグローバルオブジェクト
- * データはMap形式で保持
+ * データをMap形式で保持する
  * 
  * @author Taiji Miyabe (Professor Akiguchi's PBL 2012, AIIT)
  */
@@ -27,14 +27,13 @@ public class ApplicationData {
     /**
      * インスタンス取得メソッド
      * creamy.browser.Browserから呼び出される
-     * @return instance
-     * @see creamy.Browser.browser
+     * @return 自クラスのインスタンス
      */
     public static ApplicationData getInstance() { return instance; }
 
     /**
      * データオブジェクト(Map)を返す
-     * @return data データオブジェクト(Map)
+     * @return データを保持するオブジェクト(Map)
      */
     public Map<String,Object> getData() { return data; }
 }

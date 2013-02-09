@@ -34,8 +34,8 @@ public class WindowData {
     public static WindowData getInstance() { return instance; }
 
     /**
-     * データオブジェクト(Map)を返す
-     * @param browser
+     * browserスコープのデータオブジェクト(Map)を返す
+     * @param browser スコープになるBrowser
      * @return data データオブジェクト(Map)
      */
     public Map<String,Object> getData(Browser browser) {
@@ -46,7 +46,7 @@ public class WindowData {
 
     /**
      * データオブジェクトを削除する
-     * @param browser
+     * @param browser 削除対象のスコープ
      */
     public void removeData(Browser browser) {
         Map<String,Object> map = data.get(browser);

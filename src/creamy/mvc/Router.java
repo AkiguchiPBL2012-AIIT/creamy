@@ -21,9 +21,9 @@ import java.util.logging.Logger;
 import javax.validation.ConstraintViolation;
 
 /**
- * Router class of creamy framework This class does routing user's request to
- * specified constroller
  *
+ * ユ
+ * 
  * @author Ryusaburo Tanaka (Professor Akiguchi's PBL 2012, AIIT)
  */
 public class Router {
