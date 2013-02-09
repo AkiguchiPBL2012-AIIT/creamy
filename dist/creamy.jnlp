@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="creamy.jnlp">
+  <information>
+    <title>creamy</title>
+    <vendor>miyabetaiji</vendor>
+    <description>Sample JavaFX 2.0 application.</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <jfx:javafx-runtime version="2.2+" href="http://javadl.sun.com/webapps/download/GetFile/javafx-latest/windows-i586/javafx2.jnlp"/>
+  </resources>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="creamy.jar" size="175567" download="eager" />
+    <jar href="lib/ebean-2.7.3.jar" size="1976606" download="eager" />
+    <jar href="lib/hibernate-validator-4.3.0.Final.jar" size="476575" download="eager" />
+    <jar href="lib/javax.validation-1.0.0.GA.jar" size="48930" download="eager" />
+    <jar href="lib/jsonic-1.2.11.jar" size="213717" download="eager" />
+    <jar href="lib/persistence-api-1.0.jar" size="52150" download="eager" />
+    <jar href="lib/postgresql-9.1-902.jdbc4.jar" size="561969" download="eager" />
+    <jar href="lib/sqlite-jdbc-3.7.2.jar" size="3201128" download="eager" />
+    <jar href="lib/velocity-1.7-dep.jar" size="806736" download="eager" />
+    <jar href="lib/velocity-1.7.jar" size="449505" download="eager" />
+  </resources>
+  <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="creamy" >
+    <param name="requiredFXVersion" value="2.2+"/>
+  </applet-desc>
+  <jfx:javafx-desc  width="800" height="600" main-class="creamy.Creamy"  name="creamy" />
+  <update check="background"/>
+</jnlp>
