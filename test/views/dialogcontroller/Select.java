@@ -21,7 +21,7 @@ public class Select extends AvailableActivity {
      * Companyリストを表示する。
      */
     @Override
-    public void initialize() {
+    public void cfinitialize() {
         // parent activityに現在のウィンドウの状態を通知する。
         ((DialogBase)this.getParent()).setStatus(DialogBase.Status.SECOND_WINDOW);
         

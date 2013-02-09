@@ -49,7 +49,7 @@ public class NewDialog<T> extends AvailableActivity {
      * を記述している。
      */
 @Override
-public void initialize() {
+public void cfinitialize() {
     // ラベル、ボタンの初期状態を設定
     step1Label.getStyleClass().add("label-current");
     step2Label.getStyleClass().add("label-past");

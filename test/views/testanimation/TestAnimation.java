@@ -33,7 +33,7 @@ public class TestAnimation extends AvailableActivity {
     private Node testNode;
     
     @Override
-    public void initialize() {
+    public void cfinitialize() {
         testNode = testArea;
         nodeSelect.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
             @Override

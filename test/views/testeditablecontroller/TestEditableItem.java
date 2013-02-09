@@ -40,7 +40,7 @@ public class TestEditableItem extends AvailableActivity {
     
     private TestEditableList parent;
     @Override
-    public void initialize() {
+    public void cfinitialize() {
         parent = (TestEditableList)getParent();
         messageAnimation.setNode(message);
     }
