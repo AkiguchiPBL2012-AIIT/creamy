@@ -5,5 +5,12 @@ package creamy.mvc;
  * @author miyabetaiji
  */
 public enum Status {
-    OK, BAD_REQUEST, INTERNAL_ERROR, VALIDATION_ERR;
+    /** 正常 */
+    OK, 
+    /** 不正なリクエスト */
+    BAD_REQUEST, 
+    /** 例外発生 */
+    INTERNAL_ERROR,
+    /** データ検証エラー */
+    VALIDATION_ERR;
 }

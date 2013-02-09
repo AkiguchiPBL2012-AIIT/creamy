@@ -23,7 +23,7 @@ public class CFLabelBuilder<B extends CFLabelBuilder<B>> extends LabelBuilder<B>
     }
     /**
      * 生成したCFLabelオブジェクトに、name値をセットする.
-     * @param CFLabel 
+     * @param label ラベル
      */
     public void applyTo(CFLabel label) {
         super.applyTo(label);

@@ -27,7 +27,7 @@ public class CFHyperlinkBuilder<B extends CFHyperlinkBuilder<B>> extends Hyperli
 
     /**
      * path値をセットする.
-     * @param value CFHyperlinkBuilderのpath値
+     * @param path CFHyperlinkBuilderのpath値
      * @return 自身のオブジェクト
      */
     public CFHyperlinkBuilder<B> path(String path) {
@@ -37,7 +37,7 @@ public class CFHyperlinkBuilder<B extends CFHyperlinkBuilder<B>> extends Hyperli
     
     /**
      * 生成したCFHyperlinkオブジェクトに、path値をセットする.
-     * @param button CFHyperlinkオブジェクト
+     * @param hyperlink CFHyperlinkオブジェクト
      */
     public void applyTo(CFHyperlink hyperlink) {
         super.applyTo(hyperlink);

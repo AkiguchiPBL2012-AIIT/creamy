@@ -52,7 +52,7 @@ public abstract class Request<T> {
 
     /**
      * pathを設定する
-     * @return path
+     * @param path パス
      */
     public void setPath(String path) { this.path = path; }
     
@@ -70,7 +70,7 @@ public abstract class Request<T> {
 
     /**
      * parentを設定する
-     * @return path
+     * @param parent アクティビティ
      */
     public void setParent(Activity parent) { this.parent = parent; }
     
@@ -98,7 +98,7 @@ public abstract class Request<T> {
 
     /**
      * successCallBackを設定する
-     * @param successCallBack
+     * @param callBack
      */
     public void setOnSuccess(CallBack<T> callBack) { this.successCallBack = callBack; }
 

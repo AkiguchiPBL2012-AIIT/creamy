@@ -40,7 +40,7 @@ public class FinderUtil {
     
     /**
      * Nodeツリーを全探索し、見つかったノードのSetを返す
-     * @param node 探索対象のnode
+     * @param root 探索対象のnode
      * @param target 探索するNodeのClass
      * @return 見つかったノードのSet
      */
@@ -64,8 +64,7 @@ public class FinderUtil {
     
     /**
      * TableView内の要素を探索し、見つかったノードのSetを返す
-     * @param <T> 検索対象のノードの型
-     * @param node 探索対象のnode
+     * @param tableView 検索対象のノードの型
      * @param target 探索するNodeのClass
      * @return 見つかったノードのSet
      */

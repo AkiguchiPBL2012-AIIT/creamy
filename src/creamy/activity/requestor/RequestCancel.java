@@ -4,7 +4,6 @@ package creamy.activity.requestor;
  * リクエストのキャンセルを通知する例外クラス
  * 
  * @author miyabetaiji
- * @see HandlerConstructor
  */
 public class RequestCancel extends RuntimeException {
     RequestCancel() { super(); }

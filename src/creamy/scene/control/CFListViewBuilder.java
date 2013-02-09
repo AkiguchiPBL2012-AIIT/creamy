@@ -29,7 +29,7 @@ public class CFListViewBuilder<T,B extends CFListViewBuilder<T,B>> extends ListV
     }
     /**
      * 生成したCFListViewオブジェクトに、name値をセットする.
-     * @param CFListView 
+     * @param listView 
      */
     public void applyTo(CFListView<T> listView) {
         super.applyTo(listView);
@@ -72,8 +72,8 @@ public class CFListViewBuilder<T,B extends CFListViewBuilder<T,B>> extends ListV
     }
     /**
      * CFListViewの要素をitems値にセットする.
-     * @param items CFListView要素
-     * @return 
+     * @param entrySet CFListView要素
+     * @return CFListViewBuilder
      */
     public CFListViewBuilder<T,B> items(Set<T> entrySet) {
         this.set = entrySet;
@@ -82,7 +82,7 @@ public class CFListViewBuilder<T,B extends CFListViewBuilder<T,B>> extends ListV
     /**
      * CFListViewの要素をitems値にセットする.
      * @param map CFListView要素
-     * @return 
+     * @return CFListViewBuilder
      */
     public CFListViewBuilder<T,B> items(Map map) {
         this.map = map;

@@ -45,7 +45,7 @@ public class CFPasswordFieldBuilder<B extends CFPasswordFieldBuilder<B>> extends
     /**
      * format値をセットする.
      * @param format Formatオブジェクト
-     * @return 
+     * @return CFPasswordFieldBuilder
      */
     public CFPasswordFieldBuilder<B> format(Format format) {
         this.format = format;
@@ -53,7 +53,7 @@ public class CFPasswordFieldBuilder<B extends CFPasswordFieldBuilder<B>> extends
     }
     /**
      * 生成したCFPasswordFieldオブジェクトに、name値、format値、value値をセットする.
-     * @param choicebox 
+     * @param passwordfield 
      */
     public void applyTo(CFPasswordField passwordfield) {
         super.applyTo(passwordfield);

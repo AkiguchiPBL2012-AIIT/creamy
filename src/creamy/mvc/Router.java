@@ -377,7 +377,7 @@ public class Router {
      * screen transition
      *
      * @param request request from GUI
-     * @return
+     * @return コントローラ
      */
     public Controller processNoTransitionRequest(Request request) {
         // add parameters to the path as additional parameters, and split each elements

@@ -39,7 +39,7 @@ public abstract class ForwardButton extends HistoryButton {
     
     /**
      * ForwardHistoryの状態が変更された時にコールバックされる
-     * @param ForwardHistory
+     * @param forwardHistory
      */
     abstract protected void onForwardHistoryChanged(ObservableList<? extends Response> forwardHistory);
 }

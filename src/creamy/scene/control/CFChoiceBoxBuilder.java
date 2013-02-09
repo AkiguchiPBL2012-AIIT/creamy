@@ -86,7 +86,7 @@ public class CFChoiceBoxBuilder<T,B extends CFChoiceBoxBuilder<T,B>> extends Cho
     /**
      * CFChoiceBoxの要素をitems値にセットする.
      * @param items CFChoiceBox要素
-     * @return 
+     * @return items
      */
     public CFChoiceBoxBuilder<T,B> items(T... items) {
         this.items = items;
@@ -95,7 +95,7 @@ public class CFChoiceBoxBuilder<T,B extends CFChoiceBoxBuilder<T,B>> extends Cho
     /**
      * CFChoiceBoxの要素をitems値にセットする.
      * @param map CFChoiceBox要素
-     * @return 
+     * @return マップ
      */
     public CFChoiceBoxBuilder<T,B> items(Map map) {
         this.map = map;

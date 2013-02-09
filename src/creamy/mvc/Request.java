@@ -85,7 +85,7 @@ public class Request {
 
     /**
      * Browserを取得する
-     * @return browser
+     * @param browser
      */
     public void setBrowser(Browser browser) {
         this.browser = browser;
@@ -117,7 +117,7 @@ public class Request {
 
     /**
      * Parametersを設定する
-     * @return params
+     * @param params
      */
     public void setParams(Map<String, Object> params) {
         this.params = params;
@@ -140,8 +140,8 @@ public class Request {
     }
     
     /**
-     * リクエストの送信元パス
-     * @return 
+     * リクエストの送信元パスを取得
+     * @return リクエストの送信元パス
      */
     public String getSenderPath() {
         return this.senderPath;
