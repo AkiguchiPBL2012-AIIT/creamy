@@ -1,0 +1,11 @@
+#macro(render $child)
+    <ChildPane child="$child" />
+#end
+#macro(renderWithParam $child, $key, $value)
+    #set($fxId = $renderParam.putParam($key, $value))
+    <ChildPane child="$child" fx:id="$fxId" />
+#end
+#macro(renderWithParams $child, $keys, $values)
+    #set($fxId = $renderParam.putParams($keys, $values))
+    <ChildPane child="$child" fx:id="$fxId" />
+#end
