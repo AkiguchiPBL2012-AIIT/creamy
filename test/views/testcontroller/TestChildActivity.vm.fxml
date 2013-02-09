@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" fx:id="scene" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="192.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml" fx:controller="views.testcontroller.TestChildActivity">
+  <children>
+    <VBox id="vBox1" alignment="CENTER" prefHeight="192.0" prefWidth="600.0" spacing="15.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+        <HBox id="hBox1" alignment="CENTER" prefWidth="600.0">
+          <children>
+            <Label id="label1" text="Data Transfer via Activity :">
+              <font>
+                <Font size="16.0" />
+              </font>
+            </Label>
+            <TextField id="textField1" fx:id="dataCheck" prefWidth="344.0" />
+          </children>
+        </HBox>
+        <HBox id="hBox2" alignment="CENTER" prefWidth="600.0">
+          <children>
+            <Label id="label2" text="Data Transfer via FXML :">
+              <font>
+                <Font size="16.0" />
+              </font>
+            </Label>
+            <TextField id="textField2" fx:id="dataCheck2" prefWidth="344.0" text="$message"/>
+          </children>
+        </HBox>
+        <Button id="button1" onAction="#checkParent" text="Check parent activity" />
+      </children>
+    </VBox>
+  </children>
+</AnchorPane>

@@ -1,0 +1,16 @@
+root { 
+    display: block;
+}
+
+.stong {
+    -fx-font-size: 20;
+    -fx-font-weight: bold;
+    -fx-background-color: red;
+    -fx-text-fill: white;
+}
+
+.weak {
+    -fx-font-size: 12;
+    -fx-background-color: gray;
+    -fx-text-fill: white;
+}

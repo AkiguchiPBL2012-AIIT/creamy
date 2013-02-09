@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml" fx:controller="views.testanimation.TestAnimation">
+  <children>
+    <BorderPane prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <bottom>
+        <GridPane gridLinesVisible="true" styleClass="buttons">
+          <children>
+            <Button fx:id="effectPulsate" defaultButton="true" mnemonicParsing="false" onAction="#effectPulsate" text="effectPulsate" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.valignment="CENTER" />
+            <Button defaultButton="true" mnemonicParsing="false" onAction="#hidePulsate" text="hidePulsate" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.valignment="CENTER" />
+            <Button defaultButton="true" mnemonicParsing="false" onAction="#showPulsate" text="showPulsate" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.valignment="CENTER" />
+            <Button defaultButton="true" mnemonicParsing="false" onAction="#togglePulsate" text="togglePulsate" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.valignment="CENTER" />
+            <Button id="effectPulsate" defaultButton="true" mnemonicParsing="false" onAction="#hideBlind" text="hideBlind" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+            <Button id="effectPulsate" defaultButton="true" mnemonicParsing="false" onAction="#showBlind" text="showBlind" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+            <Button id="effectPulsate" defaultButton="true" mnemonicParsing="false" onAction="#toggleBlind" text="toggleBlind" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+            <Button id="effectPulsate" defaultButton="true" mnemonicParsing="false" onAction="#effectFade" text="effectFade" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+            <Button id="effectPulsate" defaultButton="true" mnemonicParsing="false" onAction="#showFade" text="showFade" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+            <Button id="effectPulsate" defaultButton="true" mnemonicParsing="false" onAction="#hideFade" text="hideFade" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+            <Button id="effectPulsate" defaultButton="true" mnemonicParsing="false" onAction="#toggleFade" text="toggleFade" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+            <Button id="effectPulsate" defaultButton="true" mnemonicParsing="false" onAction="#effectScale" text="effectScale" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+            <Button id="effectPulsate" defaultButton="true" mnemonicParsing="false" onAction="#showScale" text="showScale" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+            <Button id="effectPulsate" defaultButton="true" mnemonicParsing="false" onAction="#hideScale" text="hideScale" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+            <Button id="effectPulsate" defaultButton="true" mnemonicParsing="false" onAction="#toggleScale" text="toggleScale" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+            <Button id="effectPulsate" defaultButton="true" mnemonicParsing="false" onAction="#hideSlide" text="hideSlide" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+            <Button id="effectPulsate" defaultButton="true" mnemonicParsing="false" onAction="#showSlide" text="showSlide" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+            <Button id="effectPulsate" defaultButton="true" mnemonicParsing="false" onAction="#toggleSlide" text="toggleSlide" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+          </children>
+          <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          </columnConstraints>
+          <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          </rowConstraints>
+          <BorderPane.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" fx:id="x1" />
+          </BorderPane.margin>
+        </GridPane>
+      </bottom>
+      <center>
+        <BorderPane prefHeight="200.0" prefWidth="200.0">
+          <center>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+              <children>
+                <Label text="Checking Label Top">
+                  <font>
+                    <Font size="16.0" fx:id="x2" />
+                  </font>
+                  <VBox.margin>
+                    <Insets bottom="10.0" left="10.0" top="5.0" />
+                  </VBox.margin>
+                </Label>
+                <VBox fx:id="testArea" padding="$x1" prefHeight="106.0" prefWidth="580.0" spacing="20.0" styleClass="test-area">
+                  <children>
+                    <Label alignment="CENTER" prefHeight="52.0" prefWidth="530.0" styleClass="test-label" text="Testing Label">
+                      <font>
+                        <Font size="18.0" />
+                      </font>
+                    </Label>
+                    <HBox alignment="CENTER_LEFT" prefHeight="59.0" prefWidth="550.0" spacing="10.0">
+                      <children>
+                        <Label fx:id="testLabel" text="Testing Label">
+                          <font>
+                            <Font size="20.0" />
+                          </font>
+                        </Label>
+                        <TextField prefWidth="419.0" text="aaafmeklfemflrmgreg;regregregregregregregreあああfめklふぇmflrmgれg；れgれgれgれgれgれgれgれ" HBox.hgrow="ALWAYS" />
+                      </children>
+                    </HBox>
+                  </children>
+                </VBox>
+                <Label font="$x2" text="Checking Label Bottom">
+                  <VBox.margin>
+                    <Insets bottom="10.0" left="10.0" top="10.0" />
+                  </VBox.margin>
+                </Label>
+              </children>
+            </VBox>
+          </center>
+          <top>
+            <BorderPane prefHeight="28.265625" prefWidth="580.0">
+              <center>
+                <Label font="$x2" text="Testing Area" BorderPane.alignment="CENTER_LEFT" />
+              </center>
+              <right>
+                <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+                  <fx:define>
+                    <ToggleGroup fx:id="nodeSelect" />
+                  </fx:define>
+                  <children>
+                    <RadioButton fx:id="radioVbox" mnemonicParsing="false" selected="true" text="VBox" toggleGroup="$nodeSelect" />
+                    <RadioButton mnemonicParsing="false" text="Label" toggleGroup="$nodeSelect" />
+                  </children>
+                  <padding>
+                    <Insets right="10.0" />
+                  </padding>
+                </HBox>
+              </right>
+            </BorderPane>
+          </top>
+          <BorderPane.margin>
+            <Insets left="10.0" right="10.0" />
+          </BorderPane.margin>
+        </BorderPane>
+      </center>
+      <top>
+        <Text fill="#001066" strokeType="OUTSIDE" strokeWidth="0.0" text="Creamy Animation Sample" BorderPane.alignment="CENTER" BorderPane.margin="$x1">
+          <font>
+            <Font size="24.0" />
+          </font>
+        </Text>
+      </top>
+    </BorderPane>
+  </children>
+  <stylesheets>
+    <URL value="@TestAnimation.css" />
+  </stylesheets>
+</AnchorPane>

@@ -1,0 +1,29 @@
+/* 
+    Document   : NewDialog
+    Created on : 2012/12/23, 17:51:17
+    Author     : ahayama
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+.label-current {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+.label-past {
+    -fx-font-size: 14px;
+}
+
+.step-pane {
+    -fx-background-color: WHITE;
+    -fx-background-image: url('headback001.jpg');
+}
+
+.base-pane {
+    -fx-background-color: ALICEBLUE;
+}

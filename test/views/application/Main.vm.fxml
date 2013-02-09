@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import creamy.scene.control.*?>
+<?import creamy.scene.layout.*?>
+
+<AnchorPane prefHeight="704.0" prefWidth="1024.0" xmlns:fx="http://javafx.com/fxml" fx:controller="views.application.Main">
+  <fx:define>
+    <String fx:id="title" fx:value="Creamy" />
+  </fx:define>
+  <children>
+    <BorderPane id="borderPane" prefHeight="704.0" prefWidth="1024.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <top>
+        <AnchorPane id="header" prefHeight="45.0" prefWidth="1024.0" BorderPane.alignment="CENTER">
+          <children>
+            <CFHyperlink id="home" layoutX="15.0" layoutY="15.0" text="Creamy Framework sample application - Computer database" path="/Application/list/0/name/asc/" />
+          </children>
+          <padding>
+            <Insets bottom="10.0" />
+          </padding>
+          <BorderPane.margin>
+            <Insets />
+          </BorderPane.margin>
+        </AnchorPane>
+      </top>
+      <center>
+        <StackPane>
+          <children>
+            <!--% #body -->
+          </children>
+          <padding>
+            <Insets left="30.0" />
+          </padding>
+        </StackPane>
+      </center>
+    </BorderPane>
+  </children>
+</AnchorPane>

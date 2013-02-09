@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<AnchorPane>
+  <!--% #renderWithParam("CHILD", "key", "value") -->
+  <!--%
+  #renderWithParams("CHILDS", ["key0","key1"], ["value0","value1"])
+  $test
+  -->
+  <VBox>
+    <HBox>
+      <!--% NESTED -->
+      <!--%
+        NESTED2
+      -->
+    </HBox>
+  </VBox>
+  <!-- COMMENT -->
+</AnchorPane>

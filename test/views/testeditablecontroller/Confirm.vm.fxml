@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="110.0" prefWidth="358.0" xmlns:fx="http://javafx.com/fxml" fx:controller="views.testeditablecontroller.Confirm">
+  <fx:define>
+    <String fx:value="Delete Computer" fx:id="title" />
+  </fx:define>
+  <children>
+    <HBox id="hBox1" alignment="CENTER" layoutY="55.0" prefHeight="55.0" prefWidth="358.0" spacing="20.0">
+      <children>
+        <Button fx:id="cancel" cancelButton="true" onAction="#cancelHandler" style="-fx-font-size: 18;" styleClass="btn" text="キャンセル">
+          <stylesheets>
+            <URL value="@../application/Main.css" />
+          </stylesheets>
+        </Button>
+        <Button fx:id="ok" defaultButton="true" onAction="#deleteHandler" style="-fx-font-size: 18;" styleClass="btn-primary" text="削除する">
+          <stylesheets>
+            <URL value="@../application/Main.css" />
+          </stylesheets>
+        </Button>
+      </children>
+    </HBox>
+    <Text id="text1" layoutX="49.0" layoutY="39.0" stroke="BLACK" strokeWidth="0.0" text="削除してもよろしいですか？">
+      <font>
+        <Font size="20.0" />
+      </font>
+    </Text>
+  </children>
+</AnchorPane>

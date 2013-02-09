@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import creamy.scene.layout.*?>
+<?import creamy.scene.control.*?>
+
+<AnchorPane id="AnchorPane" fx:id="scene" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml" fx:controller="views.testcontroller.TestActivity">
+  <children>
+    <VBox id="vBox1" alignment="CENTER" prefHeight="500.0" prefWidth="600.0" AnchorPane.bottomAnchor="-3.5" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="3.5" spacing="10.0" >
+      <children>
+        <Label id="label1" text="TestActivity">
+          <font>
+            <Font size="24.0" />
+          </font>
+        </Label>
+        <CFHyperlink fx:id="linkTest" text="LinkTest" textFill="blue" path="/home">
+          <font>
+            <Font size="24.0" />
+          </font>
+        </CFHyperlink>
+        <StackPane fx:id="testForm"/>
+        <!--
+        <TextField id="textField1" fx:id="textFieldStr" prefWidth="200.0" styleClass="stong" text="$testStr" />
+        <TextField id="textField2" fx:id="textFieldInt" prefWidth="200.0" styleClass="stong" text="$testInt" />
+        #if($testInt == 20)
+        <TextField id="textField2" fx:id="textFieldVlc" prefWidth="200.0" styleClass="weak" text="dummy" />
+        #end
+        <Text id="text1" stroke="BLACK" text="below is a child">
+          <font>
+            <Font size="16.0" />
+          </font>
+        </Text>
+        -->
+        
+        <ChildPane child="views.TestChildActivity" prefHeight="180.0" prefWidth="600.0" />
+      </children>
+      <padding>
+        <Insets bottom="10.0" top="10.0" />
+      </padding>
+    </VBox>
+  </children>
+</AnchorPane>

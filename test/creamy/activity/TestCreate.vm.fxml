@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="scene" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns:fx="http://javafx.com/fxml" fx:controller="creamy.activity.TestCreate">
+  <fx:define>
+    <String fx:id="title" fx:value="Test Create Activity" />
+  </fx:define>
+  <children>
+    <GridPane id="gridPane1" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+        <AnchorPane id="anchorPane1" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.halignment="LEFT" GridPane.rowIndex="0" GridPane.valignment="CENTER">
+          <children>
+            <Label id="label1" prefHeight="47.0" prefWidth="194.0" styleClass="subtitle" text="Add a computer" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0" />
+          </children>
+          <GridPane.margin>
+            <Insets left="30.0" />
+          </GridPane.margin>
+        </AnchorPane>
+        <AnchorPane id="anchorPane2" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="1">
+          <children>
+            <StackPane id="stackPane1" fx:id="createForm" alignment="TOP_LEFT" prefHeight="484.0" prefWidth="760.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <children>
+                <HBox id="hBox1" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                  <padding>
+                    <Insets left="20.0" />
+                  </padding>
+                </HBox>
+              </children>
+            </StackPane>
+          </children>
+          <GridPane.margin>
+            <Insets left="40.0" />
+          </GridPane.margin>
+        </AnchorPane>
+      </children>
+      <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+      </columnConstraints>
+      <rowConstraints>
+        <RowConstraints maxHeight="299.0" minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="520.0" minHeight="10.0" prefHeight="466.0" valignment="TOP" vgrow="SOMETIMES" />
+      </rowConstraints>
+    </GridPane>
+  </children>
+</AnchorPane>
