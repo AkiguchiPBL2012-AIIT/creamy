@@ -22,14 +22,9 @@ Overview
 
 2. Creamyアプリケーションの自動作成
 
-3. 日付データを表示する
+3. 日付データを登録する
 
-4. 検索画面を作る
-
-5. Searchボタン、Cancelボタンの処理を実装
-
-6. 検索処理を実装
-
+4. 検索機能を追加する
 
 Creamyプロジェクトの作成
 =============================================
@@ -137,6 +132,8 @@ Name、Company_name、Introduced（yyyy-mm-dd形式）を入力して Create Com
         return redirect(LIST_PATH);
     }
 
+プログラムを再構築して実行します。
+
 SimpleDateFormatで指定している通り、Introduced値にはyyyy-MM-dd形式で入力します。
 
 データ入力後には、以下のように表示され、日付データが登録できます。
@@ -146,186 +143,92 @@ SimpleDateFormatで指定している通り、Introduced値にはyyyy-MM-dd形�
 .. image:: tutorial.Step7.png
     :width: 600px
 
+次に日付の表示方法を変更してみましょう。
 
+次のファイルはList.vm.fxmlファイルの一部で、Velocityの構文を使って一覧表示の部分を記述しています。
 
-検索画面を作る
+.. code-block:: xml
+ :linenos:
+ 
+ <!--%
+ #set( $i = 1 )
+ #foreach( $computer in $listOfComputer )
+ <Label text="$!computer.name" GridPane.columnIndex="0" GridPane.rowIndex="$i" />
+ <Label text="$!computer.company_name" GridPane.columnIndex="1" GridPane.rowIndex="$i" />
+ <Label text="$!computer.introduced" GridPane.columnIndex="2" GridPane.rowIndex="$i" />
+
+上記6行目を以下のように修正してください。
+
+.. code-block:: xml
+ :linenos:
+ 
+ #if( $computer.introduced )
+ <Label text="$formatter.format($!computer.introduced)" GridPane.columnIndex="2" GridPane.rowIndex="$i" />
+ #else
+ <Label text="" GridPane.columnIndex="2" GridPane.rowIndex="$i" />
+ #end
+
+検索機能を追加する
 =============================================
 
 データが登録できましたので、検索機能を追加してみましょう。
 
-検索画面は次の2つのファイルをコピーして、views.computercontrollerパッケージ下に配置してください。
+一覧画面に、検索条件入力フィールドと検索ボタンを追加します。
 
-* :download:`こちらから <tutorial/test/Search.java>` Search.javaをコピーしてください。
-
-* :download:`こちらから <tutorial/test/Search.vm.fxml>` Search.vm.fxmlをコピーしてください。
-
-Search.vm.fxmlファイルは、Scene Builderで開くことができます。
-
-**Scene Builder実行例**
-
-.. image:: tutorial.Step4.png
-    :width: 600px
-
-
-検索画面を呼び出す
-=============================================
-
-検索ボタンをクリックして、検索画面が表示されるようにしましょう。
-
-**List.vm.fxmlファルに検索リンクを追加**
-
-New Computer リンクの下に Search Computer ボタンを配置します。
+次は、List.vm.fxmlファイルの一部です。5行目〜19行目を追加してください。
 
 .. code-block:: xml
   :linenos:
-   
-  <CFHyperlink path="/ComputerController/make" text="New Computer">
-    <VBox.margin>
-      <Insets top="10.0" />
-    </VBox.margin>
-  </CFHyperlink>
-  <Button onAction="#search" text="Search Computer" />
-
-onAction属性に指定している #search を、Listクラスのメソッドとして追記します。
-
-**List.javaにsearchメソッドを実装**
-
-.. code-block:: java
-  :linenos:
   
-  @FXML private void search(ActionEvent event) {
-    // 検索画面を表示して、Searchなら続行、Cancelなら中断
-    Activity window = createWindow("/ComputerController/search", Modality.NONE);
-  }
-  
-ComputerControllerクラスに、以下のsearchメソッドを実装します。
+  <BorderPane id="root" prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml" fx:controller="views.computercontroller.List">
+  <center>
+    <VBox>
+      <children>
+        <CFHForm path="/ComputerController/search" prefHeight="-1.0" prefWidth="-1.0" spacing="5.0">
+          <children>
+            <Label text="Computer :"/>
+            <CFTextField prefWidth="-1.0" name="computerName" />
+             <Label text="Company :"/>
+            <CFTextField prefWidth="-1.0" name="companyName" />
+            <CFSubmitButton mnemonicParsing="false" text="Search" defaultButton="true" />
+          </children>
+          <padding>
+            <Insets />
+          </padding>
+          <VBox.margin>
+            <Insets bottom="10.0" top="10.0" />
+          </VBox.margin>
+        </CFHForm>
+        <GridPane styleClass="grid-list">
+          <children>
+            <Label style="-fx-font-weight: bold;" text="Name" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="0" />
+
+11行目にCFSubmitButtonが定義されています。このボタンをクリックすると、5行目のパスにリクエストを送りますが、CFHFormで囲まれたCFTextField要素のデータを引数として渡します。
+
+これに対応するメソッドを、ComputerControllerクラスに追記します。
 
 .. code-block:: java
     :linenos:
-    
-    public Result search() {
-        return ok(this);
+  
+    public Result search(@Bind("computerName") String computerName, @Bind("companyName") String companyName) {
+        
+        computerName = computerName == null ? "" : computerName;
+        companyName = companyName == null ? "" : companyName;
+        listOfComputer = Computer.page(computerName, companyName).getList();
+        return ok(views.computercontroller.List.class);
     }
 
+では、検索を確認しましょう。プログラムを再構築して実行します。
 
-では、検索画面が表示できるかを確認しましょう。
-
-* NetBeansでNewProjeSampleプロジェクトを右クリックして「構築」を選択します。
-
-* エントリーポイントクラスを右クリックして「ファイルを実行」を選択します。
-
-画面の Search Computer ボタンをクリックすると、検索画面が表示されます。
-
-**検索画面表示例**
+**検索条件入力フィールド**
 
 .. image:: tutorial.Step5.png
     :width: 600px
 
-次に、検索処理を実装しましょう。
+検索条件を入力してSearchボタンをクリックすると、検索結果が表示されます。
 
-Searchボタン、Cancelボタンの処理を実装
-=============================================
-
-次は、Search.vm.fxmlファイルの Cancelボタンと Searchボタンの部分です。
-
-.. code-block:: xml
-  :linenos:
-  
-  <HBox alignment="CENTER" prefHeight="36.0" prefWidth="459.0" spacing="50.0">
-    <children>
-      <Button cancelButton="true" mnemonicParsing="false" onAction="#handleCancelAction" text="Cancel">
-        <font>
-          <Font size="16.0" fx:id="x2" />
-        </font>
-      </Button>
-      <Button defaultButton="true" font="$x2" mnemonicParsing="false" onAction="#handleSearchAction" text="Search" />
-    </children>
-  </HBox>
-
-handleCancelActionメソッドとhandleSearchActionメソッドは、ダウンロードしたSearch.javaファイルに実装済みです。検索処理をListクラスに実行させるために、7行目のコメントを外してください。
-
-.. code-block:: java
-    :linenos:
-    
-    // 検索ボタンクリック
-    @FXML private void handleSearchAction(ActionEvent event) {
-        Map<String,Object> params = new HashMap<String,Object>() {{
-           put("computer", computerName.getText());
-           put("company", companyName.getText());
-        }};
-        ((List)getOwner()).searchAction(params);
-    }
-    // キャンセルボタンクリック
-    @FXML private void handleCancelAction(ActionEvent event) {
-        ((Stage)this.scene.getScene().getWindow()).close();
-    }
-
-3〜6行目で、入力値を検索条件としてHashMapにセットしています。
-
-7行目で、検索画面のオーナーであるListクラスのsearchActionメソッドを実行しています。
-
-List.javaには、以下のメソッドを実装してください。
-
-.. code-block:: java
-    :linenos:
-    
-    public void searchAction(Map data) {
-        requestData("/ComputerController/list")
-                .params(data)
-                .execute();
-    }
-
-パスに指定している通り、ComputerControllerクラスのlistメソッドは修正が必要です。scaffoldで作成したlistメソッドは、引数を持ちません。検索条件を指定するためには以下のように修正してください。
-
-.. code-block:: java
-    :linenos:
-    
-    /*
-    public Result list() {
-        listOfComputer = Computer.find.all();
-        return ok(this);
-    }
-    */
-    public Result list(@Bind("computer") String computerName,
-                       @Bind("company") String companyName) {
-        
-        computerName = computerName == null ? "" : computerName;
-        companyName = companyName == null ? "" : companyName;
-        
-        listOfComputer = Computer.page(computerName, companyName).getList();
-        return ok(this);
-    }
-
-.. note::
-
-  Controllerクラスには、メソッドのオーバーロードはできません。
-
-検索処理を実装
-=============================================
-
-次にComputerクラスに次の検索処理を実装してください。
-
-.. code-block:: java
-    :linenos:
-    
-    public static Page<Computer> page(String computerName, String companyName) {
-        return 
-            find.where()
-                .ilike("name", "%" + computerName + "%")
-                .ilike("company_name", "%" + companyName + "%")
-                .findPagingList(5)
-                .getPage(0);
-    }
-
-では、実行してみましょう。
-
-* NetBeansでNewProjeSampleプロジェクトを右クリックして「構築」を選択します。
-
-* エントリーポイントクラスを右クリックして「ファイルを実行」を選択します。
-
-画面の Search Computer ボタンをクリックすると、検索画面が表示されます。Computer name、Company nameに値を入力し、Searchボタンをクリックします。
-
-**検索結果画面例**
+**検索結果表示**
 
 .. image:: tutorial.Step6.png
     :width: 600px
+
