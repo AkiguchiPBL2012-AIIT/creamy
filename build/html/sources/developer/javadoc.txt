@@ -1,2 +1,0 @@
-Creamy Framework JavaDoc
-=============================
