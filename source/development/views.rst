@@ -11,72 +11,43 @@ viewsパッケージは、MVCアーキテクチャのViewにあたるもので�
 * cssファイル
 * イメージファイル
 
-fxmlファイルのcontrollerクラスとしてjavaファイルを作成します。スタイルシートを適用する場合は、同じファイル名でcssファイルを配置します。
-同じ名前でcssファイルを配置しておくと、スタイルシートの適用処理を記述しなくても自動的に適用されます。
-
 これらのファイルは、viewsパッケージ配下に、Creamyコントローラクラス名をすべて小文字に変換した名前でパッケージを作成し、さらにその配下に配置します。
 
-
 次の例は、新しいコンピュータデータを登録するCreamyアプリケーションのパッケージ構成です。
-
-起動プログラムはcomputerdatabase.ComputerDatabaseクラスで、Creamyコントローラクラスがcontrollers.Applicationです。
-
-Activityクラスがviews.applicationパッケージに配置されています。
 
 **パッケージ構成例**
 
 .. image:: views.application.png
 
-Create.javaとCreate.vm.fxmlでコンピュータデータの登録画面を構成しています。
-
-Edit.javaとEdit.vm.fmlで、コンピュータデータの編集画面を構成しています。
-
-List.javaとList.vm.fmlで、コンピュータデータ一覧画面を構成しています。
-
 **画面例**
 
-初期画面では、Main.javaとMain.vm.fxmlで構成するベースの画面に、List画面を貼付けた形で表示されます。
-
 .. image:: views.ComputerDatabase.png
-    :width: 800px
-
-
-
-１つのCreamyアプリケーションには、１つ以上のコントローラクラスを作成することができます。その場合は、それぞれのコントローラクラスに対応するviews.<Creamyコントローラクラス名>パッケージを作成します。
-
+    :width: 600px
 
 継承すべきクラス
 =============================================
-ここでは、viewsパッケージ以下に配置するjavaクラスを総称して、Activityクラスと呼びます。
 Activityクラスは、AvailableActivityクラスを継承して作成します。
 
 **AvailableActivityクラス**
 
 .. code-block:: java
-  :linenos:
+   :linenos:
  
-  public class AvailableActivity extends Activity implements Available {
-    @Override
-    public void initialize() {}
-	:
-  }
+   public class AvailableActivity extends Activity implements Available {
+     @Override
+     public void initialize() {}
+ 
+   }
 
-**記述例**
-
-以下のコードは、AvailableActivityを継承してListクラスを定義した例です。
-コンピュータデータ一覧を表示する画面に対応するクラスです。
+initializeメソッドに画面の描画コードを記述します。
 
 .. code-block:: java
-  :linenos:
+   :linenos:
 
-  @Template(Main.class)
-  public class List extends AvailableActivity {
-
-    // Set page title
-    public String title() { return "Computer-Database"; }
-        :
-
-
+   public class List extends AvailableActivity {
+ 
+   } 
+ 
 継承すべきクラスが提供する機能
 =============================================
 Activityクラスは、画面表示に必要なFormコントロールの描画メソッドを提供します。
@@ -119,52 +90,19 @@ Activity記述例
   );
  }
 
-3行目のcreateFormは、 `FXMLの書き方`_ の例にあるように、Create.vm.fxmlファイルで指定したAnchorPaneのIDです。
-
-4行目でCFGridFormを生成しています。Applicationコントローラクラスのsaveメソッドを実行するpathを指定し、データ送信メソッドはPOST、スタイルクラスとしてgird-formを適用しています。
-
-5行目でCFLabelを生成しています。labelメソッドの引数が、そのまま表示される文字です。
-
-6行目はCFTextFieldを生成しています。textメソッドの引数は、Creamy UIコントロールのname属性にあたります。
-name属性値をキーとして、CFTextFieldの入力値であるvalue値を取得することができます。16行目で生成しているCFSubmitButtonがクリックされたとき、CFGridFormに配置されたCreamy UIコントロールの入力値を次の画面に自動的にバインドします。
-
-7行目もCFLabelの生成ですが、ここではスタイルクラスの設定をしています。styleClassメソッドの引数に記述している this.validationResult.hasError()で入力値チェックを行い、その結果によってスタイルクラスを使い分けています。
-
-5〜7行がCFGridFormの1行にあたります。rowメソッドで1行分のCreamy UIコントロールを記述しますが、可変長引数を取りますので、数に規定はありません。ここでは3つのCreamy UIコントロールを配置しています。
-
-この記述例では5つのrowメソッドを記述していますので、5行3列の配置になることがわかります。
-
-9、12行目で生成しているCFTextFieldは、formatメソッドでデータ形式を指定しています。引数で指定しているデータ形式は、次の形式のSimpleDateFormatです。
-
-.. code-block:: java
-
- private static final String DATE_FORMAT = "yyyy-MM-dd";
- private SimpleDateFormat format = new SimpleDateFormat(DATE_FORMAT);
-
-15行目でCFChoiceBoxを生成しています。itemsメソッドでMap形式で選択アイテムを指定します。Company.options() は、Companyテーブルのデータを、キー：Company ID、値：Company nameのMap形式で返すよう実装しています。
+4行目でCFGridFormを生成しています。Applicationコントローラクラスのsaveメソッドを実行するパスを指定し、データ送信メソッドはPOSTを指定しています。
 
 16行目でCFSubmitButtonを生成しています。
 
-18行目でCFLinkButtonを生成しています。linkbuttonメソッドの引数には、遷移先のパスを指定します。このリンクボタンがクリックされると、Applicationコントロールクラスのindexメソッドが実行されます。indexメソッドは次のようになっていますので、List画面（初期画面）に遷移します。
-
-.. code-block:: java
- :linenos:
-
- private final String HOME = "/Application/list/0/name/asc";
- public Result index() {
-    return redirect(HOME);
- }
+これは、HTMLのform要素にsubmitボタンを配置したイメージに相当します。
 
 FXMLの書き方
 =============================================
 上記のCreate.javaに実装した内容を表示するには、Create.vm.fxmlファイルが必要です。
-ここでは、Creamyアプリケーションを作成するために必要なFXMLの記述方法を説明します。
 
-FXMLのより詳細な記述方法は、以下を参照してください。
+FXMLのより詳細な記述方法は、`こちら <http://docs.oracle.com/javafx/2/api/javafx/fxml/doc-files/introduction_to_fxml.html#overview>`_ を参照してください。
 
-`http://docs.oracle.com/javafx/2/api/javafx/fxml/doc-files/introduction_to_fxml.html <http://docs.oracle.com/javafx/2/api/javafx/fxml/doc-files/introduction_to_fxml.html#overview>`_ 
-
-まず、<AnchorPane>要素のfx:controller属性にコントローラクラス名を指定して、FXMLファイルとクラスファイルを関連づけます。以下の例では、5行目の fx:controller="views.application.Create" の部分がそれにあたります。
+<AnchorPane>要素のfx:controller属性にコントローラクラス名を指定して、FXMLファイルとクラスファイルを関連づけます。
 
 **記述例 - Create.vm.fxml**
 
@@ -177,15 +115,11 @@ FXMLのより詳細な記述方法は、以下を参照してください。
     xmlns:fx="http://javafx.com/fxml" 
     fx:controller="views.application.Create">
 
-次に、views.application.Createクラスのinitialize()メソッドで実装した内容を、FXMLファイルのどこに配置するかを決めます。
-
-ここでは、<StackPane>の<children>要素として加えることにしますので、views.application.Createクラスからその位置がわかるように、fx:id属性として名前を指定します。
-
-次の例では、1行目で fx:id="createForm" として、<StackPane>のidを設定しています。
+views.application.Createクラスのinitialize()メソッドで実装した内容は、次の<StackPane>の<children>要素として指定しています。
 
 **記述例 - Create.vm.fxml**
 
-.. code-block:: html
+.. code-block:: xml
  :linenos:
 
  <StackPane id="stackPane1" fx:id="createForm" alignment="TOP_LEFT" 
@@ -197,7 +131,7 @@ FXMLのより詳細な記述方法は、以下を参照してください。
     </children>
  </StackPane>
 
-views.application.Createクラスでは、fx:idの属性値として指定した"createForm"をインスタンス変数名として宣言します。その際、@FXMLアノテーションを付けおくことで<StackPane>と関連づけられます。
+views.application.Createクラスでは、@FXMLアノテーションを付けおくことで<StackPane>と関連づけられます。
 
 **記述例 - Create.java**
 
@@ -206,21 +140,17 @@ views.application.Createクラスでは、fx:idの属性値として指定した
 
  public class Create extends AvailableActivity {
     @FXML private StackPane createForm;
-        :
-
-<StackPane>のchild要素として `Activity記述例`_ の3行目からの実装部分が描画されます。
+        
+ }
 
 以下は、コンピュータデータ登録画面の実行例です。
 
 **実行例**
 
 .. image:: views.AddComputer.png
+    :width: 500px
 
-起動プログラムはcomputerdatabase.ComputerDatabaseクラスで、Creamyコントローラクラスがcontrollers.Applicationです。
-
-Activityクラスがviews.applicationパッケージに配置されています。
-
-Creamy独自の記述方法の説明
+Creamy独自の記述方法
 =============================================
 Creamyで使用するFXMLファイルには、Velocity構文を記述することが出来ます。FXMLファイルの拡張子が .vm.fxml となっているのは、Velocityのテンプレートとしての役割も持たせているためです。
 

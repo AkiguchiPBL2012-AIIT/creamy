@@ -1,7 +1,7 @@
 =============================================
 レイアウトテンプレート
 =============================================
-ヘッダやフッターなどをアプリケーションの共通部分としてすべての画面に配置したい場合があります。
+ヘッダやフッタなどをアプリケーションの共通部分としてすべての画面に配置したい場合があります。
 
 Creamyでは、このような共通部分を持った画面を作成するために、レイアウトテンプレートの仕組みがあります。
 
@@ -83,7 +83,8 @@ Velocity構文のマクロに関しては、`Creamy独自の記述方法の説�
 
  @Template(Main.class)
  public class List extends AvailableActivity {
-     :
+ 
+ }
 
 上記実行例で Add a new computer ボタンをクリックすると、次の画面に遷移します。Create.javaとCreate.vm.fxmlファイルが #bodyマクロ 部分に展開されています。
 
@@ -98,7 +99,8 @@ Velocity構文のマクロに関しては、`Creamy独自の記述方法の説�
 
  @Template(Main.class)
  public class Create extends AvailableActivity {
-     :
+ 
+ }
 
 更に、コンピュータ一覧のコンピュータ名のリンクをクリックすると、次の画面に遷移します。Edit.javaとEdit.vm.fxmlファイルが #bodyマクロ 部分に展開されています。
 
@@ -115,6 +117,7 @@ Velocity構文のマクロに関しては、`Creamy独自の記述方法の説�
 
  @Template(Main.class)
  public class Edit extends AvailableActivity {
-     :
+ 
+ }
 
 

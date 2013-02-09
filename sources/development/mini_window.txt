@@ -22,7 +22,7 @@ Creamyは、小画面を生成するためのメソッドを提供します。�
 
     public static Activity createWindow(Browser ownerBrowser, String path, Modality modality) 
 
-第1引数は親browserのインスタンスです。親browserと小画面の親子関係を設定します。第2引数が小画面のパスです。第3引数は小画面のModalityを設定します。
+第1引数は親Browserのインスタンスです。親Browserと小画面の親子関係を設定します。第2引数が小画面のパスです。第3引数は小画面のModalityを設定します。
 生成した小画面インスタンスを返します。
 
 
@@ -52,7 +52,7 @@ Creamyは、小画面を生成するためのメソッドを提供します。�
 
 2行目で新しいMenuItemを作成し、そのアクションとしてEventHanderを生成しています。
 
-7、8行目で小画面生成しています。Activity.createWindowメソッドの第１引数は、親browserのインスタンスを渡します。第2引数が小画面のパスです。コントローラクラスがWizardController、初期画面はCreate.java、Create.vm.fxmlファイルで構成されています。第3引数のModality.APPLICATION_MODALは、小画面をクローズするまで親画面を操作させない設定です。
+7、8行目で小画面生成しています。Activity.createWindowメソッドの第１引数は、親Browserのインスタンスを渡します。第2引数が小画面のパスです。コントローラクラスがWizardController、初期画面はCreate.java、Create.vm.fxmlファイルで構成されています。第3引数のModality.APPLICATION_MODALは、小画面をクローズするまで親画面を操作させない設定です。
 
 
 **実行例１**
@@ -86,7 +86,7 @@ Creamyは、小画面を生成するためのメソッドを提供します。�
         Activity window = createWindow("/EditableController/search", Modality.NONE);
     }
 
-1行目は、Search Computerボタンのアクションメソッドです。
+1行目は、Search Computerボタンのハンドラメソッドです。
 
 3行目で検索ウィンドウを生成しています。第2引数でModality.NONEを指定していますので、検索ウィンドウを表示している間も、親画面の操作ができます。
 

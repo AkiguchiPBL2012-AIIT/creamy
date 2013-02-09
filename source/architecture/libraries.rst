@@ -8,7 +8,7 @@ CreamyではFXMLをテンプレートとして利用できるようになって�
 
 テンプレートエンジンにはApache Velocity 1.7を採用しています。
 
-テンプレートには、以下のようにVTLが記述できます。
+テンプレートには、以下のようにVTL(Velocity Template Language)が記述できます。
 
 .. code-block:: xml
 

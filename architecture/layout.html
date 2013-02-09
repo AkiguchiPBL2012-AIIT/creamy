@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>アプリケーションのレイアウトと編成 &mdash; Creamy 0.1 documentation</title>
+    <title>アプリケーションのレイアウトと編成 &mdash; Creamy 1.0 documentation</title>
     
     <link rel="stylesheet" href="../static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.1',
+        VERSION:     '1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="../static/jquery.js"></script>
     <script type="text/javascript" src="../static/underscore.js"></script>
     <script type="text/javascript" src="../static/doctools.js"></script>
-    <link rel="top" title="Creamy 0.1 documentation" href="../index.html" />
+    <link rel="top" title="Creamy 1.0 documentation" href="../index.html" />
     <link rel="up" title="Creamyのアーキテクチャ" href="../architecture.html" />
     <link rel="next" title="Creamyの規約" href="agreement.html" />
     <link rel="prev" title="アーキテクチャ" href="architecture.html" /> 
@@ -43,52 +43,33 @@
         <li class="right" >
           <a href="architecture.html" title="アーキテクチャ"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">Creamy 0.1 documentation</a> &raquo;</li>
+        <li><a href="../index.html">Creamy 1.0 documentation</a> &raquo;</li>
           <li><a href="../architecture.html" accesskey="U">Creamyのアーキテクチャ</a> &raquo;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">アプリケーションのレイアウトと編成</a><ul>
-<li><a class="reference internal" href="#id2">ディレクトリ・ファイル構成</a></li>
-<li><a class="reference internal" href="#lib">lib ディレクトリ</a></li>
-<li><a class="reference internal" href="#conf">confディレクトリ</a></li>
-<li><a class="reference internal" href="#src">srcディレクトリ</a></li>
-<li><a class="reference internal" href="#src-userapp">src/userapp ディレクトリ</a></li>
-<li><a class="reference internal" href="#src-models">src/models ディレクトリ</a></li>
-<li><a class="reference internal" href="#src-controllers">src/controllers ディレクトリ</a></li>
-<li><a class="reference internal" href="#src-views">src/views ディレクトリ</a></li>
-<li><a class="reference internal" href="#src-helpers">src/helpers ディレクトリ</a></li>
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../static/creamy03small.jpg" alt="Logo"/>
+            </a></p>
+<h3><a href="../index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_start.html">Creamyを使ってみよう</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">チュートリアル</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basic_concept.html">Creamyの基本概念</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../architecture.html">Creamyのアーキテクチャ</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="view_activity.html">Viewの構成とActivity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libraries.html">使用するライブラリ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html">アーキテクチャ</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">アプリケーションのレイアウトと編成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="agreement.html">Creamyの規約</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../development_by_creamy.html">Creamyによる開発</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../download.html">ダウンロード</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../licence.html">LICENCE</a></li>
 </ul>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="architecture.html"
-                        title="previous chapter">アーキテクチャ</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="agreement.html"
-                        title="next chapter">Creamyの規約</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="../sources/architecture/layout.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
-  <h3>Quick search</h3>
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
 
@@ -119,7 +100,7 @@
 <tr class="row-even"><td><blockquote class="first last">
 <div>lib</div></blockquote>
 </td>
-<td>依存Jarを配置</td>
+<td>依存jarを配置</td>
 </tr>
 <tr class="row-odd"><td><blockquote class="first last">
 <div>nbproject</div></blockquote>
@@ -137,7 +118,7 @@
 <td>ソースコードを配置</td>
 </tr>
 <tr class="row-even"><td><blockquote class="first last">
-<div>src/userapp</div></blockquote>
+<div>src/{userapp}</div></blockquote>
 </td>
 <td>エントリポイントを配置。任意の名前で作成</td>
 </tr>
@@ -167,8 +148,8 @@
 <div class="section" id="lib">
 <h2>lib ディレクトリ<a class="headerlink" href="#lib" title="Permalink to this headline">¶</a></h2>
 <p>ライブラリを配置するディレクトリです。
-アプリケーションで利用するJarファイルはこのディレクトリに配置してください。
-デフォルトでは、Creamyが依存する以下のファイルがされています。</p>
+アプリケーションで利用するjarファイルはこのディレクトリに配置してください。
+デフォルトでは、Creamyが依存する以下のファイルが配置されています。</p>
 <ul class="simple">
 <li>creamy-1.0.jar</li>
 <li>ebean-2.7.3.jar</li>
@@ -205,7 +186,7 @@
 <tr class="row-odd"><td><blockquote class="first last">
 <div>ebean.properties</div></blockquote>
 </td>
-<td>EBeanの設定ファイル</td>
+<td>Ebeanの設定ファイル</td>
 </tr>
 <tr class="row-even"><td><blockquote class="first last">
 <div>velocity.properties</div></blockquote>
@@ -222,7 +203,7 @@
 srcディレクトリの配下には以下のディレクトリが配置されています。</p>
 <p>それぞれのディレクトリの詳細については後述します。</p>
 <ul class="simple">
-<li>userapp</li>
+<li>{userapp}</li>
 <li>models</li>
 <li>controllers</li>
 <li>views</li>
@@ -230,7 +211,7 @@ srcディレクトリの配下には以下のディレクトリが配置され�
 </ul>
 </div>
 <div class="section" id="src-userapp">
-<h2>src/userapp ディレクトリ<a class="headerlink" href="#src-userapp" title="Permalink to this headline">¶</a></h2>
+<h2>src/{userapp} ディレクトリ<a class="headerlink" href="#src-userapp" title="Permalink to this headline">¶</a></h2>
 <p>アプリケーションのエントリポイントとなるクラスを配置するディレクトリ（パッケージ）です。
 デフォルトでは存在しないので、任意の名前(アプリケーション名など)のディレクトリを作成してください。
 また、その配下にエントリポイントとなるクラスを作成してください。</p>
@@ -261,7 +242,7 @@ srcディレクトリの配下には以下のディレクトリが配置され�
 <div class="section" id="src-helpers">
 <h2>src/helpers ディレクトリ<a class="headerlink" href="#src-helpers" title="Permalink to this headline">¶</a></h2>
 <p>全てのビューで利用可能なVelocityマクロを配置するディレクトリです。
-デフォルトではbody.vmとRender.vmが配置されています。</p>
+デフォルトではbody.vmとrender.vmが配置されています。</p>
 <ul class="simple">
 <li>body.vm</li>
 <li>render.vm</li>
@@ -289,7 +270,7 @@ srcディレクトリの配下には以下のディレクトリが配置され�
         <li class="right" >
           <a href="architecture.html" title="アーキテクチャ"
              >previous</a> |</li>
-        <li><a href="../index.html">Creamy 0.1 documentation</a> &raquo;</li>
+        <li><a href="../index.html">Creamy 1.0 documentation</a> &raquo;</li>
           <li><a href="../architecture.html" >Creamyのアーキテクチャ</a> &raquo;</li> 
       </ul>
     </div>

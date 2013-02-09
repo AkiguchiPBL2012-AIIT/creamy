@@ -19,7 +19,7 @@ Web     View = HTML + CSS + JavaScript
 
 イベントをハンドリングする、表示要素を変更する、リクエストの送信/ハンドリングをする という意味では同じですが構成が異なります。
 
-* Activityは、Javaオブジェクト。JavaFXで記述する
+* Activityは、Javaオブジェクト。JavaFXのクラスを使って記述する
 
 * Activityは、1つのFXMLに対して必ず1つ定義される。(1対1の関係)
 
@@ -31,11 +31,10 @@ Web     View = HTML + CSS + JavaScript
 
 ActivityとFXMLの関係
 =============================================
-ActivityはJavaFXで呼ぶ「Controller」と同一です。Creamyでは用語の統一のため「Activity」と呼んでいます。
 
-(ActivityはJavaFXのControllerを拡張したものです。)
+ActivityはJavaFXの「Controller」を拡張したものです。Creamyでは用語の統一のため「Activity」と呼んでいます。
 
-したがって、ActivityからFXMLに記述されたNodeを参照することができますし、FXML内にActivity内のメソッドをハンドラとして記述することができます。以下に例を示します。
+したがって、ActivityからFXMLに記述されたNodeを参照することや、FXML内にActivity内のメソッドをハンドラとして記述することができます。以下に例を示します。
 
 *Sample.vm.fxml*
 

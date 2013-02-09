@@ -21,7 +21,7 @@ creamy.propertiesの設定項目は以下の通りです。
 設定ファイル例
 
 
-.. code-block:: java
+.. code-block:: c
 	:linenos:
 	
 		
@@ -41,11 +41,11 @@ creamy.propertiesの設定項目は以下の通りです。
 
 ebean.propertiesのパラメータ
 =============================================
-ebean.propertiesはCreamyで採用しているORMであるEBeanの設定ファイルです。
+ebean.propertiesはCreamyで採用しているORMであるEbeanの設定ファイルです。
 
 ここでは特に注意の必要な設定項目についてのみ解説します。
 
-詳細は `EBean本家 <http://www.avaje.org/>`_ のドキュメントを参照してください。
+詳細は `Ebean公式サイト <http://www.avaje.org/>`_ のドキュメントを参照してください。
 
 
 .. csv-table:: 
@@ -59,7 +59,7 @@ ebean.propertiesはCreamyで採用しているORMであるEBeanの設定ファ�
 設定ファイル例（一部省略）
 
 
-.. code-block:: java
+.. code-block:: c
 	:linenos:
 		
 	
@@ -79,21 +79,21 @@ ebean.propertiesはCreamyで採用しているORMであるEBeanの設定ファ�
 	〜　略　〜
 	
 	#SQLite接続設定
-	datasource.default.username=username                                                    -- ユーザ名
-	datasource.default.password=password                                                     -- パスワード
-	datasource.default.databaseUrl=jdbc:sqlite:computer_database.sqlite3      -- 接続先 
-	datasource.default.databaseDriver=org.sqlite.JDBC                                    -- 利用するドライバ
-	datasource.default.heartbeatsql=select 1                                                   -- 動作確認用のSQL
-	datasource.default.isolationlevel=read_uncommitted                                 -- トランザクション分離レベルの指定
+	datasource.default.username=username													-- ユーザ名
+	datasource.default.password=password													-- パスワード
+	datasource.default.databaseUrl=jdbc:sqlite:computer_database.sqlite3	-- 接続先 
+	datasource.default.databaseDriver=org.sqlite.JDBC									-- 利用するドライバ
+	datasource.default.heartbeatsql=select 1													-- 動作確認用のSQL
+	datasource.default.isolationlevel=read_uncommitted								-- トランザクション分離レベルの指定
 
 
 
 velocity.propertiesのパラメータ
 =============================================
 velocity.propertiesはCreamyで採用しているテンプレートエンジンであるVelocityの設定ファイルです。
-Creamyでは最小限の設定のみを記述されています。
+Creamyでは最小限の設定のみが記述されています。
 基本的に変更する必要はありませんが変更する場合は、
-`Velocity本家 <http://velocity.apache.org/>` のドキュメント等を参照してください。
+`Velocity公式サイト <http://velocity.apache.org/>` のドキュメント等を参照してください。
 以下、Creamyで設定している項目です。
 
 .. csv-table::
@@ -108,7 +108,7 @@ Creamyでは最小限の設定のみを記述されています。
 
 設定ファイル例(デフォルト)
 
-.. code-block:: java
+.. code-block:: c 
 	:linenos:
 		
 	resource.loader = class

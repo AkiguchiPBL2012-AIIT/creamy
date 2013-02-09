@@ -17,16 +17,16 @@ Creamy パッケージ図
  
 .. image:: package-diagram.png
 
-javafxとの関連
+javaFXとの関連
 -----------------------
 
 JavaFXにもCreamyにもscene.control、scene.layoutパッケージがあるのが分かりますね？
 
 これは、CreamyがJavaFXのscene.control、scene.layoutをラップしているということを表しています。
 
-実際にcreamy.scene.cntrol、creamy.scene.layoutに含まれるクラスは、ページ遷移に関連する以下のクラスです。
+実際にcreamy.scene.control、creamy.scene.layoutに含まれるクラスは、ページ遷移に関連する以下のクラスです。
 
-**creamy.scene.cntrol**
+**creamy.scene.control**
 
 * CFHpyerlink ・・・ HTML <a> 相当
 * CFTextField ・・・ HTML <input type="text"> 相当
@@ -41,17 +41,17 @@ JavaFXにもCreamyにもscene.control、scene.layoutパッケージがあるの�
 * CFHForm ・・・ HTML <form> 相当。HBox形式
 * ...
 
-つまり、creamy.scene.cntrolには、Formに関連するInputコントロールと、Hyperlink等のページ遷移に関連するコントロールが配置されているということです。
+つまり、creamy.scene.controlには、Formに関連するInputコントロールと、Hyperlink等のページ遷移に関連するコントロールが配置されているということです。
 
-また、creamy.scene.layoutには、レイアウト形式に応じたFormが配置されているとうことです。
+また、creamy.scene.layoutには、レイアウト形式に応じたFormが配置されているということです。
 
-これらのコントロールは、JavaFXのプリミティブコントロール(Hyperlink,TextField,Button,ChoiceBox.../GridPane,VBox,HBox...)を拡張(継承)して作成されています。
+これらのコントロールは、JavaFX標準のコントロール(Hyperlink,TextField,Button,ChoiceBox.../GridPane,VBox,HBox...)を拡張(継承)して作成されています。
 
 com.avaje.ebeanとの関連
 -------------------------------------------
 creamy.dbからcom.avaje.ebeanへの使用依存があるのが分かります。
 
-creamy.dbにはModelクラスが配置されており、Ebean ORマッパのAPIをラップしているのです。
+creamy.dbにはModelクラスが配置されており、Ebean O/RマッパのAPIをラップしているのです。
 
 org.apache.velocityとの関連
 --------------------------------------------
@@ -78,7 +78,7 @@ creamy.activityからorg.apache.velocityへの使用依存があるのが分か�
 * View
 
   * UserFXMLがPaneを継承した関係になっています。これは、FXMLのルートノードが通常Paneとなるためです
-  * UserActivityはcreamy.activity.AvairableAcitivtyを継承します。AvairableAcitivtyは親ノードへの参照、子ノードへの参照を保持しており、自由に親、子にアクセスすることができます。また、AvairableActivityには、以下の種類APIが用意されています。
+  * UserActivityはcreamy.activity.AvairableAcitivtyを継承します。AvairableActivityは親ノードへの参照、子ノードへの参照を保持しており、自由に親、子にアクセスすることができます。また、AvairableActivityには、以下の種類APIが用意されています。
       * Form生成のヘルパーメソッド：GridFormの生成、InputTextコントロールの生成など
       * Activity内からRequestを発行するたのめAPI：requestActivity(), requestData()の２つがある
       * アニメーションのヘルパーメソッド：スライドアニメーションなど

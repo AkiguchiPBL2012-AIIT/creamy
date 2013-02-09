@@ -6,6 +6,7 @@ Creamyではリクエストを跨いでパラメータを授受する方法の�
 
 グローバルオブジェクトはその名の通り、
 パラメータを格納出来てどこからでもアクセス可能なオブジェクトです。
+Webアプリケーションでのセッションオブジェクトと同様の働きをします。
 
 
 グローバルオブジェクトの種類
@@ -34,16 +35,15 @@ ApplicationDataの利用はコントローラおよびアクティビティか�
 	//コントローラからのアクセス
 	public class GlobalTestController extends Controller {
 		public Result GlobalTest() {
-	        // getApplicationData()の戻り値型は Map<String, Object>
-	        getApplicationData().put("AppKey", "AppValue");
-	        getApplicationData().get("AppKey"); //"AppValue"が取得できる
-	        
-	        // getContinualData()の戻り値型も同様に Map<String, Object>なので
-	        // String型以外でも格納可能
-	        getContinualData().put("ContinualKey", 12345);
-	    	getContinualData().get("ContinualKey"); // 12345 が取得できる
-	    	
-	    }
+			// getApplicationData()の戻り値型は Map<String, Object>
+			getApplicationData().put("AppKey", "AppValue");
+			getApplicationData().get("AppKey"); //"AppValue"が取得できる
+			
+			// getContinualData()の戻り値型も同様に Map<String, Object>なので
+			// String型以外でも格納可能
+			getContinualData().put("ContinualKey", 12345);
+			getContinualData().get("ContinualKey"); // 12345 が取得できる
+		}
 	}
 	
 getApplicationDataメソッドはアクティビティでも利用可能です。

@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>部分テンプレート (renderマクロ) &mdash; Creamy 0.1 documentation</title>
+    <title>部分テンプレート (renderマクロ) &mdash; Creamy 1.0 documentation</title>
     
     <link rel="stylesheet" href="../static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.1',
+        VERSION:     '1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="../static/jquery.js"></script>
     <script type="text/javascript" src="../static/underscore.js"></script>
     <script type="text/javascript" src="../static/doctools.js"></script>
-    <link rel="top" title="Creamy 0.1 documentation" href="../index.html" />
+    <link rel="top" title="Creamy 1.0 documentation" href="../index.html" />
     <link rel="up" title="Creamyによる開発" href="../development_by_creamy.html" />
     <link rel="next" title="Activityからのリクエスト" href="activity_request.html" />
     <link rel="prev" title="レイアウトテンプレート" href="layout_template.html" /> 
@@ -43,46 +43,46 @@
         <li class="right" >
           <a href="layout_template.html" title="レイアウトテンプレート"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">Creamy 0.1 documentation</a> &raquo;</li>
+        <li><a href="../index.html">Creamy 1.0 documentation</a> &raquo;</li>
           <li><a href="../development_by_creamy.html" accesskey="U">Creamyによる開発</a> &raquo;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">部分テンプレート (renderマクロ)</a><ul>
-<li><a class="reference internal" href="#id1">提供する機能</a></li>
-<li><a class="reference internal" href="#render-api">#render API</a></li>
-<li><a class="reference internal" href="#id2">記述方法</a></li>
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../static/creamy03small.jpg" alt="Logo"/>
+            </a></p>
+<h3><a href="../index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_start.html">Creamyを使ってみよう</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">チュートリアル</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basic_concept.html">Creamyの基本概念</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture.html">Creamyのアーキテクチャ</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../development_by_creamy.html">Creamyによる開発</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../getting_start/set_up.html">JavaFX開発環境をセットアップする</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_start/create_creamy_project.html">Creamyプロジェクトの作成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_start/scaffold.html">scaffoldによるアプリケーション作成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="properties.html">プロパティファイル</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controllers.html">Controllers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models.html">Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="views.html">Views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="form_control.html">Formコントロール</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parameter_binding.html">パラメータバインディング</a></li>
+<li class="toctree-l2"><a class="reference internal" href="validation.html">データのバリデーション</a></li>
+<li class="toctree-l2"><a class="reference internal" href="global_object.html">グローバルオブジェクト</a></li>
+<li class="toctree-l2"><a class="reference internal" href="layout_template.html">レイアウトテンプレート</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">部分テンプレート (renderマクロ)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="activity_request.html">Activityからのリクエスト</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mini_window.html">小画面の作成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="animation.html">アニメーション</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deploy.html">Creamyで作成されたApplicationの実行可能JAR作成方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer_guide.html">Creamy Framework JavaDoc</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../download.html">ダウンロード</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../licence.html">LICENCE</a></li>
 </ul>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="layout_template.html"
-                        title="previous chapter">レイアウトテンプレート</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="activity_request.html"
-                        title="next chapter">Activityからのリクエスト</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="../sources/development/render_macro.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
-  <h3>Quick search</h3>
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
 
@@ -100,7 +100,7 @@
 renderマクロは、Velocityマクロによるインターフェースです。</p>
 <div class="section" id="id1">
 <h2>提供する機能<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<p>親のFXMLで定義したデータを、子のFXML（部分テンプレート）に受渡しできます。
+<p>親のFXMLで定義したデータを、子のFXML（部分テンプレート）に受け渡しできます。
 受け渡されたデータは、部分テンプレート内で親と同一の変数名でアクセス可能ですので、複数FXMLファイルをシームレスに扱うことができます。</p>
 </div>
 <div class="section" id="render-api">
@@ -111,12 +111,12 @@ renderマクロは、Velocityマクロによるインターフェースです。
 </pre></div>
 </div>
 <p><strong>2. 指定されたFXMLをパラメータありでレンダリング。</strong></p>
-<p>単一パラメータを受渡すケースです。</p>
+<p>単一パラメータを受け渡すケースです。</p>
 <div class="highlight-text"><div class="highlight"><pre>renderWithVriable(&lt;FXML名&gt;, &lt;パラメータ名(Key)&gt;, &lt;データ(Value)&gt;)
 </pre></div>
 </div>
 <p><strong>3. 指定されたFXMLをパラメータありでレンダリング</strong></p>
-<p>複数のパラメータを受渡すケースです。パラメータ、データはそれぞれリスト([ ])で指定します。</p>
+<p>複数のパラメータを受け渡すケースです。パラメータ、データはそれぞれリスト([ ])で指定します。</p>
 <div class="highlight-text"><div class="highlight"><pre>renderWithVriables(&lt;FXML名&gt;, [&lt;パラメータ名(Key)&gt;], [&lt;データ(Value)&gt;])
 </pre></div>
 </div>
@@ -197,7 +197,7 @@ renderマクロは、Velocityマクロによるインターフェースです。
         <li class="right" >
           <a href="layout_template.html" title="レイアウトテンプレート"
              >previous</a> |</li>
-        <li><a href="../index.html">Creamy 0.1 documentation</a> &raquo;</li>
+        <li><a href="../index.html">Creamy 1.0 documentation</a> &raquo;</li>
           <li><a href="../development_by_creamy.html" >Creamyによる開発</a> &raquo;</li> 
       </ul>
     </div>

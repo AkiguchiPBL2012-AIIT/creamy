@@ -1,71 +1,51 @@
-=============================================
-Creamyのデプロイ方法
-=============================================
+===========================================================
+Creamyで作成されたApplicationの実行可能JAR作成方法
+===========================================================
 
-JavaFX のツール群
-
-JavaFX SDK で提供されている主なツールは以下のようになっています。javafx は JDK でいうと java, javafxc は javac, javafxdoc は javadoc というように JDK とだいたい同じです。
-
-================ =================================================================================================
-javafx           JavaFX アプリケーションの実行
-javafxc          JavaFXファイルのコンパイル
-javafxdoc        JavaFXのソースからHTML形式でドキュメントを生成
-javafxpackager   JavaFX アプリケーションを配備用にパッケージングアプレット用HTML,Web Start用jnlpの生成
-================ =================================================================================================
-
-JavaFX SDK のインストール場所
-
-コマンドは JavaFX SDK をインストールしている場所の bin/ ディレクトリ以下にあります。NetBeans のプラグイン経由でインストールした場合はユーザーディレクトリ以下か、NetBeans のインストールディレクトリの javafx2 クラスタ以下にありますので探してみてください。
-
-======================= =============================================================================================
-プラットフォーム        	SDK の場所(デフォルトのインストールオプションの場合)
-Mac OS X        		| SDK をインストールした場合:
-		                | /Library/Frameworks/JavaFX.framework/Versions/Current
-		                | (/usr/bin にリンクされます)
-		                | NetBeans からプラグインをインストールした場合:
-		                | <ユーザーディレクトリ>/javafx-sdk
-		                | <NetBeans インストールディレクトリ>/javafx2/javafx-sdk
-Windows         		| SDK をインストールした場合:
-                		| C:\\Program Files\\JavaFX\\javafx-sdk
-                		| NetBeans からプラグインをインストールした場合:
-                		| C:\\Users\\<ユーザー>\\.netbeans\\7.1\\javafx-sdk
-                		| C:\\Program Files\\NetBeans 7.1\\javafx2/javafx-sdk
-======================= =============================================================================================
-
-ドキュメントは docs/ 以下にあります。ここでは簡単に説明するだけですので詳細は SDK に付いている各ツールのドキュメントを参照してください。
+使用方法: 
 
 .. code-block:: c
 
-	javafxc - JavaFX ソースをコンパイル
+   // buildしたclassesがある場所に移動します。
+   cd ./computer_database/build/
+  
+   // javafxpackagerでjarを作成します。その際依存するjarがある場合は、--classpathで指定してください。
+   javafxpackager -createjar -appclass computerdatabase.ComputerDatabase.class -srcdir classes -classpath ../lib/jfxrt.jar:
+      ../lib/creamy.jar:../lib/ebean-2.7.3.jar:../lib/hibernate-validator-4.3.0.Final.jar:../lib/javax.validation-1.0.0.GA.jar:
+      ../lib/jsonic-1.2.11.jar:../lib/persistence-api-1.0.jar:../lib/sqlite-jdbc-3.7.2.jar:../lib/velocity-1.7-dep.jar:
+      ../lib/velocity-1.7.jar -nocss2bin -outdir ../dist -outfile comp_data
+ 
+  　// jar実行コマンドで実行します。
+   java -jar ../dist/comp_data.jar
 
-まずコンパイルしてみましょう。javafxc コマンドにソースファイルを指定します。javac コマンドと同じですね。
+このコマンドの解説していきます。
+-------------------------------------- 
 
-.. code-block:: c
+===============  =======================================================================================
+===============  =======================================================================================
+  -createjar     パッケージャは、その他のパラメータに従ってjarアーカイブを生成します。 
+===============  =======================================================================================
 
-	% javafxc javafxapplication/
-	Main.fx
+createjarコマンドのオプションは次のとおりです。
+------------------------------------------------------------
+ 
 
-例えば、パッケージ javafxapplication に Main.fx があるとします。
+========================================= =======================================================================================================================
+========================================= =======================================================================================================================
+  -appclass <application class>           | 実行するアプリケーション・クラスの修飾名。
+  -classpath <files>                      | 依存するjarファイルの名前のリスト。(jfxrt.jarとcreamy.jarは必須です。）
+					                                | jfxrt.jarは
+                                          | Windowsの場合は、C:\¥Program Files\¥Java\¥jdk1.7.x\¥jre\¥lib\¥jfxrt.jar
+                                          | Macの場合は、/Library/Java/JavaVirtualMachines/jdk1.7.0_xx.jdk/Contents/Home/jre/lib/jfxrt.jar
+					                                | にあります。
+                                          | 複数ある場合は、Windowsは「セミコロン」、Macは「コロン」で繋げて記述します。
+  -nocss2bin                              | パッケージャは、CSSファイルをバイナリ形式に変換せずにjarにコピーします。
+                                          | (CSSを利用している場合は、こちらを指定してください。) 
+  -outdir <dir>                           | 出力ファイルが生成されるディレクトリの名前。
+  -outfile <filename>                     | 生成されるファイルの(拡張子なしの)名前。
+  -srcdir <dir>                           | パッケージ化するファイルのベース・ディレクトリ。
+  -srcfiles <files>                       | srcdir内のファイルのリスト。省略した場合は、srcdir内のすべてのファイルがパッケージ化されます。
+========================================= =======================================================================================================================
 
-.. code-block:: c
 
-	% ls javafxapplication/Main.fx
-
-以下のようにファイルを指定します。
-
-.. code-block:: c
-
-	% javafxc javafxapplication/Main.fx
-
-クラスファイルは何も指定しないとソースファイルと同じ場所に作成されます。
-
-.. code-block:: c
-
-	% ls javafxapplication/
-	Main$Intf.class        
-	Main.fx      
-	Main.class
-	
-
-リンク
-=============================================
+`javafxpackagerを知りたい方はこちらをクリック <http://docs.oracle.com/javafx/2/deployment/javafxpackager001.htm>`_

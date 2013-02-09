@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>小画面の作成 &mdash; Creamy 0.1 documentation</title>
+    <title>小画面の作成 &mdash; Creamy 1.0 documentation</title>
     
     <link rel="stylesheet" href="../static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.1',
+        VERSION:     '1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="../static/jquery.js"></script>
     <script type="text/javascript" src="../static/underscore.js"></script>
     <script type="text/javascript" src="../static/doctools.js"></script>
-    <link rel="top" title="Creamy 0.1 documentation" href="../index.html" />
+    <link rel="top" title="Creamy 1.0 documentation" href="../index.html" />
     <link rel="up" title="Creamyによる開発" href="../development_by_creamy.html" />
     <link rel="next" title="アニメーション" href="animation.html" />
     <link rel="prev" title="Activityからのリクエスト" href="activity_request.html" /> 
@@ -43,45 +43,46 @@
         <li class="right" >
           <a href="activity_request.html" title="Activityからのリクエスト"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">Creamy 0.1 documentation</a> &raquo;</li>
+        <li><a href="../index.html">Creamy 1.0 documentation</a> &raquo;</li>
           <li><a href="../development_by_creamy.html" accesskey="U">Creamyによる開発</a> &raquo;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">小画面の作成</a><ul>
-<li><a class="reference internal" href="#id2">提供する機能</a></li>
-<li><a class="reference internal" href="#id3">記述方法</a></li>
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../static/creamy03small.jpg" alt="Logo"/>
+            </a></p>
+<h3><a href="../index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_start.html">Creamyを使ってみよう</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">チュートリアル</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basic_concept.html">Creamyの基本概念</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture.html">Creamyのアーキテクチャ</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../development_by_creamy.html">Creamyによる開発</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../getting_start/set_up.html">JavaFX開発環境をセットアップする</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_start/create_creamy_project.html">Creamyプロジェクトの作成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_start/scaffold.html">scaffoldによるアプリケーション作成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="properties.html">プロパティファイル</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controllers.html">Controllers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models.html">Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="views.html">Views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="form_control.html">Formコントロール</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parameter_binding.html">パラメータバインディング</a></li>
+<li class="toctree-l2"><a class="reference internal" href="validation.html">データのバリデーション</a></li>
+<li class="toctree-l2"><a class="reference internal" href="global_object.html">グローバルオブジェクト</a></li>
+<li class="toctree-l2"><a class="reference internal" href="layout_template.html">レイアウトテンプレート</a></li>
+<li class="toctree-l2"><a class="reference internal" href="render_macro.html">部分テンプレート (renderマクロ)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="activity_request.html">Activityからのリクエスト</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">小画面の作成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="animation.html">アニメーション</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deploy.html">Creamyで作成されたApplicationの実行可能JAR作成方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer_guide.html">Creamy Framework JavaDoc</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../download.html">ダウンロード</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../licence.html">LICENCE</a></li>
 </ul>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="activity_request.html"
-                        title="previous chapter">Activityからのリクエスト</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="animation.html"
-                        title="next chapter">アニメーション</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="../sources/development/mini_window.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
-  <h3>Quick search</h3>
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
 
@@ -106,7 +107,7 @@
 <div class="highlight-java"><div class="highlight"><pre><span class="kd">public</span> <span class="kd">static</span> <span class="n">Activity</span> <span class="nf">createWindow</span><span class="o">(</span><span class="n">Browser</span> <span class="n">ownerBrowser</span><span class="o">,</span> <span class="n">String</span> <span class="n">path</span><span class="o">,</span> <span class="n">Modality</span> <span class="n">modality</span><span class="o">)</span>
 </pre></div>
 </div>
-<p>第1引数は親browserのインスタンスです。親browserと小画面の親子関係を設定します。第2引数が小画面のパスです。第3引数は小画面のModalityを設定します。
+<p>第1引数は親Browserのインスタンスです。親Browserと小画面の親子関係を設定します。第2引数が小画面のパスです。第3引数は小画面のModalityを設定します。
 生成した小画面インスタンスを返します。</p>
 </div>
 <div class="section" id="id3">
@@ -141,7 +142,7 @@
 </pre></div>
 </td></tr></table></div>
 <p>2行目で新しいMenuItemを作成し、そのアクションとしてEventHanderを生成しています。</p>
-<p>7、8行目で小画面生成しています。Activity.createWindowメソッドの第１引数は、親browserのインスタンスを渡します。第2引数が小画面のパスです。コントローラクラスがWizardController、初期画面はCreate.java、Create.vm.fxmlファイルで構成されています。第3引数のModality.APPLICATION_MODALは、小画面をクローズするまで親画面を操作させない設定です。</p>
+<p>7、8行目で小画面生成しています。Activity.createWindowメソッドの第１引数は、親Browserのインスタンスを渡します。第2引数が小画面のパスです。コントローラクラスがWizardController、初期画面はCreate.java、Create.vm.fxmlファイルで構成されています。第3引数のModality.APPLICATION_MODALは、小画面をクローズするまで親画面を操作させない設定です。</p>
 <p><strong>実行例１</strong></p>
 <img alt="../images/mini.CreateComputerMenu.png" src="../images/mini.CreateComputerMenu.png" style="width: 300px;" />
 <p>メニューから次の小画面を表示します。</p>
@@ -161,7 +162,7 @@
 <span class="o">}</span>
 </pre></div>
 </td></tr></table></div>
-<p>1行目は、Search Computerボタンのアクションメソッドです。</p>
+<p>1行目は、Search Computerボタンのハンドラメソッドです。</p>
 <p>3行目で検索ウィンドウを生成しています。第2引数でModality.NONEを指定していますので、検索ウィンドウを表示している間も、親画面の操作ができます。</p>
 <p>記述例１では、メニューから小画面を作成していましたので、親画面にあたるBrowserのインスタンスを指定しなければなりませんでしたが、記述例２では親画面にボタンが配置されているので、インスタンスを指定する必要がありません。</p>
 </div>
@@ -185,7 +186,7 @@
         <li class="right" >
           <a href="activity_request.html" title="Activityからのリクエスト"
              >previous</a> |</li>
-        <li><a href="../index.html">Creamy 0.1 documentation</a> &raquo;</li>
+        <li><a href="../index.html">Creamy 1.0 documentation</a> &raquo;</li>
           <li><a href="../development_by_creamy.html" >Creamyによる開発</a> &raquo;</li> 
       </ul>
     </div>
