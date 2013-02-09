@@ -1,5 +1,6 @@
 =============================================
-Creamy Framework JavaDoc
+Creamy開発者ガイド
 =============================================
 
-Creamy のJavaDocは、 `こちら <../javadoc/index.html>`_ です。
+Creamy Framework JavaDoc
+=============================================
