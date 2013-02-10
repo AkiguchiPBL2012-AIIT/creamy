@@ -8,7 +8,7 @@ application framework for JavaFX
 
 Copyright 2013, 
 
-2012 Akiguchi Project Team <pbl2012akiguchi@aiit.ac.jp>,
+2012 Akiguchi Project Team <pbl2012akiguchi @ aiit.ac.jp>,
 
 Taiji Miyabe, Ryusaburo Tanaka, Akemi Hayama ,Atsuki Takahashi and Tadao Isobe
 

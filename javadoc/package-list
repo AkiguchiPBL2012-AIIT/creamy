@@ -9,7 +9,6 @@ creamy.browser.model
 creamy.db
 creamy.entrypoint
 creamy.global
-creamy.media
 creamy.mvc
 creamy.property
 creamy.scene.control
