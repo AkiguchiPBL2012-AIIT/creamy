@@ -1,9 +1,8 @@
-** Creamy application framework for JavaFX**
+## Creamy application framework for JavaFX
 
 See *Creamy* documents http://akiguchipbl2012-aiit.github.com/creamy
 
-LICENCE
-=================
+## LICENCE
 
 Creamy
 
