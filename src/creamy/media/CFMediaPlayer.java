@@ -39,20 +39,16 @@ import javafx.scene.shape.LineBuilder;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.RectangleBuilder;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 import javafx.util.Duration;
 
 /**
- *
- * @author tadao
+ * 簡易なMediaPlayer作成の為の支援ライブラリ
+ * 
  */
 public class CFMediaPlayer {
 
     private MediaPlayer mediaPlayer;
     private MediaView mediaView;
-    private Point2D anchorPt;
-    private Point2D previousLocation;
     private Slider progressSlider;
     private ChangeListener<Duration> progressListener;
     private boolean poused = false;
@@ -60,12 +56,23 @@ public class CFMediaPlayer {
     private Double height;
     private Double width;
 
+    /**
+     * 
+     * @param mediaFile Mediaのあるファイルパス、もしくはURI
+     * @param height MediaPlayerの高さ
+     * @param width MediaPlayerの幅
+     */
     CFMediaPlayer(String mediaFile, Double height, Double width) {
         this.mediaFile = mediaFile;
         this.height = height;
         this.width = width;
     }
 
+    /**
+     * 簡易なMediaPlayerを作成
+     * 
+     * @return MediaのSceneNode
+     */
     public Scene create() {
         final Group root = new Group();
         final Scene scene = new Scene(root, height, width, Color.rgb(0, 0, 0, 0));
@@ -83,7 +90,15 @@ public class CFMediaPlayer {
         };
 
         final File file = new File(mediaFile);
-        Media media = new Media(file.toURI().toString());
+        // mediaの作成
+        String path = null;
+        // fileがファイルだった場合。
+        if(file.isFile()){
+            path = file.toURI().toString();
+        }else{
+            path = file.getPath();
+        }
+        Media media = new Media(path);
 
         if (mediaPlayer != null) {
             mediaPlayer.stop();
