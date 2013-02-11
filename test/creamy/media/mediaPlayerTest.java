@@ -18,11 +18,13 @@ public class mediaPlayerTest extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        primaryStage.setTitle("Chapter 3-2 Playing Video");
+        primaryStage.setTitle("media player Test");
         primaryStage.centerOnScreen();
         primaryStage.initStyle(StageStyle.TRANSPARENT);
 
-        CFMediaPlayer mediaplayer = new CFMediaPlayer("/Users/tadao/NetBeansProjects/2012CA/trunk/creamy/oow2010-2.flv", 350.0, 600.0);
+        String uri = "http://download.oracle.com/otndocs/products/javafx/oow2010-2.flv";
+        //String uri = "/Users/tadao/Downloads/oow2010-2.flv";
+        CFMediaPlayer mediaplayer = new CFMediaPlayer(uri, 600.0, 300.0);
         primaryStage.setScene(mediaplayer.create());
         primaryStage.show();
     }
@@ -31,3 +33,4 @@ public class mediaPlayerTest extends Application {
         launch(args);
     }
 }
+
