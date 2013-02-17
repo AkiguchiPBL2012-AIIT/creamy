@@ -1,345 +1,369 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package creamy.media;
 
 import java.io.File;
-import java.net.URI;
-import java.net.URISyntaxException;
 import javafx.application.Platform;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
+import javafx.beans.InvalidationListener;
+import javafx.beans.Observable;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.Point2D;
-import javafx.scene.Group;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
-import javafx.scene.control.SliderBuilder;
-import javafx.scene.input.DataFormat;
-import javafx.scene.input.DragEvent;
-import javafx.scene.input.Dragboard;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.input.TransferMode;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.Region;
+import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
-import javafx.scene.media.MediaErrorEvent;
 import javafx.scene.media.MediaPlayer;
-import javafx.scene.media.MediaPlayerBuilder;
 import javafx.scene.media.MediaView;
-import javafx.scene.media.MediaViewBuilder;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Arc;
-import javafx.scene.shape.ArcBuilder;
-import javafx.scene.shape.ArcType;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.CircleBuilder;
-import javafx.scene.shape.Line;
-import javafx.scene.shape.LineBuilder;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.RectangleBuilder;
-import javafx.scene.text.Text;
 import javafx.util.Duration;
 
 /**
- * 簡易なMediaPlayer作成の為の支援ライブラリ
+ * 簡易なMediaPlayerを作成します。
  * 
+ * @author tadao
  */
-public class CFMediaPlayer {
-
+public class CFMediaPlayer extends BorderPane{
+    private String MEDIA_PATH;
+    private Double height = null;
+    private Double width = null;
+    private boolean isAutoPlay = true;
+    private HBox mediaBar;
+    private Slider timeSlider;
     private MediaPlayer mediaPlayer;
     private MediaView mediaView;
-    private Slider progressSlider;
-    private ChangeListener<Duration> progressListener;
-    private boolean poused = false;
-    private String mediaFile;
-    private Double height;
-    private Double width;
-
+    private String startButton = ">";
+    private String pauseButton = "||";
+    private boolean repeat = false;
+    private boolean stopRequested = false;
+    private boolean atEndOfMedia = false;
+    private Duration duration;
+    private Slider volumeSlider;
+    private Label playTime;
+    private String mediaPlayerBackGroundStyle = "-fx-background-color: #bfc2c7;";
+    
+    
     /**
-     * 
-     * @param mediaFile Mediaのあるファイルパス、もしくはURI
-     * @param height MediaPlayerの高さ
-     * @param width MediaPlayerの幅
+     * CFMediaPlayerのコンストラクタ。
      */
-    CFMediaPlayer(String mediaFile, Double height, Double width) {
-        this.mediaFile = mediaFile;
+    public CFMediaPlayer(){
+    }
+    
+    /**
+     * CFMediaPlayerのコンストラクタ。mediaのURIもしくは、pathを指定します。
+     * @param mediaPath　mediaのURIもしくは、FileへのPath
+     */
+    public CFMediaPlayer(String mediaPath){
+        MEDIA_PATH = mediaPath;
+    }
+    
+    /**
+     * CFMediaPlayerのコンストラクタ。
+     * @param mediaPath　MediaのURIもしくは、Fileへのパス。
+     * @param height MediaPlayerの高さ。
+     * @param width MediaPlayerの幅。
+     */
+    public CFMediaPlayer(String mediaPath, Double height, Double width){
+        MEDIA_PATH = mediaPath;
         this.height = height;
         this.width = width;
     }
-
+    
     /**
-     * 簡易なMediaPlayerを作成
-     * 
-     * @return MediaのSceneNode
+     * 自動で再生を開始するかどうかを設定。
+     * @param isAutoPlay true: 自動再生
      */
-    public Scene create() {
-        final Group root = new Group();
-        final Scene scene = new Scene(root, height, width, Color.rgb(0, 0, 0, 0));
-        Node applicationArea = createBackground(scene);
-        root.getChildren().add(applicationArea);
-
-        progressSlider = createSlider(scene);
-        root.getChildren().add(progressSlider);
-
-        progressListener = new ChangeListener<Duration>() {
-            @Override
-            public void changed(ObservableValue<? extends Duration> observable, Duration oldValue, Duration newValue) {
-                progressSlider.setValue(newValue.toSeconds());
-            }
-        };
-
-        final File file = new File(mediaFile);
+    public void setAutoPlay(boolean isAutoPlay){
+        this.isAutoPlay = isAutoPlay;
+    }
+    
+    /**
+     * MediaPlayerの高さを設定。
+     * 
+     * @param height 
+     */
+    public void setMediaViewHeight(Double height){
+        this.height = height;
+    }
+    
+    /**
+     * MediaPlayerの幅を設定。
+     * 
+     * @param width 
+     */
+    public void setMediaViewWidth(Double width){
+        this.width = width;
+    }
+    
+    /**
+     * MediaのURIもしくは、Fileへのパスを指定。
+     * 
+     * @param mediaPath 
+     */
+    public void setMediaPath(String mediaPath){
+        MEDIA_PATH = mediaPath;
+    }
+    
+    /**
+     * 
+     * @param isRepeat true:繰り返し
+     */
+    public void setRepeat(boolean isRepeat){
+        repeat = isRepeat;
+    }
+    
+    /**
+     * Start時のボタンの文字列を設定。
+     * 
+     * @param startButton 例えば、">"
+     */
+    public void setStartButton(String startButton){
+        this.startButton = startButton;
+    }
+    
+    /**
+     * Pause時のボタンの文字列を設定。
+     * 
+     * @param pauseButton 例えば、"||" 
+     */
+    public void setPauseButton(String pauseButton){
+        this.pauseButton = pauseButton;
+    }
+    
+    /**
+     * MediaPlayerのバックグランドのスタイルを設定。
+     * 
+     * @param backGroundStyle 例えば、"-fx-background-color: #bfc2c7;"
+     */
+    public void setMediaPlayerBackGroundStyle(String backGroundStyle){
+        mediaPlayerBackGroundStyle = backGroundStyle;
+    }
+    
+    /**
+     * MediaPlayerのNodeを返す。
+     * @return Node MediaPlayerのNodeを返す。 
+     */
+    public Node create(){
+        final File file = new File(MEDIA_PATH);
         // mediaの作成
-        String path = null;
+        String path;
         // fileがファイルだった場合。
         if(file.isFile()){
             path = file.toURI().toString();
         }else{
             path = file.getPath();
         }
-        Media media = new Media(path);
+        Media media = new Media (path);
+        mediaPlayer = new MediaPlayer(media);
+        mediaPlayer.setAutoPlay(isAutoPlay);
+        mediaView = createMediaView();
+        Pane mvPane = new Pane() {
+        };
+        mvPane.getChildren().add(mediaView);
+        mvPane.setStyle("-fx-background-color: black;");
+        setCenter(mvPane);
+ 
+        mediaBar = createMediaBar();
+        
+        //playBotton
+        final Button playButton = new Button(startButton);
 
-        if (mediaPlayer != null) {
-            mediaPlayer.stop();
-            mediaPlayer.currentTimeProperty().removeListener(progressListener);
-            mediaPlayer.setOnPaused(null);
-            mediaPlayer.setOnPlaying(null);
-            mediaPlayer.setOnReady(null);
-        }
+        playButton.setOnAction(new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent e) {
+                MediaPlayer.Status status = mediaPlayer.getStatus();
+                if (status == MediaPlayer.Status.UNKNOWN || status == MediaPlayer.Status.HALTED) {
+                    return;
+                }
+                if (status == MediaPlayer.Status.PAUSED
+                        || status == MediaPlayer.Status.READY
+                        || status == MediaPlayer.Status.STOPPED) {
+                    if (atEndOfMedia) {
+                        mediaPlayer.seek(mediaPlayer.getStartTime());
+                        atEndOfMedia = false;
+                    }
+                    mediaPlayer.play();
+                } else {
+                    mediaPlayer.pause();
+                }
+            }
+        });
+        
+        mediaPlayer.currentTimeProperty().addListener(new InvalidationListener() {
+            public void invalidated(Observable ov) {
+                updateValues();
+            }
+        });
 
-        mediaPlayer = MediaPlayerBuilder.create()
-                .media(media)
-                .build();
+        mediaPlayer.setOnPlaying(new Runnable() {
+            public void run() {
+                if (stopRequested) {
+                    mediaPlayer.pause();
+                    stopRequested = false;
+                } else {
+                    playButton.setText(pauseButton);
+                }
+            }
+        });
 
-        mediaPlayer.currentTimeProperty().addListener(progressListener);
+        mediaPlayer.setOnPaused(new Runnable() {
+            public void run() {
+                playButton.setText(startButton);
+            }
+        });
 
         mediaPlayer.setOnReady(new Runnable() {
-            @Override
             public void run() {
-                progressSlider.setValue(1);
-                progressSlider.setMax(mediaPlayer.getMedia().getDuration().toMillis() / 1000);
-                mediaPlayer.play();
+                duration = mediaPlayer.getMedia().getDuration();
+                updateValues();
             }
         });
-        if (mediaView == null) {
-            mediaView = MediaViewBuilder.create()
-                    .mediaPlayer(mediaPlayer)
-                    .x(4)
-                    .y(4)
-                    .preserveRatio(true)
-                    .opacity(.85)
-                    .smooth(true)
-                    .build();
 
-            mediaView.fitWidthProperty().bind(scene.widthProperty().subtract(30));
-            mediaView.fitHeightProperty().bind(scene.heightProperty().subtract(20));
+        mediaPlayer.setCycleCount(repeat ? MediaPlayer.INDEFINITE : 1);
+        mediaPlayer.setOnEndOfMedia(new Runnable() {
+            public void run() {
+                if (!repeat) {
+                    playButton.setText(pauseButton);
+                    stopRequested = true;
+                    atEndOfMedia = true;
+                }
+            }
+        });
+        mediaBar.getChildren().add(playButton);
+        Label spacer = new Label("  ");
+        mediaBar.getChildren().add(spacer);
+        Label timeLabel = new Label("Time: ");
+        mediaBar.getChildren().add(timeLabel);
+        
+        timeSlider = createTimeSlider();
+                timeSlider.valueProperty().addListener(new InvalidationListener() {
+            public void invalidated(Observable ov) {
+                if (timeSlider.isValueChanging()) {
+                    mediaPlayer.seek(duration.multiply(timeSlider.getValue() / 100.0));
+                }
+            }
+        });
+        mediaBar.getChildren().add(timeSlider);
+        playTime = new Label();
+        playTime.setPrefWidth(130);
+        playTime.setMinWidth(50);
+        mediaBar.getChildren().add(playTime);
 
-            root.getChildren().add(1, mediaView);
+        Label volumeLabel = new Label("Vol: ");
+        mediaBar.getChildren().add(volumeLabel);
+
+        volumeSlider = new Slider();
+        volumeSlider.setPrefWidth(70);
+        volumeSlider.setMaxWidth(Region.USE_PREF_SIZE);
+        volumeSlider.setMinWidth(30);
+                volumeSlider.valueProperty().addListener(new InvalidationListener() {
+            public void invalidated(Observable ov) {
+                if (volumeSlider.isValueChanging()) {
+                    mediaPlayer.setVolume(volumeSlider.getValue() / 100.0);
+                }
+            }
+        });
+        mediaBar.getChildren().add(volumeSlider);
+        setBottom(mediaBar);
+        VBox mediaPlayerVBox = new VBox(2);
+        mediaPlayerVBox.setStyle(mediaPlayerBackGroundStyle);
+        mediaPlayerVBox.getChildren().add(mvPane);
+        mediaPlayerVBox.getChildren().add(mediaBar);
+        
+        return mediaPlayerVBox;
+    }
+    
+    private HBox createMediaBar(){
+        HBox mediaB = new HBox();
+        mediaB.setAlignment(Pos.CENTER);
+        mediaB.setPadding(new Insets(5, 10, 5, 10));
+        if(null != width){
+            mediaB.setMaxWidth(width);
         }
-        mediaView.setOnError(new EventHandler<MediaErrorEvent>() {
-            @Override
-            public void handle(MediaErrorEvent event) {
-                event.getMediaError().printStackTrace();
-            }
-        });
-        mediaView.setMediaPlayer(mediaPlayer);
-
-        final Group buttonArea = createButtonArea(scene);
-
-        Node stopButton = createStopControl();
-
-        final Node playButton = createPlayControl();
-
-        final Node pauseButton = createPauseControl();
-
-        stopButton.setOnMousePressed(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent evnet) {
-                if (mediaPlayer != null) {
-                    buttonArea.getChildren().removeAll(pauseButton, playButton);
-                    buttonArea.getChildren().add(playButton);
-                    mediaPlayer.stop();
+        BorderPane.setAlignment(mediaB, Pos.CENTER);
+        return mediaB;
+    }
+    
+    private MediaView createMediaView(){
+        MediaView mv = new MediaView(mediaPlayer);
+        if(null != height){
+            mv.setFitHeight(height);  
+        }
+        if(null != width){
+            mv.setFitWidth(width);    
+        }
+        return mv;
+    }
+    
+    private Slider createTimeSlider(){
+        Slider timeSl = new Slider();
+        HBox.setHgrow(timeSl, Priority.ALWAYS);
+        timeSl.setMinWidth(50.0);
+        timeSl.setMaxWidth(Double.MAX_VALUE);
+        return timeSl;
+    }
+    
+    private void updateValues() {
+        if (playTime != null && timeSlider != null && volumeSlider != null) {
+            Platform.runLater(new Runnable() {
+                public void run() {
+                    Duration currentTime = mediaPlayer.getCurrentTime();
+                    playTime.setText(formatTime(currentTime, duration));
+                    timeSlider.setDisable(duration.isUnknown());
+                    if (!timeSlider.isDisabled()
+                            && duration.greaterThan(Duration.ZERO)
+                            && !timeSlider.isValueChanging()) {
+                        timeSlider.setValue(currentTime.divide(duration).toMillis() * 100.0);
+                    }
+                    if (!volumeSlider.isValueChanging()) {
+                        volumeSlider.setValue((int) Math.round(mediaPlayer.getVolume()
+                                * 100));
+                    }
                 }
+            });
+        }
+    }
+
+    private static String formatTime(Duration elapsed, Duration duration) {
+        int intElapsed = (int) Math.floor(elapsed.toSeconds());
+        int elapsedHours = intElapsed / (60 * 60);
+        if (elapsedHours > 0) {
+            intElapsed -= elapsedHours * 60 * 60;
+        }
+        int elapsedMinutes = intElapsed / 60;
+        int elapsedSeconds = intElapsed - elapsedHours * 60 * 60
+                - elapsedMinutes * 60;
+
+        if (duration.greaterThan(Duration.ZERO)) {
+            int intDuration = (int) Math.floor(duration.toSeconds());
+            int durationHours = intDuration / (60 * 60);
+            if (durationHours > 0) {
+                intDuration -= durationHours * 60 * 60;
             }
-        });
-
-        pauseButton.setOnMousePressed(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent evnet) {
-                if (mediaPlayer != null) {
-                    buttonArea.getChildren().removeAll(pauseButton, playButton);
-                    buttonArea.getChildren().add(playButton);
-                    mediaPlayer.pause();
-                    poused = true;
-                }
+            int durationMinutes = intDuration / 60;
+            int durationSeconds = intDuration - durationHours * 60 * 60
+                    - durationMinutes * 60;
+            if (durationHours > 0) {
+                return String.format("%d:%02d:%02d/%d:%02d:%02d",
+                        elapsedHours, elapsedMinutes, elapsedSeconds,
+                        durationHours, durationMinutes, durationSeconds);
+            } else {
+                return String.format("%02d:%02d/%02d:%02d",
+                        elapsedMinutes, elapsedSeconds, durationMinutes,
+                        durationSeconds);
             }
-        });
-
-        playButton.setOnMousePressed(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent evnet) {
-                if (mediaPlayer != null) {
-                    buttonArea.getChildren().removeAll(pauseButton, playButton);
-                    buttonArea.getChildren().add(pauseButton);
-                    poused = false;
-                    mediaPlayer.play();
-                }
+        } else {
+            if (elapsedHours > 0) {
+                return String.format("%d:%02d:%02d", elapsedHours,
+                        elapsedMinutes, elapsedSeconds);
+            } else {
+                return String.format("%02d:%02d", elapsedMinutes,
+                        elapsedSeconds);
             }
-        });
-
-        buttonArea.getChildren().add(stopButton);
-        buttonArea.getChildren().add(pauseButton);
-
-        root.getChildren().add(buttonArea);
-
-        Node closeButton = createCloseButton(scene);
-
-        root.getChildren().add(closeButton);
-
-        return scene;
-    }
-
-    private Node createCloseButton(Scene scene) {
-        final Group closeApp = new Group();
-        Circle closeButton = CircleBuilder.create()
-                .centerX(5)
-                .centerY(0)
-                .radius(7)
-                .fill(Color.rgb(255, 255, 255, .80))
-                .build();
-        Text closeXmark = new Text(2, 4, "X");
-        closeApp.translateXProperty().bind(scene.widthProperty().subtract(15));
-        closeApp.setTranslateY(12);
-        closeApp.getChildren().addAll(closeButton, closeXmark);
-        closeApp.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                Platform.exit();
-            }
-        });
-        return closeApp;
-    }
-
-    private Node createPauseControl() {
-        final Group pause = new Group();
-        final Circle pauseButton = CircleBuilder.create()
-                .centerX(12)
-                .centerY(16)
-                .radius(10)
-                .fill(Color.rgb(255, 255, 255, .90))
-                .stroke(Color.rgb(1, 1, 1, .90))
-                .translateX(30)
-                .build();
-        final Line firstLine = LineBuilder.create()
-                .startX(6)
-                .startY(6)
-                .endX(6)
-                .endY(12)
-                .strokeWidth(3)
-                .translateX(34)
-                .translateY(6)
-                .stroke(Color.rgb(1, 1, 1, .90))
-                .build();
-        final Line secondLine = LineBuilder.create()
-                .startX(12)
-                .startY(6)
-                .endX(12)
-                .endY(12)
-                .strokeWidth(3)
-                .translateX(34)
-                .translateY(6)
-                .stroke(Color.rgb(1, 1, 1, .90))
-                .build();
-        pause.getChildren().addAll(pauseButton, firstLine, secondLine);
-        return pause;
-    }
-
-    private Node createPlayControl() {
-        final Arc playButton = ArcBuilder.create()
-                .type(ArcType.ROUND)
-                .centerX(12)
-                .centerY(16)
-                .radiusX(15)
-                .radiusY(15)
-                .startAngle(180 - 30)
-                .length(60)
-                .fill(Color.rgb(255, 255, 255, .90))
-                .translateX(40)
-                .build();
-        return playButton;
-    }
-
-    private Node createStopControl() {
-        Rectangle stopButton = RectangleBuilder.create()
-                .arcWidth(5)
-                .arcHeight(5)
-                .fill(Color.rgb(255, 255, 255, .80))
-                .x(0)
-                .y(0)
-                .width(10)
-                .height(10)
-                .translateX(15)
-                .translateY(10)
-                .stroke(Color.rgb(255, 255, 255, .70))
-                .build();
-        return stopButton;
-    }
-
-    private Group createButtonArea(final Scene scene) {
-        final Group buttonGroup = new Group();
-        Rectangle buttonArea = RectangleBuilder.create()
-                .arcWidth(15)
-                .arcHeight(20)
-                .fill(Color.rgb(0, 0, 0, .55))
-                .x(0)
-                .y(0)
-                .width(60)
-                .height(30)
-                .stroke(Color.rgb(255, 255, 255, .70))
-                .build();
-        buttonGroup.getChildren().add(buttonArea);
-
-        buttonGroup.translateXProperty().bind(scene.widthProperty().subtract(buttonArea.getWidth() + 6));
-        buttonGroup.translateYProperty().bind(scene.heightProperty().subtract(buttonArea.getHeight() + 6));
-        return buttonGroup;
-    }
-
-    private Slider createSlider(Scene scene) {
-        Slider slider = SliderBuilder.create()
-                .min(0)
-                .max(100)
-                .value(10)
-                .showTickLabels(true)
-                .showTickMarks(true)
-                .build();
-        slider.valueProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                if (poused) {
-                    long dur = newValue.intValue() * 1000;
-                    mediaPlayer.seek(new Duration(dur));
-                }
-            }
-        });
-
-        slider.translateYProperty().bind(scene.yProperty().subtract(30));
-        return slider;
-    }
-
-    private Node createBackground(Scene scene) {
-        Rectangle applicationArea = RectangleBuilder.create()
-                .arcWidth(20)
-                .arcHeight(20)
-                .fill(Color.rgb(0, 0, 0, .80))
-                .x(0)
-                .y(0)
-                .strokeWidth(2)
-                .stroke(Color.rgb(255, 255, 255, .70))
-                .build();
-        applicationArea.widthProperty().bind(scene.widthProperty());
-        applicationArea.heightProperty().bind(scene.heightProperty());
-        return applicationArea;
-
-    }
+        }
+    }   
 }

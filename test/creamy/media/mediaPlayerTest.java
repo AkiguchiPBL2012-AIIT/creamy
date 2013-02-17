@@ -7,8 +7,9 @@ package creamy.media;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import creamy.media.CFMediaPlayer;
+import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.paint.Color;
 
 /**
  *
@@ -20,12 +21,17 @@ public class mediaPlayerTest extends Application {
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle("media player Test");
         primaryStage.centerOnScreen();
-        primaryStage.initStyle(StageStyle.TRANSPARENT);
 
+        Group root = new Group();
+        Scene scene = new Scene(root, 600, 300, Color.rgb(100, 100, 100, 0));
         String uri = "http://download.oracle.com/otndocs/products/javafx/oow2010-2.flv";
         //String uri = "/Users/tadao/Downloads/oow2010-2.flv";
-        CFMediaPlayer mediaplayer = new CFMediaPlayer(uri, 600.0, 300.0);
-        primaryStage.setScene(mediaplayer.create());
+        CFMediaPlayer mediaPlayer = new CFMediaPlayer(uri);
+        mediaPlayer.setRepeat(true);
+        mediaPlayer.setMediaViewHeight(200.0);
+        mediaPlayer.setMediaViewWidth(400.0);
+        root.getChildren().add(mediaPlayer.create());
+        primaryStage.setScene(scene);
         primaryStage.show();
     }
 
