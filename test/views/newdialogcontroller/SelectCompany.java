@@ -21,7 +21,7 @@ public class SelectCompany extends AvailableActivity {
      * メーカ名をListViewにセット.
      */
     @Override
-    public void cfinitialize() {
+    public void initialize() {
         companyList.getItems().setAll(Company.options().values());
     }    
     

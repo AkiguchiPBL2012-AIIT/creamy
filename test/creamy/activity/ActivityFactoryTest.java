@@ -49,11 +49,8 @@ public class ActivityFactoryTest {
 
         public String title() { return "TestActivity"; }
 
-
-
         @Override
-        public void cfinitialize() {
-        }
+        public void initialize() {}
     }
     
     public class ActivityFactoryTest_TestClass {

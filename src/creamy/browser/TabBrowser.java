@@ -116,7 +116,7 @@ public class TabBrowser extends Browser {
 
     /**
      * コンテンツ領域にBrowserPanelを配置する
-     * @param browserPanel コンテンツ領域に配置するTabBrowserPanel
+     * @param tabBrowserPanel コンテンツ領域に配置するTabBrowserPanel
      */
     @Override
     public void setBrowserPanel(BrowserPanel browserPanel) { 

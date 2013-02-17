@@ -69,7 +69,7 @@ public class BrowserPanel extends BorderPane {
     public Broker getBroker() { return broker; }
     /**
      * Brokerをセットする
-     * @param broker ブローカ
+     * @param borker ブローカ
      */
     public void setBroker(Broker broker) { this.broker = broker; }
     

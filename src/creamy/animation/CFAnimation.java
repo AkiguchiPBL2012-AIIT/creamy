@@ -432,7 +432,7 @@ public class CFAnimation {
     
     /**
      * effectScale Animationを生成する
-     * @return Animation
+     * @return 
      */
     protected Animation createEffectScale(double time, double percent) {
         double scaleX = nodeInfo.scaleXProperty.get() * percent;
@@ -492,6 +492,7 @@ public class CFAnimation {
     /**
      * hideScaleを実行する
      * @param time 時間(msec)
+     * @param callback Animation終了後に呼び返されるCallbackオブジェクト 
      */
     public void hideScale(double time) {
         createHideScale(time).play();
@@ -555,7 +556,7 @@ public class CFAnimation {
     
     /**
      * showSlide Animationを生成する
-     * @return Animation
+     * @return 
      */
     protected Animation createShowSlide(double time) {
         return SequentialTransitionBuilder.create()

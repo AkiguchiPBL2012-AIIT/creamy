@@ -11,7 +11,7 @@ public class Child extends Activity {
     private String field3;
     
     @Override
-    public void cfinitialize() {
+    public void initialize() {
         field3 = "field3";
     }
 

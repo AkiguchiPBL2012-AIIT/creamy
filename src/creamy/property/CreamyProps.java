@@ -20,6 +20,7 @@ import java.util.Properties;
 
         /**
         * プロパティファイル読み込み
+        * @return 読み込みの成功／失敗
         */
         public static void loadProperties() {
             try {

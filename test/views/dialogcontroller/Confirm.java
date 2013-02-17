@@ -30,7 +30,7 @@ public class Confirm extends AvailableActivity {
      * 登録内容を画面に表示する。
      */
     @Override
-    public void cfinitialize() {
+    public void initialize() {
         ((DialogBase)this.getParent()).setStatus(DialogBase.Status.THIRD_WINDOW);
         
         // 登録した値を表示

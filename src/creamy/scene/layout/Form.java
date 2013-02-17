@@ -22,7 +22,7 @@ public interface Form {
     public String getPath();
     /**
      * path値をセットする.
-     * @param path メソッド
+     * @param method メソッド
      */
     public void setPath(String path);
 }
