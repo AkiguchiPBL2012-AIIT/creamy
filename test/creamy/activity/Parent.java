@@ -5,9 +5,8 @@ package creamy.activity;
  * @author miyabetaiji
  */
 public class Parent extends Activity {
-
     @Override
-    public void cfinitialize() {}
+    public void initialize() {}
 
     public String getField0() {
         return field0;

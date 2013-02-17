@@ -45,7 +45,7 @@ public class CFTextFieldBuilder<B extends CFTextFieldBuilder<B>> extends TextFie
     /**
      * format値をセットする.
      * @param format Formatオブジェクト
-     * @return CFTextFieldBuilder
+     * @return 
      */
     public CFTextFieldBuilder<B> format(Format format) {
         this.format = format;
@@ -53,7 +53,7 @@ public class CFTextFieldBuilder<B extends CFTextFieldBuilder<B>> extends TextFie
     }
     /**
      * 生成したCFTextFieldオブジェクトに、name値、format値、value値をセットする.
-     * @param textfield 
+     * @param choicebox 
      */
     public void applyTo(CFTextField textfield) {
         super.applyTo(textfield);

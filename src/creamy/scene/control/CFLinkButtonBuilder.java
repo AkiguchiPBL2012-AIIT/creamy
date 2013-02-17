@@ -27,7 +27,7 @@ public class CFLinkButtonBuilder<B extends CFLinkButtonBuilder<B>> extends Butto
 
     /**
      * path値をセットする.
-     * @param path CFLinkButtonBuilderのpath値
+     * @param value CFLinkButtonBuilderのpath値
      * @return 自身のオブジェクト
      */
     public CFLinkButtonBuilder<B> path(String path) {

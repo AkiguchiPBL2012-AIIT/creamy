@@ -284,7 +284,7 @@ public abstract class Activity extends Requestor implements Initializeble {
     }
     /**
      * 子アクティビティを取得する
-     * @param clazz 取得する子アクティビティの型
+     * @param clazz<? extends Activity> 取得する子アクティビティの型
      * @return 子アクティビティのリスト
      */
     protected List<Activity> getChildActivities(Class<? extends Activity> clazz) {
@@ -381,7 +381,7 @@ public abstract class Activity extends Requestor implements Initializeble {
      * @param ownerBrowser 表示もとのブラウザ
      * @param path 遷移先のパス
      * @param modality モーダリティ:APPLICATION_MODAL/NONE/WINDOW_MODAL
-     * @return アクティビティ
+     * @return 
      */
     public static Activity createWindow(Browser ownerBrowser, String path, Modality modality) {
         Browser window = new Browser(path);
@@ -418,7 +418,7 @@ public abstract class Activity extends Requestor implements Initializeble {
     
     /**
      * 小画面のオーナアクティビティを返す.
-     * @param activity 小画面のオーナアクティビティ
+     * @return 小画面のオーナアクティビティ
      */
     protected void setOwner(Activity activity) {
         ownerActivity = activity;

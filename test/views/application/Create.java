@@ -29,7 +29,7 @@ public class Create extends AvailableActivity {
     //public String title() { return "Add a Computer"; }
 
     @Override
-    public void cfinitialize() {
+    public void initialize() {
         //super.initialize(parentActivity, null);
         createForm.getChildren().add(
             gridForm("/Application/save").method(Request.POST).styleClass("grid-form")
