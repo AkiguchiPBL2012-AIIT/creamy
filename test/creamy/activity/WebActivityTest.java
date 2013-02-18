@@ -33,7 +33,7 @@ public class WebActivityTest {
         System.out.println("initialize");
         WebActivity instance = new WebActivity();
         try {
-            instance.initialize();
+            instance.cfinitialize();
         } catch (Exception e) {
             fail(e.getMessage());
         }

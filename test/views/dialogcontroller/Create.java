@@ -16,7 +16,7 @@ public class Create extends AvailableActivity {
      * 第１ステップの画面であることを親アクティビティ(DialogBase)に通知する。<br>
      */
     @Override
-    public void initialize() {
+    public void cfinitialize() {
         // parent activityに現在のウィンドウの状態を通知する。
         ((DialogBase)this.getParent()).setStatus(Status.FIRST_WINDOW);
     }

@@ -50,7 +50,7 @@ public class ActivityFactoryTest {
         public String title() { return "TestActivity"; }
 
         @Override
-        public void initialize() {}
+        public void cfinitialize() {}
     }
     
     public class ActivityFactoryTest_TestClass {

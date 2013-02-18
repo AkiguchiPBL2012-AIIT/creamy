@@ -16,7 +16,7 @@ public class TestEditableList extends AvailableActivity {
     @FXML private VBox listPane;
     
     @Override
-    public void initialize() {
+    public void cfinitialize() {
         //createList();
     }
     

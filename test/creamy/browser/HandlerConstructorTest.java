@@ -184,7 +184,7 @@ public class HandlerConstructorTest extends CreamyTestBase {
     
     public class ActivityImpl extends Activity {
         @Override
-        public void initialize() {}
+        public void cfinitialize() {}
         public void cancelTest() { cancelRequest(); }
     }
 }

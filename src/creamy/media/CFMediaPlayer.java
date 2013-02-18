@@ -8,7 +8,6 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
@@ -17,7 +16,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
-import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
@@ -110,6 +108,7 @@ public class CFMediaPlayer extends BorderPane{
     }
     
     /**
+     * Mediaを繰り返すかの指定。
      * 
      * @param isRepeat true:繰り返し
      */
@@ -145,10 +144,13 @@ public class CFMediaPlayer extends BorderPane{
     }
     
     /**
-     * MediaPlayerのNodeを返す。
-     * @return Node MediaPlayerのNodeを返す。 
+     * CFMediaPlayerのオブジェクトを作成。
+     * 
+     * CFMediaPlayer mediaPlayer = new CFMediaPlayer();
+     * mediaPlayer.setMediaPath(/path/to/media);
+     * mediaPlayer.create();
      */
-    public Node create(){
+    public void create(){
         final File file = new File(MEDIA_PATH);
         // mediaの作成
         String path;
@@ -156,8 +158,10 @@ public class CFMediaPlayer extends BorderPane{
         if(file.isFile()){
             path = file.toURI().toString();
         }else{
+            // fileがURIだった場合。
             path = file.getPath();
         }
+        setStyle(mediaPlayerBackGroundStyle);
         Media media = new Media (path);
         mediaPlayer = new MediaPlayer(media);
         mediaPlayer.setAutoPlay(isAutoPlay);
@@ -240,7 +244,7 @@ public class CFMediaPlayer extends BorderPane{
         mediaBar.getChildren().add(timeLabel);
         
         timeSlider = createTimeSlider();
-                timeSlider.valueProperty().addListener(new InvalidationListener() {
+        timeSlider.valueProperty().addListener(new InvalidationListener() {
             public void invalidated(Observable ov) {
                 if (timeSlider.isValueChanging()) {
                     mediaPlayer.seek(duration.multiply(timeSlider.getValue() / 100.0));
@@ -269,12 +273,6 @@ public class CFMediaPlayer extends BorderPane{
         });
         mediaBar.getChildren().add(volumeSlider);
         setBottom(mediaBar);
-        VBox mediaPlayerVBox = new VBox(2);
-        mediaPlayerVBox.setStyle(mediaPlayerBackGroundStyle);
-        mediaPlayerVBox.getChildren().add(mvPane);
-        mediaPlayerVBox.getChildren().add(mediaBar);
-        
-        return mediaPlayerVBox;
     }
     
     private HBox createMediaBar(){
@@ -296,6 +294,7 @@ public class CFMediaPlayer extends BorderPane{
         if(null != width){
             mv.setFitWidth(width);    
         }
+        mv.setStyle("-fx-background-color: black;");
         return mv;
     }
     

@@ -20,7 +20,9 @@
             <source-roots>
                 <root id="src.dir"/>
             </source-roots>
-            <test-roots/>
+            <test-roots>
+                <root id="test.test2.dir" name="テスト・パッケージ"/>
+            </test-roots>
         </data>
     </configuration>
 </project>

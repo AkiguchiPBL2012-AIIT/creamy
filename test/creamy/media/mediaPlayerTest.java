@@ -19,8 +19,7 @@ public class mediaPlayerTest extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        primaryStage.setTitle("media player Test");
-        primaryStage.centerOnScreen();
+        //primaryStage.setTitle("media player Test");
 
         Group root = new Group();
         Scene scene = new Scene(root, 600, 300, Color.rgb(100, 100, 100, 0));
@@ -30,7 +29,8 @@ public class mediaPlayerTest extends Application {
         mediaPlayer.setRepeat(true);
         mediaPlayer.setMediaViewHeight(200.0);
         mediaPlayer.setMediaViewWidth(400.0);
-        root.getChildren().add(mediaPlayer.create());
+        mediaPlayer.create();
+        root.getChildren().add(mediaPlayer);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
